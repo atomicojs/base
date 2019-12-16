@@ -1,0 +1,17 @@
+{
+	"name": "atomico-base",
+	"description": "a repo to start with atomico",
+	"version": "0.0.0",
+	"scripts": {
+		"build": "bundle *.html dist --minify",
+		"build:components": "bundle src/components/**/*-*.js components --external",
+		"dev": "bundle *.html dist --watch --server",
+		"prepare": "npm run build"
+	},
+	"dependencies": {
+		"atomico": "latest"
+	},
+	"devDependencies": {
+		"bundle-cli": "latest"
+	}
+}
