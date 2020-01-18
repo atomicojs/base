@@ -3,15 +3,30 @@
 	"description": "a repo to start with atomico",
 	"version": "0.0.0",
 	"scripts": {
-		"build": "bundle *.html dist --minify",
+		"build": "bundle --config bundleHtml --minify",
+		"dev": "bundle--config bundleHtml --watch --server",
+		"dev:doc": "bundle --config bundleDoc --watch --server",
 		"build:components": "bundle src/components/**/*-*.js components --external",
-		"dev": "bundle *.html dist --watch --server",
-		"prepare": "npm run build"
+		"prepare": "npm run build:components"
+	},
+	"bundleHtml": {
+		"src": [
+			"*.html"
+		],
+		"dir": "dist"
+	},
+	"bundleDoc": {
+		"src": [
+			"src/index.md",
+			"src/components/**/*.md"
+		],
+		"dir": "docs",
+		"mdTemplate": "doc-template"
 	},
 	"dependencies": {
-		"atomico": "latest"
+		"atomico": "^0.18.1"
 	},
 	"devDependencies": {
-		"bundle-cli": "latest"
+		"bundle-cli": "^0.13.3"
 	}
 }

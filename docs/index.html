@@ -1,0 +1,422 @@
+<html><head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Proza+Libre:400,700&amp;display=swap" rel="stylesheet">
+        <script type="module" src="https://unpkg.com/@atomico/web-components-to-markdown/doc-show-html.js?module"></script>
+      </head>
+      <body>
+        <style>
+          
+  :root {
+    --link-color: #0070f3;
+    --aside-width: 280px;
+    --aside-background: #f7fafc;
+    --aside-unselect: rgba(60, 65, 86, 0.5);
+    --aside-select: #5a49ed;
+    --aside-title: #404049;
+    --aside-text: #404049;
+    --split-border: rgba(60, 65, 86, 0.1);
+    --text-color: #404040;
+    --title-font: "Didact Gothic", sans-serif;
+    --text-font: "Proza Libre", sans-serif;
+    --header-height: 60px;
+    --content-code-color: deeppink;
+    --content-background: #f0f4f7;
+    --content-header-background: #232329;
+    --content-header-color: white;
+  }
+  
+  html,
+  body {
+    margin: 0px;
+    padding: 0px;
+    color: var(--title-color);
+  }
+
+  body,
+  button,
+  input,
+  textarea {
+    font-family: var(--text-font);
+  }
+
+  main {
+    width: 100%;
+    height: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 300;
+    font-family: var(--title-font);
+    line-height: 1.2em;
+    margin: 3rem 0px 1rem;
+  }
+
+  h1 {
+    font-size: 3.4rem;
+  }
+  h2 {
+    font-size: 2.4rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+  h4 {
+    font-size: 1.4rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  h6 {
+    font-size: 0.8rem;
+  }
+
+  a {
+    color: var(--link-color);
+  }
+
+  doc-show-html,
+  doc-code,
+  doc-props {
+    border-radius: 8px;
+    margin: 10px auto;
+  }
+
+  .header {
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 40px;
+    border-bottom: 1px solid var(--split-border);
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-flow: row wrap;
+    overflow: hidden;
+  }
+
+  
+  .aside {
+    width: var(--aside-width);
+    height: 100%;
+    background: var(--aside-background);
+    border-right: 1px solid var(--split-border);
+    box-sizing: border-box;
+    padding: 40px 20px;
+    position: relative;
+  }
+
+  .aside-scroll {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .aside-ul {
+    list-style-type: none;
+    font-family: var(--title-font);
+    padding-left: 1.5rem;
+    color: var(--aside-text);
+  }
+  .aside-title {
+    margin: 0.5rem 0px;
+    color: var(--aside-title);
+    display: inline-block;
+  }
+
+  .aside-ul .aside-ul {
+    padding-left: 0px;
+    margin-left: 10px;
+    border-left: 1px solid var(--aside-unselect);
+  }
+
+  .aside-ul .aside-ul li {
+    padding: 4px 0px 4px 10px;
+    border-left: 2px solid transparent;
+    margin-left: -1.5px;
+    position: relative;
+  }
+  .aside-ul a {
+    color: unset;
+  }
+
+  .aside-ul .aside-ul li.--select {
+    border-left: 2px solid var(--aside-select);
+  }
+  .aside-ul .aside-ul li.--select:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 2px solid var(--aside-select);
+    background: var(--aside-background);
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+  }
+
+
+  
+  .content {
+    height: 100%;
+    flex: 0%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .content.--with-header {
+    background: var(--content-background);
+  }
+
+  .content-markdown {
+    width: 90%;
+    padding: 3rem 5%;
+    box-sizing: border-box;
+    margin: auto;
+    background: white;
+    content: var(--content-markdown-color);
+    font-size: 18px;
+    line-height: 1.5em;
+  }
+
+  .content-header {
+    width: 100%;
+    min-height: 200px;
+    padding: 50px 10%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    background: var(--content-header-background);
+    color: var(--content-header-color, white);
+  }
+
+  .content-header p {
+    font-size: 16px;
+    margin: 0px;
+    opacity: 0.6;
+  }
+
+  .content-header + .content-markdown {
+    margin-top: -25px;
+    margin-bottom: 50px;
+  }
+
+  .content-markdown code {
+    color: var(--aside-select);
+    font-family: monospace;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: inline-block;
+  }
+  .content-markdown code:before,
+  .content-markdown code:after {
+    content: "`";
+  }
+
+  .content-markdown img {
+    max-width: 100%;
+  }
+
+  .content-markdown table {
+    width: 100%;
+    border-spacing: 0px;
+    margin: 10px auto;
+  }
+
+  .content-markdown thead {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+
+  .content-markdown thead th {
+    padding: 5px 1rem;
+  }
+
+  .content-markdown tbody td {
+    font-size: 14px;
+    padding: 10px 1rem;
+  }
+
+  .content-markdown thead th,
+  .content-markdown tbody td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .content-markdown blockquote {
+    padding: 1px 0px 1px 1rem;
+    margin: 10px 0px;
+    border-left: 2px solid currentColor;
+    font-size: 0.85em;
+  }
+
+
+  #aside-toggle {
+    display: none;
+  }
+
+  .aside {
+    transition: 0.5s ease all;
+  }
+
+  [for="aside-toggle"] {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    border-right: 1px solid var(--split-border);
+    border-bottom: 1px solid var(--split-border);
+    transition: 0.3s ease all;
+    background: var(--aside-background);
+  }
+
+  #aside-toggle:checked ~ .aside {
+    margin-left: calc(var(--aside-width) * -1);
+  }
+
+  @media (max-width: 720px) {
+    #aside-toggle ~ .aside {
+      margin-left: calc(var(--aside-width) * -1);
+    }
+    #aside-toggle:checked ~ .aside {
+      margin-left: 0px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    :root {
+      --aside-width: 100vw;
+    }
+    .header {
+      padding: 0px 1rem;
+    }
+    #aside-toggle:checked ~ .aside [for="aside-toggle"] {
+      left: calc(100% - 40px);
+      transform: rotate(90deg);
+    }
+  }
+
+
+        </style>
+        <main>
+          <header class="header">
+            
+  <!-- LOGO -->
+  
+  <svg xmlns="http://www.w3.org/2000/svg" width="180" viewBox="0 0 745 260">
+    <path d="M193.382 197.305a31.088 31.088 0 01-3.184 2.777h-28.38a72.383 72.383 0 005.308-3.846h27.275c-.333.367-.676.726-1.02 1.07zm3.775-4.58h-25.942a72.872 72.872 0 003.859-3.846h24.29a30.854 30.854 0 01-2.208 3.846zm-12.85 10.87a30.547 30.547 0 01-12.697 2.732 30.561 30.561 0 01-12.7-2.733h25.397zm16.49-18.224h-22.653a72.637 72.637 0 002.94-3.848h20.737a30.678 30.678 0 01-1.02 3.85zm1.507-7.357h-18.871a72.4 72.4 0 002.249-3.846h16.688a31.764 31.764 0 01-.069 3.846zm-.283-7.354h-14.55a71.434 71.434 0 001.688-3.846h11.994a30.713 30.713 0 01.872 3.842zm-2.141-7.357h-9.406c.436-1.261.84-2.553 1.207-3.845h6.199a30.8 30.8 0 012.004 3.842zm-4.508-7.356h-2.79a71.48 71.48 0 00.522-2.465 31.094 31.094 0 012.268 2.464z"></path>
+    <path d="M170.63 187.635a68.963 68.963 0 01-10.742 8.775 68.11 68.11 0 01-11.907 6.265 68.465 68.465 0 01-12.686 3.76 68.952 68.952 0 01-13.075 1.254 68.949 68.949 0 01-13.075-1.254 68.46 68.46 0 01-12.686-3.76 68.122 68.122 0 01-11.907-6.265 68.977 68.977 0 01-10.741-8.774 68.976 68.976 0 01-8.775-10.742 68.121 68.121 0 01-6.265-11.907 68.462 68.462 0 01-3.76-12.685 68.953 68.953 0 01-1.252-13.075 68.955 68.955 0 011.253-13.075 68.47 68.47 0 013.76-12.686 68.116 68.116 0 016.266-11.907 68.965 68.965 0 018.774-10.742 68.751 68.751 0 0113.001-10.202 68.093 68.093 0 0114.564-6.613 68.669 68.669 0 0115.46-3.024 68.938 68.938 0 0115.697.566 43.4 43.4 0 008.692 48.682 43.4 43.4 0 0048.682 8.692 68.937 68.937 0 01.565 15.689 68.67 68.67 0 01-3.023 15.46 68.092 68.092 0 01-6.614 14.564 68.751 68.751 0 01-10.206 13.004z"></path>
+    <path d="M185.126 125.49l22.486-22.486a38.414 38.414 0 01-8.824 13.662 38.415 38.415 0 01-13.662 8.824zm-8.321 2.107a38.8 38.8 0 01-7.127.316l40.356-40.356a38.8 38.8 0 01-.316 7.127zm-12.673-.352a38.535 38.535 0 01-5.361-1.45l49.144-49.144a38.536 38.536 0 011.45 5.36zm-9.734-3.291a38.263 38.263 0 01-4.31-2.5l53.487-53.488a38.263 38.263 0 012.5 4.31zm-7.846-5.18q-1.172-.999-2.282-2.108-.608-.608-1.183-1.235l54.465-54.465q.627.575 1.235 1.183 1.108 1.108 2.108 2.283zm-6.26-6.764a38.333 38.333 0 01-2.635-4.174l52.3-52.3a38.354 38.354 0 014.174 2.636zm-4.617-8.408a38.456 38.456 0 01-1.636-5.173l46.503-46.503a38.472 38.472 0 015.173 1.637zm-2.521-10.504a38.789 38.789 0 01-.055-6.755l35.365-35.364a38.764 38.764 0 016.755.054zm1.317-14.342a38.373 38.373 0 019.799-16.608 38.373 38.373 0 0116.607-9.797z"></path>
+    <path d="M296.405 171h10.464L279.51 95.463h-11.445L240.6 171h10.461l6.1-16.9H290.3zm-8.938-24.961H260l13.733-38.368zm33.572 8.611c0 11.99 6 16.35 16.568 16.35h8.938v-8.393h-7.3c-6.1 0-8.284-2.071-8.284-7.957v-35.207h15.587v-8.175h-15.59V96.226h-9.919v15.042H313.3v8.175h7.739zm94.176-13.625c0-18.857-13.189-30.738-30.193-30.738-16.9 0-30.193 11.881-30.193 30.738 0 18.966 12.862 30.956 29.757 30.956 17.004 0 30.629-11.99 30.629-30.956zm-50.249 0c0-15.042 9.483-22.127 19.947-22.127 10.246 0 20.165 7.085 20.165 22.127 0 15.151-10.137 22.236-20.492 22.236s-19.62-7.085-19.62-22.236zM514.514 171h9.81v-35.207c0-17.113-10.573-25.615-24.2-25.615-9.156 0-17.658 4.687-21.146 13.3-3.924-8.938-12.1-13.3-21.909-13.3-7.848 0-14.933 3.379-18.857 9.7v-8.611h-9.919V171h9.919v-32.918c0-12.862 6.867-19.293 16.9-19.293 9.81 0 16.35 6.213 16.35 18.421V171h9.81v-32.918c0-12.862 6.867-19.293 16.9-19.293 9.81 0 16.35 6.213 16.35 18.421zm26.051 0h9.919v-59.732h-9.919zm5.123-69.433a6.609 6.609 0 006.54-6.758 6.609 6.609 0 00-6.54-6.758 6.655 6.655 0 00-6.758 6.758 6.655 6.655 0 006.758 6.758zm17.985 39.458c0 18.966 12.1 30.956 29.1 30.956 14.827 0 24.527-8.281 27.58-20.165h-10.682c-2.18 7.521-8.066 11.772-16.895 11.772-10.9 0-18.966-7.739-18.966-22.563 0-14.606 8.066-22.345 18.966-22.345 8.829 0 14.824 4.578 16.895 11.772h10.682c-3.053-12.535-12.753-20.165-27.577-20.165-17.004 0-29.103 11.99-29.103 30.738zm126.549 0c0-18.857-13.189-30.738-30.193-30.738-16.9 0-30.193 11.881-30.193 30.738 0 18.966 12.864 30.956 29.757 30.956 17.007 0 30.629-11.99 30.629-30.956zm-50.249 0c0-15.042 9.483-22.127 19.947-22.127 10.246 0 20.165 7.085 20.165 22.127 0 15.151-10.137 22.236-20.492 22.236s-19.62-7.085-19.62-22.236z"></path>
+  </svg>
+
+  <!-- NAV -->
+  <nav class="header-nav">
+    <style>
+      .header-nav-link {
+        padding: 10px;
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+      }
+    </style>
+    
+        <a class="header-nav-link" href="https://twitter.com/atomicojs">
+          <svg width="20" viewBox="0 -47 512.002 512" xmlns="http://www.w3.org/2000/svg">
+            <path d="M191.012 419.043c-22.14 0-44.93-1.793-67.856-5.387-40.379-6.336-81.254-27.457-92.82-33.781L0 363.289l32.844-10.8c35.902-11.805 57.742-19.13 84.777-30.598-27.07-13.11-47.933-36.692-57.976-67.176l-7.641-23.195 6.266.957A113.939 113.939 0 0144 214.883c-12.934-19.645-19.781-43.649-18.324-64.219l1.437-20.246 12.121 4.695a113.316 113.316 0 01-10.98-30.777c-5.293-26.36-.863-54.363 12.476-78.852L51.29 6.102l14.12 16.96c44.66 53.649 101.227 85.473 168.363 94.79-2.742-18.903-.687-37.145 6.114-53.497 7.918-19.039 22.004-35.183 40.722-46.69 20.79-12.778 46-18.97 70.989-17.435 26.511 1.63 50.582 11.563 69.699 28.747 9.336-2.426 16.215-5.016 25.512-8.516 5.593-2.106 11.937-4.496 19.875-7.23l29.25-10.079-19.075 54.477a96.355 96.355 0 013.91-.254l31.235-1.414-18.461 25.23c-1.059 1.446-1.328 1.856-1.703 2.422-1.488 2.242-3.34 5.032-28.68 38.867-6.344 8.473-9.512 19.508-8.922 31.079 2.246 43.968-3.148 83.75-16.043 118.234-12.195 32.625-31.093 60.617-56.164 83.2-31.023 27.937-70.582 47.066-117.582 56.847-23.054 4.797-47.812 7.203-73.437 7.203zm0 0"></path>
+          </svg>
+        </a>
+      
+    
+        <a class="header-nav-link" href="https://github.com/atomicojs/base/tree/create-webcomponents">
+          <svg viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 .5C5.37.5 0 5.78 0 12.292c0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56C20.565 21.917 24 17.495 24 12.292 24 5.78 18.627.5 12 .5z" fill="#212121"></path>
+          </svg>
+        </a>
+      
+  </nav>
+
+          </header>
+          <section class="wrapper">
+            <input type="checkbox" id="aside-toggle">
+            <aside class="aside">
+              <div class="aside-scroll">
+                
+          <ul class="aside-ul">
+            <li>
+              
+                    <strong class="aside-title">Components</strong>
+                  
+              <ul class="aside-ul">
+                
+                    <li class="">
+                      <a href="atomico-brand.html">atomico-brand</a>
+                    </li>
+                  
+                    <li class="">
+                      <a href="atomico-button.html">atomico-button</a>
+                    </li>
+                  
+              </ul>
+            </li>
+          </ul>
+        
+          <ul class="aside-ul">
+            <li>
+              
+                    <strong class="aside-title">Welcome</strong>
+                  
+              <ul class="aside-ul">
+                
+                    <li class="--select">
+                      <a href="index.html">Introduction</a>
+                    </li>
+                  
+              </ul>
+            </li>
+          </ul>
+        
+              </div>
+              <label for="aside-toggle">
+                <svg width="50%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384">
+                  <path d="M0 277.333h384V320H0zM0 170.667h384v42.667H0zM0 64h384v42.667H0z"></path>
+                </svg>
+              </label>
+            </aside>
+            <article class="content">
+              <div class="content-markdown">
+                <h1 id="start-documentation-kit">start documentation kit</h1>
+<p>This is just a small demonstration of bundle-cli processing the markdown files to group them into this small static documentation... easy, isn't it?</p>
+
+              </div>
+            </article>
+          </section>
+        </main>
+        <script type="module" src="https://unpkg.com/@atomico/web-components-to-markdown/doc-props.js?module"></script>
+      
+    
+  </body></html>
