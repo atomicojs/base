@@ -2,7 +2,7 @@
 
 The atomico logo anywhere, just use this component and that's it.
 
-## Instalacion
+## Installation
 
 ```html
 <script src="http://unpkg.com/@atomicojs/components/atomico-brand.js"></script>

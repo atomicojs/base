@@ -4,16 +4,17 @@
 	"version": "0.0.0",
 	"scripts": {
 		"build": "bundle --config bundleHtml --minify",
-		"dev": "bundle--config bundleHtml --watch --server",
+		"build:doc": "bundle --config bundleDoc",
+		"dev": "bundle --config bundleHtml --watch --server",
 		"dev:doc": "bundle --config bundleDoc --watch --server",
-		"build:components": "bundle src/components/**/*-*.js components --external",
+		"build:components": "bundle src/components/**/*-*.js dist --external",
 		"prepare": "npm run build:components"
 	},
 	"bundleHtml": {
 		"src": [
 			"*.html"
 		],
-		"dir": "dist"
+		"dir": "public"
 	},
 	"bundleDoc": {
 		"src": [
@@ -28,5 +29,8 @@
 	},
 	"devDependencies": {
 		"bundle-cli": "^0.13.3"
+	},
+	"exports": {
+		".": "./dist/"
 	}
 }
