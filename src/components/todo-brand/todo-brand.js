@@ -1,6 +1,6 @@
 import { h, customElement } from "atomico";
 
-function AtomicoBrand({ color, size }) {
+const AtomicoBrand = ({ color, size }) => {
   return (
     <svg width={size} viewBox="0 0 745 260">
       <g id="logo-white" transform="translate(-311 -276)">
@@ -43,7 +43,7 @@ function AtomicoBrand({ color, size }) {
       </g>
     </svg>
   );
-}
+};
 
 AtomicoBrand.props = {
   size: {
@@ -52,8 +52,8 @@ AtomicoBrand.props = {
   },
   color: {
     type: String,
-    value: "#fff"
+    value: "#000"
   }
 };
 
-export default customElement("atomico-brand", AtomicoBrand);
+export default customElement("todo-brand", AtomicoBrand);

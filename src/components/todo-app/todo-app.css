@@ -1,0 +1,16 @@
+:host {
+  color: white;
+}
+
+.header {
+  &.-container {
+    display: flex;
+    align-items: flex-end;
+    & > * {
+      margin: 0.5rem;
+    }
+  }
+  &.-input {
+    flex: 0%;
+  }
+}

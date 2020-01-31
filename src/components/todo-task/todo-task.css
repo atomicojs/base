@@ -1,0 +1,35 @@
+:host {
+  width: 100%;
+  display: flex;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+:host([checked]) {
+  & .content {
+    text-decoration: line-through;
+  }
+  & .checked span {
+    opacity: 1;
+  }
+}
+
+.content {
+  flex: 0%;
+}
+.checked {
+  width: 20px;
+  height: 20px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  & span {
+    opacity: 0;
+    transition: 0.3s ease all;
+  }
+}
