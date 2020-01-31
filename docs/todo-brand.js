@@ -1,4 +1,4 @@
-import { c as customElement, a as createElement } from './chunks/8f4bfb1b.js';
+import { c as customElement, a as createElement } from './chunks/2f7efe37.js';
 
 const AtomicoBrand = ({
   color,
@@ -52,10 +52,10 @@ AtomicoBrand.props = {
   },
   color: {
     type: String,
-    value: "#fff"
+    value: "#000"
   }
 };
-var atomicoBrand = customElement("atomico-brand", AtomicoBrand);
+var TodoBrand = customElement("todo-brand", AtomicoBrand);
 
-export default atomicoBrand;
-//# sourceMappingURL=atomico-brand.js.map
+export default TodoBrand;
+//# sourceMappingURL=todo-brand.js.map

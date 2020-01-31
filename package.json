@@ -1,36 +1,41 @@
 {
-	"name": "atomico-base",
-	"description": "a repo to start with atomico",
-	"version": "0.0.0",
-	"scripts": {
-		"build": "bundle --config bundleHtml --minify",
-		"build:doc": "bundle --config bundleDoc",
-		"dev": "bundle --config bundleHtml --watch --server",
-		"dev:doc": "bundle --config bundleDoc --watch --server",
-		"build:components": "bundle src/components/**/*-*.js dist --external",
-		"prepare": "npm run build:components"
-	},
-	"bundleHtml": {
-		"src": [
-			"*.html"
-		],
-		"dir": "public"
-	},
-	"bundleDoc": {
-		"src": [
-			"src/index.md",
-			"src/components/**/*.md"
-		],
-		"dir": "docs",
-		"mdTemplate": "doc-template"
-	},
-	"dependencies": {
-		"atomico": "^0.18.1"
-	},
-	"devDependencies": {
-		"bundle-cli": "^0.13.3"
-	},
-	"exports": {
-		".": "./dist/"
-	}
+  "name": "atomico-base",
+  "description": "a repo to start with atomico",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "bundle --config bundleHtml --minify",
+    "build:doc": "bundle --config bundleDoc",
+    "dev": "bundle --config bundleHtml --watch --server",
+    "dev:doc": "bundle --config bundleDoc --watch --server",
+    "build:components": "bundle src/components/**/*-*.js dist --external",
+    "prepare": "npm run build:components"
+  },
+  "bundleHtml": {
+    "src": [
+      "src/**/*.html"
+    ],
+    "dir": "public"
+  },
+  "bundleDoc": {
+    "src": [
+      "src/**/*.md"
+    ],
+    "dir": "docs",
+    "mdTemplate": [
+      "doc-template",
+      {
+        "github": "#",
+        "twitter": "#"
+      }
+    ]
+  },
+  "dependencies": {
+    "atomico": "^0.19.0"
+  },
+  "devDependencies": {
+    "bundle-cli": "^0.14.0"
+  },
+  "exports": {
+    ".": "./dist/"
+  }
 }

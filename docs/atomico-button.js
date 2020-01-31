@@ -1,10 +1,10 @@
 import { c as customElement, a as createElement } from './chunks/8f4bfb1b.js';
 
-function AtomicoButton({
+const AtomicoButton = ({
   background,
   color,
   small
-}) {
+}) => {
   return createElement("host", {
     style: {
       color,
@@ -17,7 +17,7 @@ function AtomicoButton({
       textDecoration: "none"
     }
   });
-}
+};
 
 AtomicoButton.props = {
   small: Boolean,

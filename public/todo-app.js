@@ -65,6 +65,18 @@ function updateAll(hooks, type) {
   for (let i in hooks) update(hooks[i], type);
 }
 
+function useHook(reducer, initialState) {
+  if (HOOK_CURRENT.ref.hook) {
+    return HOOK_CURRENT.ref.hook.use(reducer, initialState)[1];
+  }
+}
+
+function useHost() {
+  return useHook(0, {
+    current: HOOK_CURRENT.ref.host
+  });
+}
+
 function createHookCollection(render, host) {
   let hooks = {};
   let mounted;
@@ -114,6 +126,12 @@ function createHookCollection(render, host) {
   }
 
   return hook;
+}
+
+function useRef(current) {
+  return useHook(0, {
+    current
+  });
 }
 /**
  *
@@ -377,7 +395,7 @@ function mapChildren(children, scan = {
       if ("key" in vnode) {
         scan.keyes = scan.keyes || [];
 
-        if (!~scan.keyes.indexOf(vnode.key)) {
+        if (!scan.keyes.includes(vnode.key)) {
           scan.keyes.push(vnode.key);
         }
       }
@@ -516,7 +534,7 @@ function diffChildren(id, parent, children, keyes, isSvg) {
     if (keyes) {
       key = childNode[KEY];
 
-      if (keyes.indexOf(key) > -1) {
+      if (keyes.includes(key)) {
         childNodesKeyes[key] = childNode;
         continue;
       }
@@ -624,9 +642,9 @@ function setAttr(node, attr, value) {
 function formatType(value, type = String) {
   try {
     if (type == Boolean) {
-      value = ELEMENT_TRUE_VALUES.indexOf(value) > -1;
+      value = ELEMENT_TRUE_VALUES.includes(value);
     } else if (typeof value == "string") {
-      value = type == Number ? Number(value) : type == Object || type == Array ? JSON.parse(value) : type == Date ? new Date(value) : value;
+      value = type == Number ? Number(value) : type == Object || type == Array ? JSON.parse(value) : value;
     }
 
     if ({}.toString.call(value) == `[object ${type.name}]`) {
@@ -653,6 +671,10 @@ function attrToProp(attr) {
 
 function dispatchEvent(node, type, customEventInit) {
   node.dispatchEvent(new CustomEvent(type, typeof customEventInit == "object" ? customEventInit : null));
+}
+
+function createPropError(status, message) {
+  return Object.assign(new Error("Failed prop\n" + message), status);
 }
 
 let defer = Promise.resolve();
@@ -707,12 +729,12 @@ function addQueue(callback) {
   if (!queue.includes(callback)) queue[callback[IMPORTANT] ? "unshift" : "push"](callback);
 }
 
-function load(self, componentRender, componentError) {
-  if (self.mount) return;
+function load(target, componentRender, componentError) {
+  if (target.mount) return;
   let id = Symbol("vnode");
   let isPrevent;
   let isUnmount;
-  self[ELEMENT_PROPS] = {};
+  target[ELEMENT_PROPS] = {};
   let isMounted;
   let resolveUpdate;
 
@@ -723,20 +745,20 @@ function load(self, componentRender, componentError) {
     if (rerender[IMPORTANT]) rerender[IMPORTANT] = false;
 
     try {
-      render(hooks.load(componentRender, { ...self[ELEMENT_PROPS]
-      }), self, id);
+      render(hooks.load(componentRender, { ...target[ELEMENT_PROPS]
+      }), target, id);
       resolveUpdate();
     } catch (e) {
       (componentError || console.error)(e);
     }
-  }; // mark the first render as important, self speeds up the rendering
+  }; // mark the first render as important, target speeds up the rendering
 
 
   rerender[IMPORTANT] = true;
 
-  self.update = () => {
+  target.update = () => {
     if (isUnmount) return;
-    let rendered = self.rendered;
+    let rendered = target.rendered;
 
     if (!isPrevent) {
       isPrevent = true; // create a promise to observe the status of the update
@@ -744,28 +766,28 @@ function load(self, componentRender, componentError) {
       rendered = promise(resolve => resolveUpdate = resolve).then( // the UPDATED state is only propagated through
       // the resolution of the promise
       // Why? ... to improve communication between web-component parent and children
-      hooks.updated); // if the component is already mounted, avoid using self.mounted,
+      hooks.updated); // if the component is already mounted, avoid using target.mounted,
       // to speed up the microtask
 
-      isMounted ? addQueue(rerender) : self.mounted.then(() => {
+      isMounted ? addQueue(rerender) : target.mounted.then(() => {
         isMounted = true;
         addQueue(rerender);
       });
     }
 
-    return self.rendered = rendered;
+    return target.rendered = rendered;
   }; // any update from hook is added to a separate queue
 
 
-  let hooks = createHookCollection(() => addQueue(self.update), self); // creates a collection of microtask
+  let hooks = createHookCollection(() => addQueue(target.update), target); // creates a collection of microtask
   // associated with the mounted of the component
 
-  self.mounted = promise(resolve => self.mount = () => {
+  target.mounted = promise(resolve => target.mount = () => {
     isMounted = false; // allows the reuse of the component when it is isUnmounted and mounted
 
     if (isUnmount == true) {
       isUnmount = false;
-      self.mounted = self.update();
+      target.mounted = target.update();
     }
 
     resolve();
@@ -775,13 +797,13 @@ function load(self, componentRender, componentError) {
    * associated with the unmounted of the component
    */
 
-  self.unmounted = promise(resolve => self.unmount = () => {
+  target.unmounted = promise(resolve => target.unmount = () => {
     isUnmount = true;
     hooks.unmount();
     resolve();
   });
-  self.initialize();
-  self.update();
+  target.initialize();
+  target.update();
 }
 /**
  * register the component, be it a class or function
@@ -865,27 +887,43 @@ function customElement(nodeType, component, options) {
 }
 
 function setProperty$1(prototype, initialize, attrs, prop, schema) {
+  // avoid rewriting the prototype
+  if (prop in prototype) return;
   let attr = propToAttr(prop);
   schema = schema.name ? {
     type: schema
-  } : schema; // avoid rewriting the prototype
-
-  if (prop in prototype) return;
+  } : schema;
+  let isTypeFunction = schema.type == Function;
 
   function set(nextValue) {
-    let prevValue = this[ELEMENT_PROPS][prop];
+    let prevValue = this[ELEMENT_PROPS][prop]; // if the next value in function, with the exception of the type function,
+    // will be executed to get the next value
 
-    if (isFunction(nextValue)) {
+    if (!isTypeFunction && isFunction(nextValue)) {
       nextValue = nextValue(prevValue);
-    }
+    } // Evaluate the defined type, to work with the value or issue an error
+
 
     let {
       value,
       error
-    } = formatType(nextValue, schema.type);
+    } = formatType(nextValue, schema.type); // define if the definition of prop has generated a type error
 
     if (error && value != null) {
-      throw `the observable [${prop}] must be of the type [${schema.type.name}]`;
+      throw createPropError({
+        target: this,
+        schema,
+        value
+      }, `The value defined for prop '${prop}' must be of type '${schema.type.name}'`);
+    } // define if the prop definition has generated an options error
+
+
+    if (schema.options && !schema.options.includes(value)) {
+      throw createPropError({
+        target: this,
+        schema,
+        value
+      }, `The value defined for prop '${prop}' It is not a valid option`);
     }
 
     if (prevValue == value) return;
@@ -920,15 +958,28 @@ function setProperty$1(prototype, initialize, attrs, prop, schema) {
   });
 
   if ("value" in schema) {
-    initialize.push(self => {
+    initialize.push(target => {
       let {
         value
       } = schema;
-      self[prop] = isFunction(value) ? value() : value;
+      target[prop] = isFunction(value) ? value() : value;
     });
   }
 
   attrs.push(attr);
+}
+
+function useProp(name) {
+  let ref = useHost();
+
+  if (name in ref.current) {
+    if (!ref[name]) {
+      ref[name] = [null, nextValue => ref.current[name] = nextValue];
+    }
+
+    ref[name][0] = ref.current[name];
+    return ref[name];
+  }
 }
 
 const AtomicoBrand = ({
@@ -983,10 +1034,273 @@ AtomicoBrand.props = {
   },
   color: {
     type: String,
-    value: "#fff"
+    value: "#000"
   }
 };
-var atomicoBrand = customElement("atomico-brand", AtomicoBrand);
+var TodoBrand = customElement("todo-brand", AtomicoBrand);
 
-export default atomicoBrand;
-//# sourceMappingURL=atomico-brand.js.map
+var style = `:host {
+  width: 100%;
+  display: inline-block;
+  color: var(--todo-input-color, #fff);
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: currentColor;
+  font-size: 0.9em;
+  font-family: unset;
+  padding: 2rem 1rem 0.5rem;
+  outline: none;
+}
+
+.label {
+  position: relative;
+}
+
+.placeholder {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  transition: 0px 0px;
+  transition: 0.3s ease all;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.25
+}
+
+.hr.-for-focus {
+    opacity: 1;
+    height: 2px;
+    max-width: 25%;
+    transform-origin: left center;
+    transition: 0.3s ease all;
+    transform: scale(0, 1);
+  }
+
+input:focus ~ .label,
+.placeholder.--with-content {
+  transform: translateY(-150%);
+  font-size: 0.8em;
+}
+
+input:focus ~ .-for-focus {
+  transform: scale(1);
+}
+`;
+
+const TodoInput = ({
+  placeholder
+}) => {
+  let [value, setValue] = useProp("value");
+  return createElement("host", {
+    shadowDom: true
+  }, createElement("style", null, style), createElement("label", {
+    class: "label"
+  }, createElement("input", {
+    class: "input",
+    value: value,
+    oninput: ({
+      target
+    }) => setValue(target.value)
+  }), createElement("span", {
+    class: `placeholder ${value ? "--with-content" : ""}`
+  }, placeholder), createElement("div", {
+    class: "hr"
+  }), createElement("div", {
+    class: "hr -for-focus"
+  })));
+};
+
+TodoInput.props = {
+  placeholder: {
+    type: String,
+    value: "✍️ write your task!"
+  },
+  value: {
+    type: String
+  }
+};
+var TodoInput$1 = customElement("todo-input", TodoInput);
+
+var style$1 = `.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+}
+`;
+
+const TodoButton = ({
+  background,
+  color
+}) => {
+  return createElement("host", {
+    shadowDom: true
+  }, createElement("style", null, style$1), createElement("button", {
+    class: "button",
+    style: {
+      background,
+      color
+    }
+  }, createElement("slot", null)));
+};
+
+TodoButton.props = {
+  color: {
+    type: String,
+    value: "black"
+  },
+  background: {
+    type: String,
+    value: "white"
+  }
+};
+var TodoButton$1 = customElement("todo-button", TodoButton);
+
+var style$2 = `:host {
+  width: 100%;
+  display: flex;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+:host([checked]) .content {
+    text-decoration: line-through;
+  }
+
+:host([checked]) .checked span {
+    opacity: 1;
+  }
+
+.content {
+  flex: 0%;
+}
+
+.checked {
+  width: 20px;
+  height: 20px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em
+}
+
+.checked span {
+    opacity: 0;
+    transition: 0.3s ease all;
+  }
+`;
+
+const TodoTask = () => {
+  let [checked, setChecked] = useProp("checked");
+  return createElement("host", {
+    shadowDom: true,
+    onclick: () => setChecked(!checked)
+  }, createElement("style", null, style$2), createElement("div", {
+    class: "content"
+  }, createElement("slot", null)), createElement("div", {
+    class: "checked"
+  }, createElement("span", null, "\u2714")));
+};
+
+TodoTask.props = {
+  checked: {
+    type: Boolean,
+    reflect: true,
+    event: {
+      type: "change"
+    }
+  }
+};
+var TodoTask$1 = customElement("todo-task", TodoTask);
+
+var style$3 = `:host {
+  color: white;
+}
+
+.header.-container {
+    display: flex;
+    align-items: flex-end
+  }
+
+.header.-container > * {
+      margin: 0.5rem;
+    }
+
+.header.-input {
+    flex: 0%;
+  }
+`;
+
+function TodoApp() {
+  let inputRef = useRef(); // an alternative to useState, the biggest
+  // difference is that this allows you to
+  // reflect the status in the selected property, eg:
+
+  let [task, setTask] = useProp("task");
+  return createElement("host", {
+    shadowDom: true
+  }, createElement("style", null, style$3), createElement(TodoBrand, {
+    color: "white",
+    size: "120"
+  }), createElement("header", {
+    class: "header -container"
+  }, createElement(TodoInput$1, {
+    class: "header -input",
+    ref: inputRef
+  }), createElement(TodoButton$1, {
+    onclick: () => {
+      let {
+        value
+      } = inputRef.current;
+      if (!value) return;
+      setTask([...task, {
+        value,
+        checked: false
+      }]);
+      inputRef.current.value = "";
+    }
+  }, "add task")), createElement("section", null, task.map(({
+    checked,
+    value
+  }, id) => createElement(TodoTask$1, {
+    checked: checked,
+    onchange: ({
+      target: {
+        checked
+      }
+    }) => {
+      //  verify the need to regenerate the list
+      if (task[id].checked != checked) {
+        setTask(task.map((data, i) => i == id ? { ...data,
+          checked
+        } : data));
+      }
+    }
+  }, value))));
+}
+
+TodoApp.props = {
+  task: {
+    type: Array,
+    value: () => []
+  }
+};
+customElement("todo-app", TodoApp);
+//# sourceMappingURL=todo-app.js.map

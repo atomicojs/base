@@ -373,7 +373,7 @@
                   
               <ul class="aside-ul">
                 
-                    <li class="--select">
+                    <li class="">
                       <a href="index.html">Todo</a>
                     </li>
                   
@@ -392,7 +392,7 @@
                       <a href="todo-brand.html">todo-brand</a>
                     </li>
                   
-                    <li class="">
+                    <li class="--select">
                       <a href="todo-button.html">todo-button</a>
                     </li>
                   
@@ -417,16 +417,17 @@
             </aside>
             <article class="content">
               <div class="content-markdown">
-                <h1 id="todo-app">Todo app</h1>
-<p>This example shows a component <code>todo-app</code>, <strong>in which, as a rule, it separates all its parts into reusable components</strong>, those that are documented and exemplified independently.</p>
-<h2 id="example">Example</h2>
+                <h1 id="todo-button">todo-button</h1>
+<p>Create a simple button, this one has as its objective the capture of the click event, in order to add a new task to the list</p>
 <doc-show-html style-preview="background:black">
-    <todo-app task="[{&quot;checked&quot;:true,&quot;value&quot;:&quot;see the documentation&quot;},{&quot;checked&quot;:false,&quot;value&quot;:&quot;learn atomico&quot;}]"></todo-app>
+    <todo-button>my button</todo-button>
+    <todo-button background="gold">my button</todo-button>
+    <todo-button background="tomato">my button</todo-button>
 </doc-show-html>
 
-<h2 id="expected-learning">Expected learning</h2>
-<p>initial idea for the construction of web components with Atomico, be Atomico import, associated css and component writing and documentation.</p>
-<script type="module" src="todo-app.js"></script>
+<h3 id="properties">Properties</h3>
+<p><doc-props selector="todo-button"></doc-props></p>
+<script type="module" src="todo-button.js"></script>
 
               </div>
             </article>

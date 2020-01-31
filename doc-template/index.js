@@ -3,16 +3,6 @@ import getContentHeader from "./header";
 import getContentAside from "./aside";
 import style from "./style";
 
-/**
- * @type {Object}
- * @property {string} [github] - link
- * @property {string} [twitter] - link
- */
-let headerLinks = {
-  github: "https://github.com/atomicojs/base/tree/create-webcomponents",
-  twitter: "https://twitter.com/atomicojs"
-};
-
 let getContentStyle = theme => css`
   :root {
     --link-color: #0070f3;
@@ -35,7 +25,7 @@ let getContentStyle = theme => css`
   ${style}
 `;
 
-export function template({ files, content, base: rootBase, meta }) {
+export function template({ files, content, base: rootBase, meta, config }) {
   let groups = toGroups(files, "Components");
 
   return html`
@@ -58,7 +48,7 @@ export function template({ files, content, base: rootBase, meta }) {
         </style>
         <main>
           <header class="header">
-            ${getContentHeader(headerLinks)}
+            ${getContentHeader(config)}
           </header>
           <section class="wrapper">
             <input type="checkbox" id="aside-toggle" />
