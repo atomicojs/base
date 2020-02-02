@@ -1,26 +1,10 @@
 import { c as customElement, b as useRef, u as useProp, a as createElement } from './chunks/2f7efe37.js';
-import TodoTask from './todo-task.js';
-import TodoInput from './todo-input.js';
 import TodoButton from './todo-button.js';
 import TodoBrand from './todo-brand.js';
+import TodoInput from './todo-input.js';
+import TodoTask from './todo-task.js';
 
-var style = `:host {
-  color: white;
-}
-
-.header.-container {
-    display: flex;
-    align-items: flex-end
-  }
-
-.header.-container > * {
-      margin: 0.5rem;
-    }
-
-.header.-input {
-    flex: 0%;
-  }
-`;
+var style = `:host{color:#fff}.header.-container{display:flex;align-items:flex-end}.header.-container>*{margin:.5rem}.header.-input{flex:0%}`;
 
 function TodoApp() {
   let inputRef = useRef(); // an alternative to useState, the biggest

@@ -1,14 +1,15 @@
 # base
 
-**Langs**: [Spanish](./lang/spanish.md)
+## Code style
 
-Start quickly with Atomico, remember to start the `npm install` command before executing any`scripts`.
-
-**Recommended readings**: [Atomico Code Style](https://atomico.gitbook.io/doc/guides/code-style), [Atomico + Typescript](https://atomico.gitbook.io/doc/guides/code-style/atomico-+-typescript) and [publication component in NPM](https://atomico.gitbook.io/doc/guides/publish-webcomponent).
+This guide defines a standard for the generation of components with Atomico, with the objective of facilitating the collaborative development, scalability and maintenance of its components.
 
 ### scripts
 
 ```bash
+# Create the necessary files for a component
+npm run create-component
+
 # For documentation Development.
 # Useful to generate design system.
 npm run dev:doc # start a server that serves the .md files
@@ -22,83 +23,100 @@ npm run build # optimize the associated code
 # Individual export of components.
 # Useful for sharing components using NPM.
 npm run build:component  #  Does not include dependencies.
-
 ```
 
-### Recommended Directory Structure
+### Recommended structure
+
+The directory distribution is an important element when building components, ideally, this is declarative in content, eg:
 
 ```bash
 src
-├───index.html # export with dev
 ├───components
-│   │   index.md # export with dev:doc
 │   └───${my-component}
 │           ${my-component}.js
 │           ${my-component}.css
-│           ${my-component}.md # export with dev:doc
+│           ${my-component}.md
 └───custom-hooks
     └───${my-hook}
             ${my-hook}.js
-            ${my-hook}.md # export with dev:doc
+            ${my-hook}.md
 ```
 
-where :
+#### Remember
 
-- `src/components/${my-component}`: The objective of this is to individualize everything associated with the component.
-- `src/custom-hooks/${my-hook}`: The objective of this is to individualize everything associated with the customHook.
+1. Only include one component per file.
+2. Only include one component per directory
+3. Define custom-hooks in an isolated way to the components, in a different file and directory, a file if it can contain more than one hook
+
+### Component name
+
+It is ideal that as an author you define a name or prefix that grouped one or more components, always define after the main name the objective to be represented in the UI, eg:
+
+```bash
+# Naming
+${name}-${objective}-...
+# Single
+atomico-button
+atomico-input
+# Group
+atomico-header
+atomico-header-nav
+atomico-header-logo
+atomico-header-social
+```
+
+> The use of the atomic name is just an example, its use is not recommended for the declaration of the name of its component.
+
+### Component declaration
+
+Webcomponents are ideal for the generation of transparent apis, allowing trabs of attributes/properties to manipulate or know the current state of the component.
+
+#### Remember
+
+1. Always define the main tag `<host/>` as the return node
+2. Prefer the use of `useProp` if you are looking to manipulate the state of the prop and reflect this in the webcomponent as an attribute/property, keep using `useState` for private states.
+3. Prefer the use of reflect if you want to transparent the state of your component for a css selector, eg `my-component [type="email"]` or `my-component[active]`
+4. Prefer the use of default values, if you want to show the state of your component at all times
 
 ### Component example
 
 ```jsx
-import { h, customElement } from "atomico";
-/**
- * If the component requires it, you can import the css content
- * associated with the file and then include it as the content
- * of the style tag.
- */
+import { h, customElement, useProp } from "atomico";
 import style from "./my-component.css";
-
-const MyComponent = ({ myString }) => (
-  <host shadowDom>
-    <style>{style}</style>
-    myString : {myString}
-  </host>
-);
+/**
+ * @type {import("atomico").Component}
+ * @param {Object} props
+ * @param {string} props.type
+ * @param {value} props.value
+ */
+const MyComponent = ({ type }) => {
+  let [value, setValue] = useProp("value");
+  return (
+    <host shadowDom>
+      <style>{style}</style>
+      <input
+        type={type}
+        value={value}
+        oninput={({ target: { value } }) => setValue(value)}
+      ></input>
+    </host>
+  );
+};
 
 MyComponent.props = {
-  myString: { type: String, value: "default string" }
+  type: {
+    type: String,
+    reflect: true,
+    options: ["number", "date", "email", "phone"],
+    value: "text"
+  },
+  value: {
+    type: String,
+    value: "default message"
+  }
 };
 
 export default customElement("my-component", MyComponent);
 ```
 
-#### Markdown example
-
-```md
----
-order: 0
-group: Brand
-title: atomico brand
----
-
-# atomico-brand
-
-The atomico logo anywhere, just use this component and that's it.
-
-## Use
-
-<doc-show-html show>
-    <atomico-brand color="black"></atomico-brand>
-</doc-show-html>
-
-## Properties
-
-<doc-props selector="atomico-brand"></doc-props>
-
-<script type="module" src="atomico-brand.js"></script>
-```
-
-Where :
-
-- `doc-show-html`: webcomponent that allows to show the declared html content..
-- `doc-props`: web component that allows you to show the properties of the associated component, for a simple iteration.
+using this `@type {import("atomico").Component}` fragment in the jsdoc, import the autocomplete rules for Typescript, **consider it optional.**

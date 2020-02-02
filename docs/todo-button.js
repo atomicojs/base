@@ -1,16 +1,6 @@
 import { c as customElement, a as createElement } from './chunks/2f7efe37.js';
 
-var style = `.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9em;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-}
-`;
+var style = `.button{display:inline-flex;align-items:center;justify-content:center;padding:.4rem .8rem;font-size:.9em;font-weight:700;border-radius:5px;border:none}`;
 
 const TodoButton = ({
   background,

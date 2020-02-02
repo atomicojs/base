@@ -1,34 +1,36 @@
 # base
 
-**Lenguajes**: [Ingles](../README.md)
+## Guías de estilo
 
-Comience rápidamente con Atomico, recuerde iniciar el comando `npm install` antes de ejecutar cualquier `scripts`.
-
-**Lecturas recomendadas**: [Atomico estilo de código](https://atomico.gitbook.io/doc/v/es/guias/estilo-de-codigo), [Atomico + Typescript](https://atomico.gitbook.io/doc/v/es/guias/estilo-de-codigo/atomico-+-typescript) y [componente publicacion en NPM](https://atomico.gitbook.io/doc/v/es/guias/publicar-webcomponent).
+En esta guía define un estándar para la generación de componentes con Atomico, con el objetivo facilitar el desarrollo colaborativo, escalabilidad y mantenimiento de sus componentes, lo entregado en esta guía no se define como regla, ya que lo aplicado puede variar entre desarrollador.
 
 ### scripts
 
 ```bash
-# Desarrollo de documentación
-npm run dev:doc # inicia un servidor que enseña la documentación
-npm run build:doc # optimiza el codigo asociado
+# Crea los archivos necesarios para un componente
+npm run create-component
 
-# Desarrollo de aplicación
-npm run dev # inicia un servidor que enseña los ficheros html
-npm run build # optimiza el codigo asociado
+# Para el desarrollo de documentación.
+# Útil para generar sistema de diseño.
+npm run dev:doc # iniciar un servidor que sirve los archivos .md
+npm run build:doc # optimizar el código asociado
 
-# exportación individual de componentes
-npm run build:component  # optimiza el codigo asociado, no incluye dependencias.
+# Para el desarrollo de aplicaciones.
+npm run dev # iniciar un servidor que sirve los archivos .html
+npm run build # optimizar el código asociado
 
+# Exportación individual de componentes.
+# Útil para compartir componentes usando NPM.
+npm run build:component  #  El componente exportado no incluye dependencias
 ```
 
 ### Estructura recomendada
 
+La distribución directorio es un elemento importante al momento de construir componentes, lo ideal es que este sea declarativo en contenido, eg:
+
 ```bash
 src
-├───index.html # export with dev
 ├───components
-│   │   index.md # export with dev:doc
 │   └───${my-component}
 │           ${my-component}.js
 │           ${my-component}.css
@@ -39,91 +41,81 @@ src
             ${my-hook}.md # export with dev:doc
 ```
 
-donde :
+**Recuerde**
 
-- `src/components/${my-component}`: la mayor ventaja de esta estructura es que ud podrá individualizar en una carpeta componente, estilo, documentación y facilitar la exportación.
-- `src/custom-hooks/${my-hook}`: la mayor ventaja de esta estructura es que ud podrá individualizar el hook, documentación y facilitar la exportación.
+1. Sola incluya un componente por archivo.
+2. Solo incluya un componente por directorio
+3. Defina los custom-hooks de forma asilada a los componentes, en un archivo y directorio diferente, un archivo si puede contener mas de un hook
 
-### Vista general de un componente
+### Nombre de componente
+
+Es ideal que como autor ud **defina un nombre o prefijo que agrupé uno o mas componente**, siempre defina a continuación del nombre principal el objetivo a representar en la UI, ej:
+
+```bash
+# Naming
+${name}-${objective}-...
+# Single
+atomico-button
+atomico-input
+# Group
+atomico-header
+atomico-header-nav
+atomico-header-logo
+atomico-header-social
+```
+
+> El uso del nombre `atomico` es solo un ejemplo, no es recomendable su uso para la declaración de nombre de su componente.
+
+### Declaración de componente
+
+Los webcomponents son ideales para la generación de apis transparentes, permitiendo a trabes de attributos/propiedades manipular o conocer el estado actual del componente.
+
+**Recuerde**
+
+1. Defina siempre como nodo principal el tag `<host>`.
+2. Prefiera el uso de `useProp` si ud busca manipular el estado de la prop y reflejar este en el webcomponent como atributo/propiedad, mantenga el uso de `useState` para estados privados.
+3. Prefiera el uso de `reflect` si se busca transparentar el estado de su componente para un selector de css, eg `my-component[type="email"]` o `my-component[active]`
+4. Prefiera el uso valores por default, si busca transparentar en todo momento el estado de su componente
+
+**Ejemplo de componente**
 
 ```jsx
-import { h, customElement } from "atomico";
-/**
- * If the component requires it, you can import the css content
- * associated with the file and then include it as the content
- * of the style tag.
- */
+import { h, customElement, useProp } from "atomico";
 import style from "./my-component.css";
-
-const MyComponent = ({ myString }) => (
-  <host shadowDom>
-    <style>{style}</style>
-    myString : {myString}
-  </host>
-);
+/**
+ * @type {import("atomico").Component}
+ * @param {Object} props
+ * @param {string} props.type
+ * @param {value} props.value
+ */
+const MyComponent = ({ type }) => {
+  let [value, setValue] = useProp("value");
+  return (
+    <host shadowDom>
+      <style>{style}</style>
+      <input
+        type={type}
+        value={value}
+        oninput={({ target: { value } }) => setValue(value)}
+      ></input>
+    </host>
+  );
+};
 
 MyComponent.props = {
-  myString: { type: String, value: "default string" }
+  type: {
+    type: String,
+    reflect: true,
+    options: ["number", "date", "email", "phone"],
+    value: "text"
+  },
+  value: {
+    type: String,
+    value: "default message"
+  }
 };
 
 export default customElement("my-component", MyComponent);
 ```
 
-### Desarrollo de documentación.
-
-```bash
-npm run dev:doc # genera una exportacion ligera e inicia la lectura
-                # de los ficheros de documentación para ser servidos
-
-npm run build:doc  # genera una exportacion optimizada
-```
-
-gracias a la exportación de ficheros markdown ud podrá documentar y exportar su componente para una vista previa.
-
-#### Ejemplo de fichero markdown
-
-```md
----
-order: 0
-group: Brand
-title: atomico brand
----
-
-# atomico-brand
-
-The atomico logo anywhere, just use this component and that's it.
-
-## Use
-
-<doc-show-html show>
-    <atomico-brand color="black"></atomico-brand>
-</doc-show-html>
-
-## Properties
-
-<doc-props selector="atomico-brand"></doc-props>
-
-<script type="module" src="atomico-brand.js"></script>
-```
-
-donde :
-
-- `doc-show-html`: webcomponent que permite enseñar el contenido html declarado.
-- `doc-props`: webcomponent que permite enseñar las propiedades del componente asociado, para una iteración simple.
-
-### Desarrollo de aplicación
-
-```bash
-npm run dev #  genera una exportacion ligera e inicia un servido en modo observador
-npm run build # genera una exportacion optimizada
-```
-
-Permite procesar todos los ficheros a base de a expresión `src/**/*.html`, bundle-cli mostrara el link del servidor para su vista previa, la lectura del html es para una mayor customización.
-
-### Exportación de componentes
-
-```
-npm run build:components
-```
-
-Exporta a base de la expresión `src/components/**/*-*.js`, esto es **util para compartir su proyecto en NPM**
+El uso de este fragmento `@type {import("atomico").Component}` en el jsdoc, importa las reglas de autocompletado para Typescript, **considérelo opcional**

@@ -8,7 +8,8 @@
     "dev": "bundle --config bundleHtml --watch --server",
     "dev:doc": "bundle --config bundleDoc --watch --server",
     "build:components": "bundle src/components/**/*-*.js dist --external",
-    "prepare": "npm run build:components"
+    "prepare": "npm run build:components",
+    "create-component": "tfolder template/tfolder/component src/components"
   },
   "bundleHtml": {
     "src": [
@@ -22,10 +23,10 @@
     ],
     "dir": "docs",
     "mdTemplate": [
-      "doc-template",
+      "./template/md-template",
       {
-        "github": "#",
-        "twitter": "#"
+        "github": "https://github.com/atomicojs/base/tree/create-webcomponents-with-bundle-cli",
+        "twitter": "https://twitter.com/atomicojs"
       }
     ]
   },
@@ -33,7 +34,8 @@
     "atomico": "^0.19.0"
   },
   "devDependencies": {
-    "bundle-cli": "^0.14.0"
+    "bundle-cli": "^0.14.0",
+    "tfolder-cli": "0.0.0"
   },
   "exports": {
     ".": "./dist/"
