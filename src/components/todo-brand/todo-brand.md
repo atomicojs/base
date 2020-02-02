@@ -2,7 +2,7 @@
 
 The atomico logo anywhere, just use this component and that's it.
 
-### Use
+### Demo
 
 <doc-show-html show style-preview="background:black">
     <todo-brand color="#fff"></todo-brand>
