@@ -1,0 +1,7 @@
+:host {
+  border: 1px solid black;
+  font-size: 30px;
+  color: black;
+  padding: 200px;
+  display: flex;
+}
