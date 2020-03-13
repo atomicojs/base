@@ -1,6 +1,6 @@
-import { c as customElement, u as useProp, a as createElement } from './chunks/2f7efe37.js';
+import { c as customElement, u as useProp, a as createElement } from './chunks/d59176d5.js';
 
-var style = `:host{width:100%;display:flex;padding:.5rem;box-sizing:border-box;cursor:pointer}:host([checked]) .content{text-decoration:line-through}:host([checked]) .checked span{opacity:1}.content{flex:0%}.checked{width:20px;height:20px;border:1px solid;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;font-size:.8em}.checked span{opacity:0;transition:all .3s ease}`;
+var style = ":host {\r\n  width: 100%;\r\n  display: flex;\r\n  padding: 0.5rem;\r\n  box-sizing: border-box;\r\n  cursor: pointer;\r\n}\r\n\r\n:host([checked]) .content {\r\n    text-decoration: line-through;\r\n  }\r\n\r\n:host([checked]) .checked span {\r\n    opacity: 1;\r\n  }\r\n\r\n.content {\r\n  flex: 0%;\r\n}\r\n\r\n.checked {\r\n  width: 20px;\r\n  height: 20px;\r\n  border: 1px solid currentColor;\r\n  border-radius: 50%;\r\n  position: relative;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-size: 0.8em\r\n}\r\n\r\n.checked span {\r\n    opacity: 0;\r\n    transition: 0.3s ease all;\r\n  }\r\n";
 
 const TodoTask = () => {
   let [checked, setChecked] = useProp("checked");

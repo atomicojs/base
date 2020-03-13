@@ -4,58 +4,6 @@ const HOOK_UPDATE = Symbol("update");
 const HOOK_UPDATED = Symbol("updated");
 const HOOK_UNMOUNT = Symbol("unmount");
 const HOOK_CURRENT = {};
-const ELEMENT_PROPS = Symbol("props");
-const ELEMENT_IGNORE_ATTR = Symbol("ignore");
-const ELEMENT_TRUE_VALUES = [true, 1, "", "1", "true"];
-const ARRAY_EMPTY = [];
-const NODE_TYPE = "localName";
-const KEY = Symbol("key");
-const META_STYLE_SHEET = Symbol("styleSheet");
-const META_MAP_CHILDREN = Symbol("mapChildren");
-const META_KEYES = Symbol("keyes");
-const NODE_HOST = "host";
-const IGNORE_CHILDREN = {
-  innerHTML: 1,
-  textContent: 1,
-  contenteditable: 1
-};
-const JOIN_CHILDREN = {
-  style: 1
-};
-const HYDRATE_PROPS = {
-  className: 1,
-  id: 1,
-  checked: 1,
-  value: 1,
-  selected: 1
-};
-const CACHE_STYLE_SHEET = {};
-const SUPPORT_STYLE_SHEET = "adoptedStyleSheets" in document;
-const STYLE_SHEET_KEY = Symbol();
-
-/**
- * Return if value is array
- * @param {*}
- * @return {boolean}
- */
-function isArray(value) {
-  return Array.isArray(value);
-}
-
-function isFunction(value) {
-  return typeof value == "function";
-} // export function fps(callback, count = 3) {
-//     count-- ? requestAnimationFrame(() => fps(callback, count)) : callback();
-// }
-
-
-function promise(callback) {
-  return new Promise(callback);
-}
-
-function isRawNode(node) {
-  return node instanceof HTMLElement || node instanceof SVGElement;
-}
 
 function update(hook, type) {
   hook[0] && (hook[1] = hook[0](hook[1], type));
@@ -71,13 +19,7 @@ function useHook(reducer, initialState) {
   }
 }
 
-function useHost() {
-  return useHook(0, {
-    current: HOOK_CURRENT.ref.host
-  });
-}
-
-function createHookCollection(render, host) {
+function createHooks(render, host) {
   let hooks = {};
   let mounted;
   let hook = {
@@ -128,11 +70,38 @@ function createHookCollection(render, host) {
   return hook;
 }
 
-function useRef(current) {
-  return useHook(0, {
-    current
-  });
-}
+const ARRAY_EMPTY = [];
+const NODE_HOST = "host";
+const LIMIT_NODE = Symbol("limitNode");
+const IGNORE_CHILDREN = {
+  innerHTML: 1,
+  textContent: 1,
+  contenteditable: 1
+};
+const JOIN_CHILDREN = {
+  style: 1
+};
+const HYDRATE_PROPS = {
+  id: 1,
+  className: 1,
+  checked: 1,
+  value: 1,
+  selected: 1
+};
+/**
+ * Return if value is array
+ * @param {*}
+ * @return {boolean}
+ */
+
+const isArray = value => Array.isArray(value);
+
+const isFunction = value => typeof value == "function"; // export function fps(callback, count = 3) {
+//     count-- ? requestAnimationFrame(() => fps(callback, count)) : callback();
+// }
+
+
+const promise = callback => new Promise(callback);
 /**
  *
  * @param {import("./render").HTMLNode} node
@@ -180,22 +149,8 @@ function setProperty(node, key, prevValue, nextValue, isSvg, handlers) {
   }
 
   switch (key) {
-    /**
-     * add support {@link https://developer.mozilla.org/es/docs/Web/API/CSSStyleSheet}
-     */
-    case "styleSheet":
-      if (SUPPORT_STYLE_SHEET) node.shadowRoot.adoptedStyleSheets = [].concat(nextValue).map(cssText => {
-        if (cssText instanceof CSSStyleSheet) {
-          return cssText;
-        }
-
-        if (!CACHE_STYLE_SHEET[cssText]) {
-          CACHE_STYLE_SHEET[cssText] = new CSSStyleSheet();
-          CACHE_STYLE_SHEET[cssText].replace(cssText);
-        }
-
-        return CACHE_STYLE_SHEET[cssText];
-      });
+    case "key":
+      node.dataset.key = nextValue;
       break;
 
     case "ref":
@@ -204,10 +159,6 @@ function setProperty(node, key, prevValue, nextValue, isSvg, handlers) {
 
     case "style":
       setStyle(node, prevValue || "", nextValue || "");
-      break;
-
-    case "key":
-      node[KEY] = nextValue;
       break;
 
     default:
@@ -310,6 +261,8 @@ let vNodeEmpty = createElement(null, {
 let vNodeFill = createElement(null, {
   children: ARRAY_EMPTY
 });
+const META_MAP_CHILDREN = Symbol("mapChildren");
+const META_KEYES = Symbol("keyes");
 /**
  * @param {VnodeType} nodeType
  * @param {VnodeProps} [props]
@@ -341,29 +294,11 @@ function toVnode(value) {
       } = mapChildren(value.children);
       value.children = children.length ? children : ARRAY_EMPTY;
 
-      if (keyes) {
+      if (keyes && keyes.length == children.length) {
         value[META_KEYES] = keyes;
       }
 
       value[META_MAP_CHILDREN] = true;
-    }
-
-    if (value.styleSheet && !SUPPORT_STYLE_SHEET) {
-      if (!value[META_STYLE_SHEET]) {
-        // When patching styleSheet, define whether to keep ARRAY_EMPTY
-        // or create a new array to fill and thus keep the reference intact
-        value.children = value.children == ARRAY_EMPTY ? [] : value.children; // add the node to the children list
-
-        value.children.unshift(toVnode(createElement("style", value[META_KEYES] ? {
-          key: STYLE_SHEET_KEY
-        } : {}, value.styleSheet))); // if it is a list with keys, add the key to keyes
-
-        if (value[META_KEYES]) {
-          value[META_KEYES].unshift(STYLE_SHEET_KEY);
-        }
-      }
-
-      value[META_STYLE_SHEET] = true;
     }
   }
 
@@ -392,11 +327,16 @@ function mapChildren(children, scan = {
         return mapChildren(nodeType(props), scan, deep + 1);
       }
 
-      if ("key" in vnode) {
+      let {
+        key
+      } = vnode;
+
+      if (key != null) {
+        key += "";
         scan.keyes = scan.keyes || [];
 
-        if (!scan.keyes.includes(vnode.key)) {
-          scan.keyes.push(vnode.key);
+        if (!scan.keyes.includes(key)) {
+          scan.keyes.push(key);
         }
       }
     }
@@ -430,6 +370,83 @@ function isVnodeValue(value) {
  * @typedef {{type:VnodeType,props:VnodeProps}} Vnode
  **/
 
+
+const isRawNode = node => node instanceof Node;
+
+const createLimitNode = parent => parent[LIMIT_NODE] = parent.appendChild(new Comment());
+/**
+ *
+ * @param {string} type
+ * @param {boolean} isSvg
+ * @returns {import("./render").HTMLNode}
+ */
+
+
+function createNode(type, isSvg, is) {
+  let doc = document;
+  let nextNode;
+
+  if (type != null) {
+    if (isRawNode(type)) {
+      return type;
+    }
+
+    nextNode = isSvg ? doc.createElementNS("http://www.w3.org/2000/svg", type) : doc.createElement(type, is ? {
+      is
+    } : null);
+  } else {
+    nextNode = doc.createTextNode("");
+  }
+
+  return nextNode;
+}
+/**
+ * compare 2 nodes, to define if these are equal
+ * @param {string|null|HTMLElement|SVGElement} nodeA
+ * @param {string|null|HTMLElement|SVGElement} nodeB
+ */
+
+
+function equalNode(nodeA, nodeB) {
+  let isRawA = nodeA && isRawNode(nodeA);
+  let isRawB = nodeB && isRawNode(nodeB);
+
+  if (isRawB && isRawA) {
+    return isRawB == isRawB;
+  }
+
+  if (nodeA) {
+    if (!nodeA.localName) {
+      nodeA.localName = nodeA.nodeName.toLowerCase();
+    }
+
+    let localName = nodeA.localName;
+    return (localName == "#text" ? null : localName) == nodeB;
+  }
+}
+
+function insertNode(parent, newNode, beforeNode, afterLimit) {
+  let limitNode = parent[LIMIT_NODE];
+
+  if (!limitNode) {
+    let {
+      childNodes
+    } = parent;
+    let length = childNodes.length;
+
+    for (let i = 0; i < length; i++) {
+      let child = childNodes[length];
+
+      if (child instanceof Comment) {
+        limitNode = child;
+        break;
+      }
+    }
+  }
+
+  if (!limitNode) limitNode = createLimitNode(parent);
+  parent[afterLimit ? "appendChild" : "insertBefore"](newNode, beforeNode || limitNode);
+}
 /**
  *
  * @param {import("./render").ConfigRender} config
@@ -525,14 +542,20 @@ function diffChildren(id, parent, children, keyes, isSvg) {
   } = parent;
   let childNodesKeyes = {};
   let childNodesLength = childNodes.length;
-  let index = keyes ? 0 : childNodesLength > childrenLenght ? childrenLenght : childNodesLength;
+  let index = 0; // limit Atomico's reach only to the comment marker
+
+  let limitNode = parent[LIMIT_NODE];
 
   for (; index < childNodesLength; index++) {
     let childNode = childNodes[index];
-    let key = index;
+
+    if (childNode == limitNode || childNode instanceof Comment) {
+      limitNode = childNode;
+      break;
+    }
 
     if (keyes) {
-      key = childNode[KEY];
+      let key = childNode.dataset.key;
 
       if (keyes.includes(key)) {
         childNodesKeyes[key] = childNode;
@@ -540,14 +563,19 @@ function diffChildren(id, parent, children, keyes, isSvg) {
       }
     }
 
-    index--;
-    childNodesLength--;
-    parent.removeChild(childNode);
-  }
+    if (keyes || index >= childrenLenght) {
+      index--;
+      childNodesLength--;
+      childNode.remove();
+    }
+  } // If you don't find a bookmark in the list, you create it.
+
+
+  if (!limitNode) limitNode = createLimitNode(parent);
 
   for (let i = 0; i < childrenLenght; i++) {
     let child = children[i];
-    let indexChildNode = childNodes[i];
+    let indexChildNode = i == index ? null : childNodes[i];
     let key = keyes ? child.key : i;
     let childNode = keyes ? childNodesKeyes[key] : indexChildNode;
 
@@ -560,62 +588,10 @@ function diffChildren(id, parent, children, keyes, isSvg) {
     let nextChildNode = diff(id, childNode, child, isSvg);
 
     if (!childNode) {
-      if (childNodes[i]) {
-        parent.insertBefore(nextChildNode, childNodes[i]);
-      } else {
-        parent.appendChild(nextChildNode);
-      }
+      insertNode(parent, nextChildNode, i == index ? limitNode : childNodes[i]); // increase the limit position since a new node has been inserted
+
+      index++;
     }
-  }
-}
-/**
- *
- * @param {string} type
- * @param {boolean} isSvg
- * @returns {import("./render").HTMLNode}
- */
-
-
-function createNode(type, isSvg, is) {
-  let doc = document;
-  let nextNode;
-
-  if (type != null) {
-    if (isRawNode(type)) {
-      return type;
-    }
-
-    nextNode = isSvg ? doc.createElementNS("http://www.w3.org/2000/svg", type) : doc.createElement(type, is ? {
-      is
-    } : null);
-  } else {
-    nextNode = doc.createTextNode("");
-  }
-
-  return nextNode;
-}
-/**
- * compare 2 nodes, to define if these are equal
- * @param {string|null|HTMLElement|SVGElement} nodeA
- * @param {string|null|HTMLElement|SVGElement} nodeB
- */
-
-
-function equalNode(nodeA, nodeB) {
-  let isRawA = nodeA && isRawNode(nodeA);
-  let isRawB = nodeB && isRawNode(nodeB);
-
-  if (isRawB && isRawA) {
-    return isRawB == isRawB;
-  }
-
-  if (nodeA) {
-    if (!nodeA[NODE_TYPE]) {
-      nodeA[NODE_TYPE] = nodeA.nodeName.toLowerCase();
-    }
-
-    let localName = nodeA[NODE_TYPE];
-    return (localName == "#text" ? null : localName) == nodeB;
   }
 }
 
@@ -631,18 +607,12 @@ function render(vnode, node, id = "vnode") {
   return node;
 }
 
-function setAttr(node, attr, value) {
-  if (value == null) {
-    node.removeAttribute(attr);
-  } else {
-    node.setAttribute(attr, typeof value == "object" ? JSON.stringify(value) : value);
-  }
-}
+const TRUE_VALUES = [true, 1, "", "1", "true"];
 
 function formatType(value, type = String) {
   try {
     if (type == Boolean) {
-      value = ELEMENT_TRUE_VALUES.includes(value);
+      value = TRUE_VALUES.includes(value);
     } else if (typeof value == "string") {
       value = type == Number ? Number(value) : type == Object || type == Array ? JSON.parse(value) : value;
     }
@@ -661,26 +631,21 @@ function formatType(value, type = String) {
   };
 }
 
-function propToAttr(prop) {
-  return prop.replace(/([A-Z])/g, "-$1").toLowerCase();
-}
+const setAttr = (node, attr, value) => value == null ? node.removeAttribute(attr) : node.setAttribute(attr, typeof value == "object" ? JSON.stringify(value) : value);
 
-function attrToProp(attr) {
-  return attr.replace(/-(\w)/g, (all, letter) => letter.toUpperCase());
-}
+const propToAttr = prop => prop.replace(/([A-Z])/g, "-$1").toLowerCase();
 
-function dispatchEvent(node, type, customEventInit) {
-  node.dispatchEvent(new CustomEvent(type, typeof customEventInit == "object" ? customEventInit : null));
-}
+const attrToProp = attr => attr.replace(/-(\w)/g, (all, letter) => letter.toUpperCase());
 
-function createPropError(status, message) {
-  return Object.assign(new Error("Failed prop\n" + message), status);
-}
+const dispatchEvent = (node, type, customEventInit) => node.dispatchEvent(new CustomEvent(type, typeof customEventInit == "object" ? customEventInit : null));
 
-let defer = Promise.resolve();
+const createPropError = (status, message) => Object.assign(new Error("Failed prop\n" + message), status);
+
+const defer = callback => Promise.resolve().then(callback);
+
+const maxFps = 1000 / 60;
 let queue = [];
 let running;
-let maxFps = 1000 / 60;
 const IMPORTANT = Symbol("important");
 
 function clearQueue() {
@@ -717,7 +682,7 @@ function clearQueue() {
 function addQueue(callback) {
   if (!running) {
     running = true;
-    defer.then(clearQueue);
+    defer(clearQueue);
   } // if the callback is defined as IMPORTANT,
   // it is assumed to be in favor of the tree
   // of the DOM  that must be added by unshift,
@@ -728,6 +693,9 @@ function addQueue(callback) {
 
   if (!queue.includes(callback)) queue[callback[IMPORTANT] ? "unshift" : "push"](callback);
 }
+
+const ELEMENT_PROPS = Symbol("props");
+const ELEMENT_IGNORE_ATTR = Symbol("ignore");
 
 function load(target, componentRender, componentError) {
   if (target.mount) return;
@@ -779,7 +747,7 @@ function load(target, componentRender, componentError) {
   }; // any update from hook is added to a separate queue
 
 
-  let hooks = createHookCollection(() => addQueue(target.update), target); // creates a collection of microtask
+  let hooks = createHooks(() => addQueue(target.update), target); // creates a collection of microtask
   // associated with the mounted of the component
 
   target.mounted = promise(resolve => target.mount = () => {
@@ -969,6 +937,18 @@ function setProperty$1(prototype, initialize, attrs, prop, schema) {
   attrs.push(attr);
 }
 
+function useHost() {
+  return useHook(0, {
+    current: HOOK_CURRENT.ref.host
+  });
+}
+
+function useRef(current) {
+  return useHook(0, {
+    current
+  });
+}
+
 function useProp(name) {
   let ref = useHost();
 
@@ -982,5 +962,5 @@ function useProp(name) {
   }
 }
 
-export { createElement as a, useRef as b, customElement as c, useProp as u };
-//# sourceMappingURL=2f7efe37.js.map
+export { useProp as a, createElement as b, customElement as c, useRef as u };
+//# sourceMappingURL=6d0dd030.js.map

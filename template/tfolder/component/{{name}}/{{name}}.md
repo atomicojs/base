@@ -1,3 +1,8 @@
+---
+title: {{name}}
+group: Components
+---
+
 # {{name}}
 
 ..description

@@ -12,12 +12,7 @@ npm run create-component
 
 # For documentation Development.
 # Useful to generate design system.
-npm run dev:doc # start a server that serves the .md files
-npm run build:doc # optimize the associated code
-
-# For application development.
-# useful for generating applications.
-npm run dev # start a server that serves the .html files
+npm run start # start a server that serves the .md files
 npm run build # optimize the associated code
 
 # Individual export of components.

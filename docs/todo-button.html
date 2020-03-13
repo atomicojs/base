@@ -1,440 +1,653 @@
-<html><head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Proza+Libre:400,700&amp;display=swap" rel="stylesheet">
-        <script type="module" src="https://unpkg.com/@atomico/web-components-to-markdown/doc-show-html.js?module"></script>
-      </head>
-      <body>
-        <style>
-          
-  :root {
-    --link-color: #0070f3;
-    --aside-width: 280px;
-    --aside-background: #f7fafc;
-    --aside-unselect: rgba(60, 65, 86, 0.5);
-    --aside-select: #5a49ed;
-    --aside-title: #404049;
-    --aside-text: #404049;
-    --split-border: rgba(60, 65, 86, 0.1);
-    --text-color: #404040;
-    --title-font: "Didact Gothic", sans-serif;
-    --text-font: "Proza Libre", sans-serif;
-    --header-height: 60px;
-    --content-code-color: deeppink;
-    --content-background: #f0f4f7;
-    --content-header-background: #232329;
-    --content-header-color: white;
-  }
-  
-  html,
-  body {
-    margin: 0px;
-    padding: 0px;
-    color: var(--title-color);
-  }
-
-  body,
-  button,
-  input,
-  textarea {
-    font-family: var(--text-font);
-  }
-
-  main {
-    width: 100%;
-    height: 100%;
-  }
-
-  a {
-    text-decoration: none;
-    color: unset;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 300;
-    font-family: var(--title-font);
-    line-height: 1.2em;
-    margin: 3rem 0px 1rem;
-  }
-
-  h1 {
-    font-size: 3.4rem;
-  }
-  h2 {
-    font-size: 2.4rem;
-  }
-  h3 {
-    font-size: 1.8rem;
-  }
-  h4 {
-    font-size: 1.4rem;
-  }
-  h5 {
-    font-size: 1rem;
-  }
-  h6 {
-    font-size: 0.8rem;
-  }
-
-  a {
-    color: var(--link-color);
-  }
-
-  doc-show-html,
-  doc-code,
-  doc-props {
-    border-radius: 8px;
-    margin: 10px auto;
-  }
-
-  .header {
-    width: 100%;
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px 40px;
-    border-bottom: 1px solid var(--split-border);
-    box-sizing: border-box;
-  }
-
-  .wrapper {
-    width: 100%;
-    height: calc(100% - var(--header-height));
-    display: flex;
-    flex-flow: row wrap;
-    overflow: hidden;
-  }
-
-  
-  .aside {
-    width: var(--aside-width);
-    height: 100%;
-    background: var(--aside-background);
-    border-right: 1px solid var(--split-border);
-    box-sizing: border-box;
-    padding: 40px 20px;
-    position: relative;
-  }
-
-  .aside-scroll {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-  }
-
-  .aside-ul {
-    list-style-type: none;
-    font-family: var(--title-font);
-    padding-left: 1.5rem;
-    color: var(--aside-text);
-  }
-  .aside-title {
-    margin: 0.5rem 0px;
-    color: var(--aside-title);
-    display: inline-block;
-  }
-
-  .aside-ul .aside-ul {
-    padding-left: 0px;
-    margin-left: 10px;
-    border-left: 1px solid var(--aside-unselect);
-  }
-
-  .aside-ul .aside-ul li {
-    padding: 4px 0px 4px 10px;
-    border-left: 2px solid transparent;
-    margin-left: -1.5px;
-    position: relative;
-  }
-  .aside-ul a {
-    color: unset;
-  }
-
-  .aside-ul .aside-ul li.--select {
-    border-left: 2px solid var(--aside-select);
-  }
-  .aside-ul .aside-ul li.--select:before {
-    content: "";
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    border: 2px solid var(--aside-select);
-    background: var(--aside-background);
-    position: absolute;
-    left: -1px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-  }
 
 
-  
-  .content {
-    height: 100%;
-    flex: 0%;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  .content.--with-header {
-    background: var(--content-background);
-  }
-
-  .content-markdown {
-    width: 90%;
-    padding: 3rem 5%;
-    box-sizing: border-box;
-    margin: auto;
-    background: white;
-    content: var(--content-markdown-color);
-    font-size: 18px;
-    line-height: 1.5em;
-  }
-
-  .content-header {
-    width: 100%;
-    min-height: 200px;
-    padding: 50px 10%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-end;
-    background: var(--content-header-background);
-    color: var(--content-header-color, white);
-  }
-
-  .content-header p {
-    font-size: 16px;
-    margin: 0px;
-    opacity: 0.6;
-  }
-
-  .content-header + .content-markdown {
-    margin-top: -25px;
-    margin-bottom: 50px;
-  }
-
-  .content-markdown code {
-    color: var(--aside-select);
-    font-family: monospace;
-    font-size: 0.9em;
-    font-weight: bold;
-    display: inline-block;
-  }
-  .content-markdown code:before,
-  .content-markdown code:after {
-    content: "`";
-  }
-
-  .content-markdown img {
-    max-width: 100%;
-  }
-
-  .content-markdown table {
-    width: 100%;
-    border-spacing: 0px;
-    margin: 10px auto;
-  }
-
-  .content-markdown thead {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: left;
-  }
-
-  .content-markdown thead th {
-    padding: 5px 1rem;
-  }
-
-  .content-markdown tbody td {
-    font-size: 14px;
-    padding: 10px 1rem;
-  }
-
-  .content-markdown thead th,
-  .content-markdown tbody td {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  }
-
-  .content-markdown blockquote {
-    padding: 1px 0px 1px 1rem;
-    margin: 10px 0px;
-    border-left: 2px solid currentColor;
-    font-size: 0.85em;
-  }
-
-
-  #aside-toggle {
-    display: none;
-  }
-
-  .aside {
-    transition: 0.5s ease all;
-  }
-
-  [for="aside-toggle"] {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 100%;
-    top: 0px;
-    border-right: 1px solid var(--split-border);
-    border-bottom: 1px solid var(--split-border);
-    transition: 0.3s ease all;
-    background: var(--aside-background);
-  }
-
-  #aside-toggle:checked ~ .aside {
-    margin-left: calc(var(--aside-width) * -1);
-  }
-
-  @media (max-width: 720px) {
-    #aside-toggle ~ .aside {
-      margin-left: calc(var(--aside-width) * -1);
-    }
-    #aside-toggle:checked ~ .aside {
-      margin-left: 0px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    :root {
-      --aside-width: 100vw;
-    }
-    .header {
-      padding: 0px 1rem;
-    }
-    #aside-toggle:checked ~ .aside [for="aside-toggle"] {
-      left: calc(100% - 40px);
-      transform: rotate(90deg);
-    }
-  }
-
-
-        </style>
-        <main>
-          <header class="header">
-            
-  <!-- LOGO -->
-  
-  <svg xmlns="http://www.w3.org/2000/svg" width="180" viewBox="0 0 745 260">
-    <path d="M193.382 197.305a31.088 31.088 0 01-3.184 2.777h-28.38a72.383 72.383 0 005.308-3.846h27.275c-.333.367-.676.726-1.02 1.07zm3.775-4.58h-25.942a72.872 72.872 0 003.859-3.846h24.29a30.854 30.854 0 01-2.208 3.846zm-12.85 10.87a30.547 30.547 0 01-12.697 2.732 30.561 30.561 0 01-12.7-2.733h25.397zm16.49-18.224h-22.653a72.637 72.637 0 002.94-3.848h20.737a30.678 30.678 0 01-1.02 3.85zm1.507-7.357h-18.871a72.4 72.4 0 002.249-3.846h16.688a31.764 31.764 0 01-.069 3.846zm-.283-7.354h-14.55a71.434 71.434 0 001.688-3.846h11.994a30.713 30.713 0 01.872 3.842zm-2.141-7.357h-9.406c.436-1.261.84-2.553 1.207-3.845h6.199a30.8 30.8 0 012.004 3.842zm-4.508-7.356h-2.79a71.48 71.48 0 00.522-2.465 31.094 31.094 0 012.268 2.464z"></path>
-    <path d="M170.63 187.635a68.963 68.963 0 01-10.742 8.775 68.11 68.11 0 01-11.907 6.265 68.465 68.465 0 01-12.686 3.76 68.952 68.952 0 01-13.075 1.254 68.949 68.949 0 01-13.075-1.254 68.46 68.46 0 01-12.686-3.76 68.122 68.122 0 01-11.907-6.265 68.977 68.977 0 01-10.741-8.774 68.976 68.976 0 01-8.775-10.742 68.121 68.121 0 01-6.265-11.907 68.462 68.462 0 01-3.76-12.685 68.953 68.953 0 01-1.252-13.075 68.955 68.955 0 011.253-13.075 68.47 68.47 0 013.76-12.686 68.116 68.116 0 016.266-11.907 68.965 68.965 0 018.774-10.742 68.751 68.751 0 0113.001-10.202 68.093 68.093 0 0114.564-6.613 68.669 68.669 0 0115.46-3.024 68.938 68.938 0 0115.697.566 43.4 43.4 0 008.692 48.682 43.4 43.4 0 0048.682 8.692 68.937 68.937 0 01.565 15.689 68.67 68.67 0 01-3.023 15.46 68.092 68.092 0 01-6.614 14.564 68.751 68.751 0 01-10.206 13.004z"></path>
-    <path d="M185.126 125.49l22.486-22.486a38.414 38.414 0 01-8.824 13.662 38.415 38.415 0 01-13.662 8.824zm-8.321 2.107a38.8 38.8 0 01-7.127.316l40.356-40.356a38.8 38.8 0 01-.316 7.127zm-12.673-.352a38.535 38.535 0 01-5.361-1.45l49.144-49.144a38.536 38.536 0 011.45 5.36zm-9.734-3.291a38.263 38.263 0 01-4.31-2.5l53.487-53.488a38.263 38.263 0 012.5 4.31zm-7.846-5.18q-1.172-.999-2.282-2.108-.608-.608-1.183-1.235l54.465-54.465q.627.575 1.235 1.183 1.108 1.108 2.108 2.283zm-6.26-6.764a38.333 38.333 0 01-2.635-4.174l52.3-52.3a38.354 38.354 0 014.174 2.636zm-4.617-8.408a38.456 38.456 0 01-1.636-5.173l46.503-46.503a38.472 38.472 0 015.173 1.637zm-2.521-10.504a38.789 38.789 0 01-.055-6.755l35.365-35.364a38.764 38.764 0 016.755.054zm1.317-14.342a38.373 38.373 0 019.799-16.608 38.373 38.373 0 0116.607-9.797z"></path>
-    <path d="M296.405 171h10.464L279.51 95.463h-11.445L240.6 171h10.461l6.1-16.9H290.3zm-8.938-24.961H260l13.733-38.368zm33.572 8.611c0 11.99 6 16.35 16.568 16.35h8.938v-8.393h-7.3c-6.1 0-8.284-2.071-8.284-7.957v-35.207h15.587v-8.175h-15.59V96.226h-9.919v15.042H313.3v8.175h7.739zm94.176-13.625c0-18.857-13.189-30.738-30.193-30.738-16.9 0-30.193 11.881-30.193 30.738 0 18.966 12.862 30.956 29.757 30.956 17.004 0 30.629-11.99 30.629-30.956zm-50.249 0c0-15.042 9.483-22.127 19.947-22.127 10.246 0 20.165 7.085 20.165 22.127 0 15.151-10.137 22.236-20.492 22.236s-19.62-7.085-19.62-22.236zM514.514 171h9.81v-35.207c0-17.113-10.573-25.615-24.2-25.615-9.156 0-17.658 4.687-21.146 13.3-3.924-8.938-12.1-13.3-21.909-13.3-7.848 0-14.933 3.379-18.857 9.7v-8.611h-9.919V171h9.919v-32.918c0-12.862 6.867-19.293 16.9-19.293 9.81 0 16.35 6.213 16.35 18.421V171h9.81v-32.918c0-12.862 6.867-19.293 16.9-19.293 9.81 0 16.35 6.213 16.35 18.421zm26.051 0h9.919v-59.732h-9.919zm5.123-69.433a6.609 6.609 0 006.54-6.758 6.609 6.609 0 00-6.54-6.758 6.655 6.655 0 00-6.758 6.758 6.655 6.655 0 006.758 6.758zm17.985 39.458c0 18.966 12.1 30.956 29.1 30.956 14.827 0 24.527-8.281 27.58-20.165h-10.682c-2.18 7.521-8.066 11.772-16.895 11.772-10.9 0-18.966-7.739-18.966-22.563 0-14.606 8.066-22.345 18.966-22.345 8.829 0 14.824 4.578 16.895 11.772h10.682c-3.053-12.535-12.753-20.165-27.577-20.165-17.004 0-29.103 11.99-29.103 30.738zm126.549 0c0-18.857-13.189-30.738-30.193-30.738-16.9 0-30.193 11.881-30.193 30.738 0 18.966 12.864 30.956 29.757 30.956 17.007 0 30.629-11.99 30.629-30.956zm-50.249 0c0-15.042 9.483-22.127 19.947-22.127 10.246 0 20.165 7.085 20.165 22.127 0 15.151-10.137 22.236-20.492 22.236s-19.62-7.085-19.62-22.236z"></path>
-  </svg>
-
-  <!-- NAV -->
-  <nav class="header-nav">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> - &lt;todo-button/&gt;</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,600|Sen:800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      .header-nav-link {
-        padding: 10px;
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+      }
+
+      a {
+        color: unset;
+        text-decoration: none;
+      }
+
+      img,
+      iframe,
+      video {
+        max-width: 100%;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Sen", sans-serif;
+        font-weight: 800;
+      }
+      h1 {
+        font-size: 40px;
+      }
+      h2 {
+        font-size: 33px;
+      }
+      h3 {
+        font-size: 28px;
+      }
+      h4 {
+        font-size: 22px;
+      }
+      h5 {
+        font-size: 16px;
+      }
+      h6 {
+        font-size: 12px;
+      }
+      body {
+        --theme-cl: #232329;
+        --theme-bg: #f1f9f9;
+        --theme-max-content: 1080px;
+        --theme-bg-contrast: rgba(255, 255, 255, 0.8);
+        --theme-br-color: #6800d0;
+        --theme-cl-quote: #777777;
+        --theme-cl-code: var(--theme-bg);
+        --theme-bg-code: var(--theme-cl);
+        --theme-br-table: rgba(0, 0, 0, 0.15);
+        height: 100%;
+        color: var(--theme-cl);
+        background: var(--theme-bg);
+      }
+      .theme.-aside {
+        width: 320px;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
         box-sizing: border-box;
-        display: inline-flex;
+        padding: 0px 2rem;
+        box-sizing: border-box;
         align-items: center;
+        position: fixed;
+        transition: 0.5s ease all;
+        z-index: 2;
+      }
+
+      .theme.-aside-bg {
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        background: var(--theme-bg);
+      }
+      .theme.-aside-nav {
+        flex: 0%;
+        overflow-y: auto;
+      }
+      .theme.-aside-footer,
+      .theme.-aside-social,
+      .theme.-aside-brand {
+        position: relative;
+        padding: 1rem 0px;
+      }
+
+      .theme.-aside-footer {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .theme.-aside-brand {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .theme.-aside-brand-img {
+        width: 80%;
+        max-width: 220px;
+      }
+
+      .theme.-content-container {
+        padding: 0px 10% 0px 360px;
+        box-sizing: border-box;
+      }
+      .theme.-content-scroll {
+        flex: 75%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow-y: auto;
+      }
+      .theme.-content {
+        background: var(--theme-bg-contrast);
+        padding: 1rem 0px 4rem;
+      }
+      .theme.-content > *:not(script):not(link):not(pre) {
+        margin-left: 8%;
+        margin-right: 8%;
+        box-sizing: border-box;
+        display: block;
+      }
+
+      .theme.-content > blockquote {
+        margin: 0px;
+        line-height: 1.8em;
+        font-family: Bookman, Palatino, Georgia, Times, serif;
+        color: var(--theme-cl-quote);
+      }
+      .theme.-content > blockquote:before {
+        content: "";
+        width: 50px;
+        height: 2px;
+        display: block;
+        border: 2px dotted var(--theme-br-color);
+        opacity: 0.5;
+      }
+      .theme.-content > h1:first-child {
+        color: var(--theme-br-color);
+      }
+
+      .theme.-content code {
+        color: var(--theme-br-color);
+        font-size: 14px;
+        line-height: 2em;
+      }
+      .theme.-content > pre {
+        background: var(--theme-bg-code);
+        padding: 3rem 8%;
+        margin: 0px;
+        overflow-y: auto;
+        position: relative;
+        color: var(--theme-cl-code);
+      }
+
+      .theme.-content > pre code {
+        color: unset;
+      }
+
+      .theme.-content table {
+        width: 100%;
+      }
+
+      .theme.-content > *:not(pre) code {
+        padding: 0px 0.25rem;
+      }
+      .theme.-content > *:not(pre) code:before,
+      .theme.-content > *:not(pre) code:after {
+        content: "`";
+      }
+      .theme.-ul-root,
+      .theme.-ul-child {
+        list-style: none;
+        padding: 0px;
+        box-sizing: border-box;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        position: relative;
+        margin: 0px;
+      }
+      .theme.-ul-child li {
+        padding-left: 1rem;
+        box-sizing: border-box;
+      }
+      .theme.-ul-root {
+        padding: 0px 0px 1rem;
+      }
+      .theme.-ul-root-title {
+        font-size: 12px;
+        text-transform: uppercase;
+        opacity: 0.5;
+        padding: 0.5rem 0px;
+        display: block;
+      }
+      .theme.-ul-child-item {
+        font-size: 13px;
+        position: relative;
+      }
+      .theme.-ul-child-item:before,
+      .theme.-ul-child-item:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 100px;
+        box-sizing: border-box;
+        opacity: 0;
+      }
+      .theme.-ul-child-item:before {
+        left: 5px;
+        width: 2px;
+        height: 100%;
+        background: var(--theme-br-color);
+        opacity: 0.25;
+      }
+      .theme.-ul-child-item:after {
+        width: 8px;
+        height: 8px;
+        border: 2px solid var(--theme-br-color);
+        left: 2px;
+        top: calc(50% - 4px);
+        background: var(--theme-bg);
+      }
+      .theme.-ul-child-item.--active-true:before,
+      .theme.-ul-child-item.--active-true:after {
+        opacity: 1;
+      }
+      .theme.-ul-child-item > a {
+        display: block;
+        padding: 0.1rem;
+        box-sizing: border-box;
+      }
+      .theme.--transition-color {
+        transition: 0.5s ease all;
+      }
+
+      .theme.-toggle {
+        display: block;
+        width: 45px;
+        height: 25px;
+        border: 1px solid var(--theme-br-color);
+        background: var(--theme-bg);
+        box-sizing: border-box;
+        border-radius: 100px;
+        transition: 0.3s ease all;
+        padding: 2px;
+        cursor: pointer;
+      }
+      .theme.-toggle-circle {
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        transition: 0.3s ease all;
+      }
+
+      .theme.-toggle-menu {
+        width: 19px;
+        height: 19px;
+        display: flex;
+        flex-flow: column;
+        box-sizing: border-box;
+        padding: 2px 0px;
+        box-sizing: border-box;
+        position: relative;
+        left: 25%;
+      }
+      .theme.-toggle-menu > div {
+        width: 100%;
+        height: 2px;
+        background: var(--theme-br-color);
+        margin: auto;
+        border-radius: 10px;
+        transition: 0.5s ease all;
+      }
+      .theme.-footer-phone-container {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        padding: 1rem;
+        box-sizing: border-box;
+        display: none;
+        justify-content: space-between;
+        z-index: 2;
+      }
+      .theme.-link-social {
+        height: 25px;
+        width: 25px;
+        border: 1px solid var(--theme-br-color);
+        background: var(--theme-bg);
+        border-radius: 100px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .theme.-link-social svg {
+        height: 19px;
+        display: block;
+      }
+      .theme.-pag {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 1rem 0px;
+        justify-content: space-between;
+      }
+      .theme.-pag-link {
+        flex: 0%;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        justify-content: space-between;
+        color: var(--theme-br-color);
+      }
+      .theme.-pag-link strong {
+        padding: 1rem;
+      }
+
+      .markdown.-table-container {
+        overflow-x: auto;
+        padding: 0px;
+      }
+      .markdown.-table-container table {
+        box-sizing: border-box;
+        font-size: 0.9em;
+        border-spacing: 0px;
+      }
+
+      .markdown.-table-container table th,
+      .markdown.-table-container table td {
+        padding: 0.5rem;
+        box-sizing: border-box;
+      }
+
+      .markdown.-table-container table td {
+        border-top: 1px solid var(--theme-br-table);
+      }
+      #phone-menu {
+        display: none;
+      }
+      .--dark-mode-true {
+        display: none;
+      }
+      body.dark-mode .--dark-mode-true {
+        display: block;
+      }
+      body.dark-mode .--dark-mode-false {
+        display: none;
+      }
+
+      body.dark-mode {
+        --theme-cl: white;
+        --theme-bg: black;
+        --theme-bg-contrast: #141414;
+        --theme-br-color: aqua;
+        --theme-cl-quote: cadetblue;
+        --theme-br-table: rgba(0, 255, 255, 0.3);
+        --theme-cl-code: var(--theme-br-color);
+        --theme-bg-code: var(--theme-bg);
+        --theme-padd-content: 0px 10%;
+      }
+      .dark-mode .theme.-toggle-circle {
+        transform: translateX(100%);
+      }
+      #phone-menu:checked
+        ~ .theme.-container
+        [for="phone-menu"]
+        .theme.-toggle-menu
+        > div:first-child {
+        transform: rotate(45deg) translate(4px, 3px);
+      }
+      #phone-menu:checked
+        ~ .theme.-container
+        [for="phone-menu"]
+        .theme.-toggle-menu
+        > div:last-child {
+        transform: rotate(-45deg) translate(4px, -3px);
+      }
+      #phone-menu:checked
+        ~ .theme.-container
+        [for="phone-menu"]
+        .theme.-toggle-menu
+        > div:nth-child(2) {
+        transform: scale(0, 1);
+      }
+
+      @media (max-width: 1080px) {
+        .theme.-aside {
+          width: 240px;
+        }
+        .theme.-content-container {
+          padding-left: 260px;
+        }
+      }
+      @media (max-width: 720px) {
+        .theme.-aside {
+          width: 100%;
+          left: 100%;
+          top: 0px;
+          padding: 0px 10%;
+          backdrop-filter: blur(10px);
+        }
+        .theme.-footer-phone-container {
+          display: flex;
+        }
+        .theme.-aside-nav {
+          width: 100%;
+        }
+        .theme.-aside-bg {
+          opacity: 0.9;
+        }
+        .theme.-aside-footer {
+          display: none;
+        }
+        .theme.-content-container {
+          padding: 0px;
+        }
+        body.dark-mode .theme.-aside-bg {
+          opacity: 0.5;
+        }
+        #phone-menu:checked ~ .theme.-container .theme.-aside {
+          transform: translateX(-100%);
+        }
       }
     </style>
-    
-        <a class="header-nav-link" href="https://twitter.com/atomicojs">
-          <svg width="20" viewBox="0 -47 512.002 512" xmlns="http://www.w3.org/2000/svg">
-            <path d="M191.012 419.043c-22.14 0-44.93-1.793-67.856-5.387-40.379-6.336-81.254-27.457-92.82-33.781L0 363.289l32.844-10.8c35.902-11.805 57.742-19.13 84.777-30.598-27.07-13.11-47.933-36.692-57.976-67.176l-7.641-23.195 6.266.957A113.939 113.939 0 0144 214.883c-12.934-19.645-19.781-43.649-18.324-64.219l1.437-20.246 12.121 4.695a113.316 113.316 0 01-10.98-30.777c-5.293-26.36-.863-54.363 12.476-78.852L51.29 6.102l14.12 16.96c44.66 53.649 101.227 85.473 168.363 94.79-2.742-18.903-.687-37.145 6.114-53.497 7.918-19.039 22.004-35.183 40.722-46.69 20.79-12.778 46-18.97 70.989-17.435 26.511 1.63 50.582 11.563 69.699 28.747 9.336-2.426 16.215-5.016 25.512-8.516 5.593-2.106 11.937-4.496 19.875-7.23l29.25-10.079-19.075 54.477a96.355 96.355 0 013.91-.254l31.235-1.414-18.461 25.23c-1.059 1.446-1.328 1.856-1.703 2.422-1.488 2.242-3.34 5.032-28.68 38.867-6.344 8.473-9.512 19.508-8.922 31.079 2.246 43.968-3.148 83.75-16.043 118.234-12.195 32.625-31.093 60.617-56.164 83.2-31.023 27.937-70.582 47.066-117.582 56.847-23.054 4.797-47.812 7.203-73.437 7.203zm0 0"></path>
-          </svg>
-        </a>
-      
-    
-        <a class="header-nav-link" href="https://github.com/atomicojs/base/tree/create-webcomponents-with-bundle-cli">
-          <svg viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 .5C5.37.5 0 5.78 0 12.292c0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56C20.565 21.917 24 17.495 24 12.292 24 5.78 18.627.5 12 .5z" fill="#212121"></path>
-          </svg>
-        </a>
-      
-  </nav>
+  </head>
+  <body>
+    <script>
+      function setDarkMode(state) {
+        localStorage.setItem("dark-mode", state ? "1" : "");
+        loadDarkMode();
+      }
+      function loadDarkMode() {
+        document.body.classList.toggle(
+          "dark-mode",
+          !!localStorage.getItem("dark-mode")
+        );
+      }
+      function toggleDarkMode() {
+        setDarkMode(!localStorage.getItem("dark-mode"));
+      }
+      loadDarkMode();
+    </script>
+    <input type="checkbox" id="phone-menu" />
+    <main class="theme -container">
+      <aside class="theme -aside">
+        <div class="theme -aside-bg"></div>
+        <div class="theme -aside-brand">
+          <img
+            class="theme -aside-brand-img --dark-mode-false"
+            src="https://unpkg.com/atomico@0.20.0/docs/brand/logo-black.svg"
+            alt=""
+          />
+           
+          <img
+            class="theme -aside-brand-img --dark-mode-true"
+            src="https://unpkg.com/atomico@0.20.0/docs/brand/logo-white.svg"
+            alt=""
+          />
+        </div>
 
-          </header>
-          <section class="wrapper">
-            <input type="checkbox" id="aside-toggle">
-            <aside class="aside">
-              <div class="aside-scroll">
-                
-          <ul class="aside-ul">
+        <div class="theme -aside-nav">
+          <ul class="theme -ul-root">
             <li>
-              
-                    <strong class="aside-title">Apps</strong>
-                  
-              <ul class="aside-ul">
-                
-                    <li class="">
-                      <a href="index.html">Todo</a>
-                    </li>
-                  
+              <strong class="theme -ul-root-title">Welcome</strong>
+              <ul class="theme -ul-child">
+                <li class="theme -ul-child-item --active-false">
+                  <a href="index.html">&lt;todo-app/&gt;</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong class="theme -ul-root-title">Components</strong>
+              <ul class="theme -ul-child">
+                <li class="theme -ul-child-item --active-false">
+                  <a href="todo-task.html">&lt;todo-task/&gt;</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="todo-brand.html">&lt;todo-brand/&gt;</a>
+                </li>
+                <li class="theme -ul-child-item --active-true">
+                  <a href="todo-button.html">&lt;todo-button/&gt;</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="todo-input.html">&lt;todo-input/&gt;</a>
+                </li>
               </ul>
             </li>
           </ul>
-        
-          <ul class="aside-ul">
-            <li>
-              
-                    <strong class="aside-title">Components</strong>
-                  
-              <ul class="aside-ul">
-                
-                    <li class="">
-                      <a href="todo-brand.html">todo-brand</a>
-                    </li>
-                  
-                    <li class="--select">
-                      <a href="todo-button.html">todo-button</a>
-                    </li>
-                  
-                    <li class="">
-                      <a href="todo-input.html">todo-input</a>
-                    </li>
-                  
-                    <li class="">
-                      <a href="todo-task.html">todo-task</a>
-                    </li>
-                  
-              </ul>
-            </li>
-          </ul>
-        
-              </div>
-              <label for="aside-toggle">
-                <svg width="50%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384">
-                  <path d="M0 277.333h384V320H0zM0 170.667h384v42.667H0zM0 64h384v42.667H0z"></path>
-                </svg>
-              </label>
-            </aside>
-            <article class="content">
-              <div class="content-markdown">
-                <h1 id="todo-button">todo-button</h1>
+        </div>
+        <footer class="theme -aside-footer">
+          <a class="theme -link-social" href="">
+            <svg
+              class="octicon octicon-mark-github v-align-middle"
+              viewBox="0 0 16 16"
+              version="1.1"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                style="fill:var(--theme-br-color)"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+              ></path>
+            </svg>
+          </a>
+           
+          <a class="theme -link-social" href="">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.75 97.75">
+              <path
+                style="fill:var(--theme-br-color)"
+                d="M48.875 0C21.882 0 0 21.882 0 48.875S21.882 97.75 48.875 97.75 97.75 75.868 97.75 48.875 75.868 0 48.875 0zM78.43 35.841c.023.577.035 1.155.035 1.736 0 20.878-15.887 42.473-42.473 42.473a42.306 42.306 0 01-22.883-6.708.36.36 0 01-.145-.427.365.365 0 01.383-.237c1.148.137 2.322.205 3.487.205 6.323 0 12.309-1.955 17.372-5.664a15.157 15.157 0 01-13.161-10.478.364.364 0 01.073-.351.365.365 0 01.339-.115 14.55 14.55 0 005.04.072c-6.259-1.945-10.658-7.808-10.658-14.483l.002-.194a.362.362 0 01.537-.309 14.493 14.493 0 005.291 1.711A15.144 15.144 0 0115.96 31.21c0-2.682.71-5.318 2.054-7.623a.36.36 0 01.284-.178.354.354 0 01.309.132c7.362 9.03 18.191 14.59 29.771 15.305a15.344 15.344 0 01-.291-2.985c0-8.361 6.802-15.162 15.162-15.162 4.11 0 8.082 1.689 10.929 4.641a29.23 29.23 0 009.09-3.508.363.363 0 01.41.028c.116.094.164.25.118.394a15.14 15.14 0 01-5.33 7.489 29.15 29.15 0 006.831-2.072.361.361 0 01.447.533 30.22 30.22 0 01-7.314 7.637z"
+              />
+            </svg>
+          </a>
+          <button class="theme -toggle" onclick="toggleDarkMode()">
+            <div class="theme -toggle-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                width="100%"
+              >
+                <path
+                  style="fill:var(--theme-br-color)"
+                  d="M256 0c-8.284 0-15 6.716-15 15v32c0 8.284 6.716 15 15 15s15-6.716 15-15V15c0-8.284-6.716-15-15-15zM256 450c-8.284 0-15 6.716-15 15v32c0 8.284 6.716 15 15 15s15-6.716 15-15v-32c0-8.284-6.716-15-15-15zM119.529 98.315L96.901 75.687c-5.858-5.857-15.356-5.857-21.213 0-5.858 5.858-5.858 15.356 0 21.213l22.628 22.628c2.928 2.929 6.767 4.394 10.606 4.394s7.678-1.465 10.607-4.394c5.858-5.858 5.858-15.356 0-21.213zM436.313 415.099l-22.628-22.628c-5.858-5.857-15.356-5.857-21.213 0-5.858 5.858-5.858 15.356 0 21.213l22.628 22.628a14.95 14.95 0 0010.606 4.394c3.839 0 7.678-1.465 10.607-4.394 5.858-5.858 5.858-15.356 0-21.213zM47 241H15c-8.284 0-15 6.716-15 15s6.716 15 15 15h32c8.284 0 15-6.716 15-15s-6.716-15-15-15zM497 241h-32c-8.284 0-15 6.716-15 15s6.716 15 15 15h32c8.284 0 15-6.716 15-15s-6.716-15-15-15zM119.529 392.471c-5.858-5.857-15.356-5.857-21.213 0l-22.628 22.628c-5.858 5.858-5.858 15.356 0 21.213 2.928 2.929 6.767 4.394 10.606 4.394s7.678-1.465 10.606-4.393l22.629-22.629c5.858-5.858 5.858-15.356 0-21.213zM436.313 75.688c-5.858-5.857-15.356-5.857-21.213 0l-22.628 22.627c-5.858 5.858-5.858 15.356 0 21.213 2.928 2.929 6.767 4.394 10.606 4.394s7.678-1.465 10.607-4.393l22.628-22.628c5.858-5.858 5.858-15.356 0-21.213zM256 97c-87.673 0-159 71.327-159 159s71.327 159 159 159 159-71.327 159-159S343.673 97 256 97zm15 287.123V127.877c64.089 7.456 114 62.066 114 128.123s-49.911 120.667-114 128.123z"
+                />
+              </svg>
+            </div>
+          </button>
+        </footer>
+      </aside>
+      <div class="theme -content-container">
+        <div class="theme -content">
+          <h1 id="todo-button">todo-button</h1>
 <p>Create a simple button, this one has as its objective the capture of the click event, in order to add a new task to the list</p>
-<h2 id="demo">Demo</h2>
-<doc-show-html style-preview="background:black">
-    <todo-button>my button</todo-button>
-    <todo-button background="gold">my button</todo-button>
-    <todo-button background="tomato">my button</todo-button>
-</doc-show-html>
-
+<h2 id="use">use</h2>
+<pre class="markdown -code-container" data-code="html"><code class="language-html">&lt;todo-button background="..." color="..."&gt;my button&lt;/todo-button&gt;</code></pre><h2 id="demo">Demo</h2>
+<p><todo-button>my button</todo-button>
+<todo-button background="gold">my button</todo-button>
+<todo-button background="tomato">my button</todo-button></p>
 <h3 id="properties">Properties</h3>
-<p><doc-props selector="todo-button"></doc-props></p>
-<script type="module" src="todo-button.js"></script>
-
-              </div>
-            </article>
-          </section>
-        </main>
-        <script type="module" src="https://unpkg.com/@atomico/web-components-to-markdown/doc-props.js?module"></script>
-      
-    
-  </body></html>
+<div class="markdown -table-container"><table><tbody><tr>
+<th align="left">Property</th>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">color</td>
+<td align="left">String</td>
+<td align="left">black</td>
+</tr>
+<tr>
+<td align="left">background</td>
+<td align="left">background</td>
+<td align="left">String</td>
+<td align="left">white</td>
+</tr>
+</tbody></table></div><div class="markdown -html-container"><script type="module" src="todo-button.js"></script>
+</div>
+        </div>
+        <div class="theme -pag">
+          <a class="theme -pag-link" href="todo-brand.html">
+            <span>⇐</span>
+            <strong>
+              &lt;todo-brand/&gt;
+            </strong>
+          </a>
+           
+          <a class="theme -pag-link" href="todo-input.html">
+            <strong>
+              &lt;todo-input/&gt;
+            </strong>
+            <span>⇒</span>
+          </a>
+        </div>
+        <footer class="theme -footer-phone-container">
+          <button class="theme -toggle" onclick="toggleDarkMode()">
+            <div class="theme -toggle-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                width="100%"
+              >
+                <path
+                  style="fill:var(--theme-br-color)"
+                  d="M256 0c-8.284 0-15 6.716-15 15v32c0 8.284 6.716 15 15 15s15-6.716 15-15V15c0-8.284-6.716-15-15-15zM256 450c-8.284 0-15 6.716-15 15v32c0 8.284 6.716 15 15 15s15-6.716 15-15v-32c0-8.284-6.716-15-15-15zM119.529 98.315L96.901 75.687c-5.858-5.857-15.356-5.857-21.213 0-5.858 5.858-5.858 15.356 0 21.213l22.628 22.628c2.928 2.929 6.767 4.394 10.606 4.394s7.678-1.465 10.607-4.394c5.858-5.858 5.858-15.356 0-21.213zM436.313 415.099l-22.628-22.628c-5.858-5.857-15.356-5.857-21.213 0-5.858 5.858-5.858 15.356 0 21.213l22.628 22.628a14.95 14.95 0 0010.606 4.394c3.839 0 7.678-1.465 10.607-4.394 5.858-5.858 5.858-15.356 0-21.213zM47 241H15c-8.284 0-15 6.716-15 15s6.716 15 15 15h32c8.284 0 15-6.716 15-15s-6.716-15-15-15zM497 241h-32c-8.284 0-15 6.716-15 15s6.716 15 15 15h32c8.284 0 15-6.716 15-15s-6.716-15-15-15zM119.529 392.471c-5.858-5.857-15.356-5.857-21.213 0l-22.628 22.628c-5.858 5.858-5.858 15.356 0 21.213 2.928 2.929 6.767 4.394 10.606 4.394s7.678-1.465 10.606-4.393l22.629-22.629c5.858-5.858 5.858-15.356 0-21.213zM436.313 75.688c-5.858-5.857-15.356-5.857-21.213 0l-22.628 22.627c-5.858 5.858-5.858 15.356 0 21.213 2.928 2.929 6.767 4.394 10.606 4.394s7.678-1.465 10.607-4.393l22.628-22.628c5.858-5.858 5.858-15.356 0-21.213zM256 97c-87.673 0-159 71.327-159 159s71.327 159 159 159 159-71.327 159-159S343.673 97 256 97zm15 287.123V127.877c64.089 7.456 114 62.066 114 128.123s-49.911 120.667-114 128.123z"
+                />
+              </svg>
+            </div>
+          </button>
+          <a class="theme -link-social" href="">
+            <svg
+              class="octicon octicon-mark-github v-align-middle"
+              viewBox="0 0 16 16"
+              version="1.1"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                style="fill:var(--theme-br-color)"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+              ></path>
+            </svg>
+          </a>
+           
+          <a class="theme -link-social" href="">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.75 97.75">
+              <path
+                style="fill:var(--theme-br-color)"
+                d="M48.875 0C21.882 0 0 21.882 0 48.875S21.882 97.75 48.875 97.75 97.75 75.868 97.75 48.875 75.868 0 48.875 0zM78.43 35.841c.023.577.035 1.155.035 1.736 0 20.878-15.887 42.473-42.473 42.473a42.306 42.306 0 01-22.883-6.708.36.36 0 01-.145-.427.365.365 0 01.383-.237c1.148.137 2.322.205 3.487.205 6.323 0 12.309-1.955 17.372-5.664a15.157 15.157 0 01-13.161-10.478.364.364 0 01.073-.351.365.365 0 01.339-.115 14.55 14.55 0 005.04.072c-6.259-1.945-10.658-7.808-10.658-14.483l.002-.194a.362.362 0 01.537-.309 14.493 14.493 0 005.291 1.711A15.144 15.144 0 0115.96 31.21c0-2.682.71-5.318 2.054-7.623a.36.36 0 01.284-.178.354.354 0 01.309.132c7.362 9.03 18.191 14.59 29.771 15.305a15.344 15.344 0 01-.291-2.985c0-8.361 6.802-15.162 15.162-15.162 4.11 0 8.082 1.689 10.929 4.641a29.23 29.23 0 009.09-3.508.363.363 0 01.41.028c.116.094.164.25.118.394a15.14 15.14 0 01-5.33 7.489 29.15 29.15 0 006.831-2.072.361.361 0 01.447.533 30.22 30.22 0 01-7.314 7.637z"
+              />
+            </svg>
+          </a>
+          <label class="theme -toggle" for="phone-menu">
+            <div class="theme -toggle-menu">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </label>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>

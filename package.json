@@ -3,41 +3,18 @@
   "description": "a repo to start with atomico",
   "version": "0.0.0",
   "scripts": {
-    "build": "bundle --config bundleHtml --minify",
-    "build:doc": "bundle --config bundleDoc",
-    "dev": "bundle --config bundleHtml --watch --server",
-    "dev:doc": "bundle --config bundleDoc --watch --server",
-    "build:components": "bundle src/components/**/*-*.js dist --external",
-    "prepare": "npm run build:components",
-    "create-component": "tfolder template/tfolder/component src/components"
-  },
-  "bundleHtml": {
-    "src": [
-      "src/**/*.html"
-    ],
-    "dir": "public"
-  },
-  "bundleDoc": {
-    "src": [
-      "src/**/*.md"
-    ],
-    "dir": "docs",
-    "mdTemplate": [
-      "./template/md-template",
-      {
-        "github": "https://github.com/atomicojs/base/tree/create-webcomponents-with-bundle-cli",
-        "twitter": "https://twitter.com/atomicojs"
-      }
-    ]
+    "start": "bundle src/components/**/*.md docs --watch --server --template template/template.html",
+    "build:docs": "bundle src/components/**/*.md docs --minify",
+    "build:components": "bundle src/components/**/*-*.js ./ --minify"
   },
   "dependencies": {
-    "atomico": "^0.19.0"
+    "atomico": "^0.20.0"
   },
   "devDependencies": {
-    "bundle-cli": "^0.14.0",
+    "bundle-cli": "^0.19.1",
     "tfolder-cli": "0.0.0"
   },
   "exports": {
-    ".": "./dist/"
+    ".": "./dest/"
   }
 }

@@ -1,4 +1,14 @@
-
+---
+logo: https://unpkg.com/atomico@0.20.0/docs/brand/logo-black.svg
+logoDarkMode: https://unpkg.com/atomico@0.20.0/docs/brand/logo-white.svg
+github: https://github.com/atomicojs/atomico
+twitter: https://twitter.com/uppercod
+darkmode: true
+groupOrder:
+  - Welcome
+  - Components:
+      - <todo-task/>
+---
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +16,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> - &lt;todo-task/&gt;</title>
+    <title>{{{theme.emoji}}} - {{page.title}}</title>
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,600|Sen:800&display=swap"
       rel="stylesheet"
@@ -473,50 +483,40 @@
       <aside class="theme -aside">
         <div class="theme -aside-bg"></div>
         <div class="theme -aside-brand">
+          {{#theme.logo}}
           <img
             class="theme -aside-brand-img --dark-mode-false"
-            src="https://unpkg.com/atomico@0.20.0/docs/brand/logo-black.svg"
-            alt=""
+            src="{{this}}"
+            alt="{{site.title}}"
           />
-           
+          {{/theme.logo}} {{#theme.logoDarkMode}}
           <img
             class="theme -aside-brand-img --dark-mode-true"
-            src="https://unpkg.com/atomico@0.20.0/docs/brand/logo-white.svg"
-            alt=""
+            src="{{this}}"
+            alt="{{site.title}}"
           />
+          {{/theme.logoDarkMode}}
         </div>
 
         <div class="theme -aside-nav">
           <ul class="theme -ul-root">
+            {{#pages}}
             <li>
-              <strong class="theme -ul-root-title">Welcome</strong>
+              <strong class="theme -ul-root-title">{{title}}</strong>
               <ul class="theme -ul-child">
-                <li class="theme -ul-child-item --active-false">
-                  <a href="index.html">&lt;todo-app/&gt;</a>
+                {{#pages}}
+                <li class="theme -ul-child-item --active-{{active}}">
+                  <a href="{{link}}">{{title}}</a>
                 </li>
+                {{/pages}}
               </ul>
             </li>
-            <li>
-              <strong class="theme -ul-root-title">Components</strong>
-              <ul class="theme -ul-child">
-                <li class="theme -ul-child-item --active-true">
-                  <a href="todo-task.html">&lt;todo-task/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-brand.html">&lt;todo-brand/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-button.html">&lt;todo-button/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-input.html">&lt;todo-input/&gt;</a>
-                </li>
-              </ul>
-            </li>
+            {{/pages}}
           </ul>
         </div>
         <footer class="theme -aside-footer">
-          <a class="theme -link-social" href="">
+          {{#theme.github}}
+          <a class="theme -link-social" href="{{theme.github}}">
             <svg
               class="octicon octicon-mark-github v-align-middle"
               viewBox="0 0 16 16"
@@ -530,8 +530,8 @@
               ></path>
             </svg>
           </a>
-           
-          <a class="theme -link-social" href="">
+          {{/theme.github}} {{#theme.twitter}}
+          <a class="theme -link-social" href="{{theme.twitter}}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.75 97.75">
               <path
                 style="fill:var(--theme-br-color)"
@@ -539,6 +539,7 @@
               />
             </svg>
           </a>
+          {{/theme.twitter}}
           <button class="theme -toggle" onclick="toggleDarkMode()">
             <div class="theme -toggle-circle">
               <svg
@@ -557,30 +558,24 @@
       </aside>
       <div class="theme -content-container">
         <div class="theme -content">
-          <h1 id="todo-task">todo-task</h1>
-<p>Create an input similar to checkbox, enable or disable the task state(<code>checked</code>)</p>
-<h2 id="demo">Demo</h2>
-<div class="markdown -html-container"><doc-show-html style-preview="background:black;color:white">
-    <todo-task checked="">..mi task 1</todo-task>
-    <todo-task>..mi task 2</todo-task>
-</doc-show-html>
-
-</div><h2 id="properties">Properties</h2>
-<p><doc-props selector="todo-task"></doc-props></p>
-<div class="markdown -html-container"><script type="module" src="todo-task.js"></script>
-
-</div><h2 id="note">Note</h2>
-<p>This example shows how to use the declaration <code>{reflect: true}</code>, to define css states.</p>
-
+          {{&page.content}}
         </div>
         <div class="theme -pag">
- 
-          <a class="theme -pag-link" href="todo-brand.html">
+          {{#page.prev}}
+          <a class="theme -pag-link" href="{{link}}">
+            <span>⇐</span>
             <strong>
-              &lt;todo-brand/&gt;
+              {{title}}
+            </strong>
+          </a>
+          {{/page.prev}} {{#page.next}}
+          <a class="theme -pag-link" href="{{link}}">
+            <strong>
+              {{title}}
             </strong>
             <span>⇒</span>
           </a>
+          {{/page.next}}
         </div>
         <footer class="theme -footer-phone-container">
           <button class="theme -toggle" onclick="toggleDarkMode()">
@@ -597,7 +592,8 @@
               </svg>
             </div>
           </button>
-          <a class="theme -link-social" href="">
+          {{#theme.github}}
+          <a class="theme -link-social" href="{{theme.github}}">
             <svg
               class="octicon octicon-mark-github v-align-middle"
               viewBox="0 0 16 16"
@@ -611,8 +607,8 @@
               ></path>
             </svg>
           </a>
-           
-          <a class="theme -link-social" href="">
+          {{/theme.github}} {{#theme.twitter}}
+          <a class="theme -link-social" href="{{theme.twitter}}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.75 97.75">
               <path
                 style="fill:var(--theme-br-color)"
@@ -620,6 +616,7 @@
               />
             </svg>
           </a>
+          {{/theme.twitter}}
           <label class="theme -toggle" for="phone-menu">
             <div class="theme -toggle-menu">
               <div></div>
