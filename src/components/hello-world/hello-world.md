@@ -4,9 +4,9 @@ description: my description...
 group: Components
 ---
 
-# {{page.name}}
+# {{page.title}}
 
-{{page.description}}
+> {{page.description}}
 
 ## Installation
 
