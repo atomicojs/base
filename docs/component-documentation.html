@@ -1,12 +1,12 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> - &lt;todo-brand/&gt;</title>
+    <title>atomico-base - Component documentation</title>
+    <meta name="description" content="Quick and easy way to view and document your component" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,600|Sen:800&display=swap"
       rel="stylesheet"
@@ -186,6 +186,7 @@
 
       .theme.-content table {
         width: 100%;
+        text-align: left;
       }
 
       .theme.-content > *:not(pre) code {
@@ -492,7 +493,13 @@
               <strong class="theme -ul-root-title">Welcome</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-false">
-                  <a href="index.html">&lt;todo-app/&gt;</a>
+                  <a href="index.html">Introduction</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="creation-component.html">Component creation</a>
+                </li>
+                <li class="theme -ul-child-item --active-true">
+                  <a href="component-documentation.html">Component documentation</a>
                 </li>
               </ul>
             </li>
@@ -500,16 +507,7 @@
               <strong class="theme -ul-root-title">Components</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-false">
-                  <a href="todo-task.html">&lt;todo-task/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-true">
-                  <a href="todo-brand.html">&lt;todo-brand/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-button.html">&lt;todo-button/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-input.html">&lt;todo-input/&gt;</a>
+                  <a href="hello-world.html">&lt;hello-world/&gt;</a>
                 </li>
               </ul>
             </li>
@@ -557,41 +555,50 @@
       </aside>
       <div class="theme -content-container">
         <div class="theme -content">
-          <h1 id="todo-brand">todo-brand</h1>
-<p>The atomico logo anywhere, just use this component and that's it.</p>
-<h2 id="uso">Uso</h2>
-<pre class="markdown -code-container" data-code="html"><code class="language-html">&lt;todo-brand color="var(--theme-cl)"&gt;&lt;/todo-brand&gt;</code></pre><h2 id="demo">Demo</h2>
-<p><todo-brand color="var(--theme-cl)"></todo-brand></p>
-<h2 id="properties">Properties</h2>
-<div class="markdown -html-container"><script type="module" src="todo-brand.js"></script>
+          <h1 id="pagetitle">Component documentation</h1>
+<blockquote>
+<p>Quick and easy way to view and document your component</p>
+</blockquote>
+<p>The template system is based on handerbars, bundle-cli provides a series of data for the construction of the documentation.</p>
+<pre class="markdown -code-container" data-code="yaml"><code class="language-yaml">---
+title: Component documentation
+description: description
+folder: /custom-folder
+group: Welcome
+---
+</code></pre><blockquote>
+<p>you can append metadata to be used by the template or the same document</p>
+</blockquote>
+<p><strong>Where :</strong></p>
+<ol>
+<li><code>title</code>: <em>String</em>, Title of the document to be used for navigation.</li>
+<li><code>description</code>: <em>String</em> ,General description of the page.</li>
+<li><code>folder</code>: <em>String</em>, Lets you custumize the destination folder of the html document.</li>
+<li><code>group</code>: <em>String[]</em>, Define a target group for the aside.</li>
+</ol>
+<h2 id="global-data">Global data</h2>
+<pre class="markdown -code-container" data-code="yaml"><code class="language-yaml">theme: goal declared in the template
+pkg: data from package.json
+page: goal declares on the page
+pages: Pages grouped by group</code></pre><blockquote>
+<p>This data can be easily seen from the template by <code>{{log this}}</code></p>
+</blockquote>
+<h2 id="import-from-markdown">Import from markdown</h2>
+<pre class="markdown -code-container" data-code="md"><code class="language-md">&lt;my-component&gt;&lt;my-component/&gt;
 
-</div><div class="markdown -table-container"><table><tbody><tr>
-<th align="left">Property</th>
-<th align="left">Attribute</th>
-<th align="left">Type</th>
-</tr>
-<tr>
-<td align="left">color</td>
-<td align="left">color</td>
-<td align="left">String</td>
-</tr>
-</tbody></table></div>
+&lt;script type="module" src="./my-component.js"&gt;&lt;/script&gt;</code></pre><blockquote>
+<p>Bundle-cli will import using the expression <code>[src=local|node_module]</code> or <code>link[href=local|node_module]</code>, for a correct import keep a unique name for the local js files to include in the markdown, if you import from node_module define the exact path of the component file to use, eg <code>atomico-base/doc-story</code></p>
+</blockquote>
+
         </div>
         <div class="theme -pag">
-          <a class="theme -pag-link" href="todo-task.html">
+          <a class="theme -pag-link" href="creation-component.html">
             <span>⇐</span>
             <strong>
-              &lt;todo-task/&gt;
+              Component creation
             </strong>
           </a>
-           
-          <a class="theme -pag-link" href="todo-button.html">
-            <strong>
-              &lt;todo-button/&gt;
-            </strong>
-            <span>⇒</span>
-          </a>
-        </div>
+                   </div>
         <footer class="theme -footer-phone-container">
           <button class="theme -toggle" onclick="toggleDarkMode()">
             <div class="theme -toggle-circle">

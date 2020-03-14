@@ -13,12 +13,6 @@ function updateAll(hooks, type) {
   for (let i in hooks) update(hooks[i], type);
 }
 
-function useHook(reducer, initialState) {
-  if (HOOK_CURRENT.ref.hook) {
-    return HOOK_CURRENT.ref.hook.use(reducer, initialState)[1];
-  }
-}
-
 function createHooks(render, host) {
   let hooks = {};
   let mounted;
@@ -937,30 +931,25 @@ function setProperty$1(prototype, initialize, attrs, prop, schema) {
   attrs.push(attr);
 }
 
-function useHost() {
-  return useHook(0, {
-    current: HOOK_CURRENT.ref.host
-  });
-}
+var style = ":host {\r\n  font-size: 30px;\r\n}\r\n";
 
-function useRef(current) {
-  return useHook(0, {
-    current
-  });
-}
+const HelloWorld = ({
+  message
+}) => createElement("host", {
+  shadowDom: true
+}, createElement("style", null, style), createElement("h1", null, "\uD83D\uDC4B ", message));
 
-function useProp(name) {
-  let ref = useHost();
-
-  if (name in ref.current) {
-    if (!ref[name]) {
-      ref[name] = [null, nextValue => ref.current[name] = nextValue];
+HelloWorld.props = {
+  message: {
+    type: String,
+    value: "hello-world",
+    reflect: true,
+    event: {
+      type: "changeMessage"
     }
-
-    ref[name][0] = ref.current[name];
-    return ref[name];
   }
-}
+};
+var helloWorld = customElement("hello-world", HelloWorld);
 
-export { useProp as a, createElement as b, customElement as c, useRef as u };
-//# sourceMappingURL=6d0dd030.js.map
+export default helloWorld;
+//# sourceMappingURL=hello-world.js.map

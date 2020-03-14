@@ -1,12 +1,12 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> - &lt;todo-app/&gt;</title>
+    <title>atomico-base - Introduction</title>
+    <meta name="description" content="This bundle-cli template allows static documentation for components from markdown documents" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,600|Sen:800&display=swap"
       rel="stylesheet"
@@ -186,6 +186,7 @@
 
       .theme.-content table {
         width: 100%;
+        text-align: left;
       }
 
       .theme.-content > *:not(pre) code {
@@ -492,7 +493,13 @@
               <strong class="theme -ul-root-title">Welcome</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-true">
-                  <a href="index.html">&lt;todo-app/&gt;</a>
+                  <a href="index.html">Introduction</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="creation-component.html">Component creation</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="component-documentation.html">Component documentation</a>
                 </li>
               </ul>
             </li>
@@ -500,16 +507,7 @@
               <strong class="theme -ul-root-title">Components</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-false">
-                  <a href="todo-task.html">&lt;todo-task/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-brand.html">&lt;todo-brand/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-button.html">&lt;todo-button/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-input.html">&lt;todo-input/&gt;</a>
+                  <a href="hello-world.html">&lt;hello-world/&gt;</a>
                 </li>
               </ul>
             </li>
@@ -557,21 +555,52 @@
       </aside>
       <div class="theme -content-container">
         <div class="theme -content">
-          <h1 id="todo-app">Todo app</h1>
-<p>Es un pequeño ejemplo de uso de bundle-cli para generar documentacion rapida</p>
-<h2 id="uso">Uso</h2>
-<pre class="markdown -code-container" data-code="html"><code class="language-html">&lt;todo-app
-  task='[
-    {"checked":true,"value":"try Atomico with bundle-cli"},
-    {"checked":false,"value":"Share how amazing Atomico is"}
-  ]'
-&gt;&lt;/todo-app&gt;</code></pre><h2 id="demo">Demo</h2>
-<p><todo-app task="[{&quot;checked&quot;:true,&quot;value&quot;:&quot;try Atomico with bundle-cli&quot;},{&quot;checked&quot;:false,&quot;value&quot;:&quot;Share how amazing Atomico is&quot;}]"></todo-app></p>
-<div class="markdown -html-container"><script type="module" src="todo-app.js"></script>
-</div>
+          <h1 id="pagetitle">Introduction</h1>
+<blockquote>
+<p>This bundle-cli template allows static documentation for components from markdown documents</p>
+</blockquote>
+<h2 id="steps">Steps</h2>
+<h3 id="1-see-pkgscripts">1. See pkg.scripts</h3>
+<h4 id="npm-start">npm start</h4>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">bundle src/**/*.md docs --watch --server --template template/template.html</code></pre><blockquote>
+<p>This script allows you to create a livereload mode server that serves markdown files</p>
+</blockquote>
+<p><strong>Where :</strong></p>
+<ol>
+<li><code>src/**/*.md</code>: expression for fast-glob, this will import all the files that comply with the expression.</li>
+<li><code>--watch</code>: It allows to observe the changes of the files associated to the expression, existing or to exist.</li>
+<li><code>--server</code> : Create a server by combining with the <code>--watch</code> flag enables livereload mode of the server.</li>
+<li><code>--template template/template.html</code>: allows to append the use of a superior template to nest the associated markdown files.</li>
+</ol>
+<div class="markdown -html-container"><br>
+
+</div><p><strong>Console output example</strong></p>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">server running on http://localhost:8000 # destination directory server
+
+bundle: 15ms # bundle creation duration</code></pre><blockquote>
+<p><code>npm run build:docs</code> This script allows you to run the build for production of the <code>npm start</code> script.</p>
+</blockquote>
+<h3 id="npm-buildcomponents">npm build:components</h3>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">bundle src/components/**/*-*.js ./ --minify --external</code></pre><blockquote>
+<p>This script allows you to export the associated web-components</p>
+</blockquote>
+<p><strong>Where :</strong></p>
+<ol>
+<li><code>src/components/**/*-*.js</code>: look for files that match the expression, eg <code>src/components/my-header/my-header.js</code>.</li>
+<li><code>--minify</code>: Minify css and js code</li>
+<li><code>--external</code>: Lets consider <code>pkg.dependencies</code> as external dependencies.</li>
+</ol>
+
         </div>
         <div class="theme -pag">
-         </div>
+ 
+          <a class="theme -pag-link" href="creation-component.html">
+            <strong>
+              Component creation
+            </strong>
+            <span>⇒</span>
+          </a>
+        </div>
         <footer class="theme -footer-phone-container">
           <button class="theme -toggle" onclick="toggleDarkMode()">
             <div class="theme -toggle-circle">

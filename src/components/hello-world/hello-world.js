@@ -1,17 +1,17 @@
 import { h, customElement } from "atomico";
-import style from "./{{name}}.css";
+import style from "./hello-world.css";
 
-const {{nameCamelCase}} = ({message}) => (
+const HelloWorld = ({message}) => (
   <host shadowDom>
     <style>{style}</style>
     <h1>👋 {message}</h1>
   </host>
 );
 
-{{nameCamelCase}}.props = {
+HelloWorld.props = {
   message : {
     type : String,
-    value : "{{name}}",
+    value : "hello-world",
     reflect: true,
     event : {
       type : "changeMessage"
@@ -19,4 +19,4 @@ const {{nameCamelCase}} = ({message}) => (
   }
 };
 
-export default customElement("{{name}}", {{nameCamelCase}});
+export default customElement("hello-world", HelloWorld);

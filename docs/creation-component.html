@@ -1,12 +1,12 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> - &lt;todo-button/&gt;</title>
+    <title>atomico-base - Component creation</title>
+    <meta name="description" content="Atomico automates the process of creating standardized components, a system of directories created thanks to the package tfolder" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,600|Sen:800&display=swap"
       rel="stylesheet"
@@ -186,6 +186,7 @@
 
       .theme.-content table {
         width: 100%;
+        text-align: left;
       }
 
       .theme.-content > *:not(pre) code {
@@ -492,7 +493,13 @@
               <strong class="theme -ul-root-title">Welcome</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-false">
-                  <a href="index.html">&lt;todo-app/&gt;</a>
+                  <a href="index.html">Introduction</a>
+                </li>
+                <li class="theme -ul-child-item --active-true">
+                  <a href="creation-component.html">Component creation</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="component-documentation.html">Component documentation</a>
                 </li>
               </ul>
             </li>
@@ -500,16 +507,7 @@
               <strong class="theme -ul-root-title">Components</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-false">
-                  <a href="todo-task.html">&lt;todo-task/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-brand.html">&lt;todo-brand/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-true">
-                  <a href="todo-button.html">&lt;todo-button/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-input.html">&lt;todo-input/&gt;</a>
+                  <a href="hello-world.html">&lt;hello-world/&gt;</a>
                 </li>
               </ul>
             </li>
@@ -557,46 +555,44 @@
       </aside>
       <div class="theme -content-container">
         <div class="theme -content">
-          <h1 id="todo-button">todo-button</h1>
-<p>Create a simple button, this one has as its objective the capture of the click event, in order to add a new task to the list</p>
-<h2 id="use">use</h2>
-<pre class="markdown -code-container" data-code="html"><code class="language-html">&lt;todo-button background="..." color="..."&gt;my button&lt;/todo-button&gt;</code></pre><h2 id="demo">Demo</h2>
-<p><todo-button>my button</todo-button>
-<todo-button background="gold">my button</todo-button>
-<todo-button background="tomato">my button</todo-button></p>
-<h3 id="properties">Properties</h3>
-<div class="markdown -table-container"><table><tbody><tr>
-<th align="left">Property</th>
-<th align="left">Attribute</th>
-<th align="left">Type</th>
-<th align="left">Default</th>
-</tr>
-<tr>
-<td align="left">color</td>
-<td align="left">color</td>
-<td align="left">String</td>
-<td align="left">black</td>
-</tr>
-<tr>
-<td align="left">background</td>
-<td align="left">background</td>
-<td align="left">String</td>
-<td align="left">white</td>
-</tr>
-</tbody></table></div><div class="markdown -html-container"><script type="module" src="todo-button.js"></script>
-</div>
+          <h1 id="pagetitle">Component creation</h1>
+<blockquote>
+<p>Atomico automates the process of creating standardized components, a system of directories created thanks to the package tfolder</p>
+</blockquote>
+<h2 id="npm-run-createcomponent">npm run create:component</h2>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">tfolder template/tfolder/component src/components</code></pre><blockquote>
+<p>Create a component inside the <code>src/components/</code> directory</p>
+</blockquote>
+<p><strong>Donde :</strong></p>
+<ol>
+<li><code>template/tfolder/component</code>: source of the template to clone for the component.</li>
+<li><code>src/components</code>: Destination of the cloned template for the component.</li>
+</ol>
+<p><strong>Console output example</strong></p>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">tfolder template/tfolder/component src/components
+
+? Component Name? » custom-element</code></pre><blockquote>
+<p>The attached template will create the following files:</p>
+</blockquote>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">src/components/${component}
+                ${component}.js
+                ${component}.css
+                ${component}.md</code></pre><blockquote>
+<p><code>${component}</code> It will be replaced by the name entered when starting the script.</p>
+</blockquote>
+
         </div>
         <div class="theme -pag">
-          <a class="theme -pag-link" href="todo-brand.html">
+          <a class="theme -pag-link" href="index.html">
             <span>⇐</span>
             <strong>
-              &lt;todo-brand/&gt;
+              Introduction
             </strong>
           </a>
            
-          <a class="theme -pag-link" href="todo-input.html">
+          <a class="theme -pag-link" href="component-documentation.html">
             <strong>
-              &lt;todo-input/&gt;
+              Component documentation
             </strong>
             <span>⇒</span>
           </a>

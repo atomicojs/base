@@ -1,12 +1,12 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> - &lt;todo-task/&gt;</title>
+    <title>atomico-base - &lt;hello-world/&gt;</title>
+    <meta name="description" content="my description..." />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,600|Sen:800&display=swap"
       rel="stylesheet"
@@ -186,6 +186,7 @@
 
       .theme.-content table {
         width: 100%;
+        text-align: left;
       }
 
       .theme.-content > *:not(pre) code {
@@ -492,7 +493,13 @@
               <strong class="theme -ul-root-title">Welcome</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-false">
-                  <a href="index.html">&lt;todo-app/&gt;</a>
+                  <a href="index.html">Introduction</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="creation-component.html">Component creation</a>
+                </li>
+                <li class="theme -ul-child-item --active-false">
+                  <a href="component-documentation.html">Component documentation</a>
                 </li>
               </ul>
             </li>
@@ -500,16 +507,7 @@
               <strong class="theme -ul-root-title">Components</strong>
               <ul class="theme -ul-child">
                 <li class="theme -ul-child-item --active-true">
-                  <a href="todo-task.html">&lt;todo-task/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-brand.html">&lt;todo-brand/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-button.html">&lt;todo-button/&gt;</a>
-                </li>
-                <li class="theme -ul-child-item --active-false">
-                  <a href="todo-input.html">&lt;todo-input/&gt;</a>
+                  <a href="hello-world.html">&lt;hello-world/&gt;</a>
                 </li>
               </ul>
             </li>
@@ -557,31 +555,36 @@
       </aside>
       <div class="theme -content-container">
         <div class="theme -content">
-          <h1 id="todo-task">todo-task</h1>
-<p>Create an input similar to checkbox, enable or disable the task state(<code>checked</code>)</p>
-<h2 id="demo">Demo</h2>
-<div class="markdown -html-container"><doc-show-html style-preview="background:black;color:white">
-    <todo-task checked="">..mi task 1</todo-task>
-    <todo-task>..mi task 2</todo-task>
-</doc-show-html>
-
-</div><h2 id="properties">Properties</h2>
-<p><doc-props selector="todo-task"></doc-props></p>
-<div class="markdown -html-container"><script type="module" src="todo-task.js"></script>
-
-</div><h2 id="note">Note</h2>
-<p>This example shows how to use the declaration <code>{reflect: true}</code>, to define css states.</p>
-
+          <h1 id="pagename"></h1>
+<p>my description...</p>
+<h2 id="installation">Installation</h2>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">npm install atomico-base</code></pre><h2 id="usage">Usage</h2>
+<pre class="markdown -code-container" data-code=""><code class="language-">import "atomico-base/hello-world"</code></pre><h2 id="demo">Demo</h2>
+<p><hello-world></hello-world></p>
+<h2 id="properties">Properties</h2>
+<div class="markdown -table-container"><table><tbody><tr>
+<th>Property</th>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Reflect</th>
+<th>Event</th>
+<th>Default Value</th>
+</tr>
+<tr>
+<td>message</td>
+<td>message</td>
+<td>little message...</td>
+<td>String</td>
+<td>true</td>
+<td>changeMessage</td>
+<td>hello-world</td>
+</tr>
+</tbody></table></div><div class="markdown -html-container"><script type="module" src="hello-world.js"><script>
+</div></script></div>
         </div>
         <div class="theme -pag">
- 
-          <a class="theme -pag-link" href="todo-brand.html">
-            <strong>
-              &lt;todo-brand/&gt;
-            </strong>
-            <span>⇒</span>
-          </a>
-        </div>
+         </div>
         <footer class="theme -footer-phone-container">
           <button class="theme -toggle" onclick="toggleDarkMode()">
             <div class="theme -toggle-circle">

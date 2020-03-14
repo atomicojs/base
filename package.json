@@ -3,15 +3,16 @@
   "description": "a repo to start with atomico",
   "version": "0.0.0",
   "scripts": {
-    "start": "bundle src/components/**/*.md docs --watch --server --template template/template.html",
-    "build:docs": "bundle src/components/**/*.md docs --minify",
-    "build:components": "bundle src/components/**/*-*.js ./ --minify"
+    "start": "bundle src/**/*.md docs --watch --server --template template/template.html",
+    "build:docs": "bundle src/**/*.md docs --minify",
+    "build:components": "bundle src/components/**/*-*.js ./ --minify",
+    "create:component": "tfolder template/tfolder/component src/components"
   },
   "dependencies": {
     "atomico": "^0.20.0"
   },
   "devDependencies": {
-    "bundle-cli": "^0.19.1",
+    "bundle-cli": "^0.20.1",
     "tfolder-cli": "0.0.0"
   },
   "exports": {
