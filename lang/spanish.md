@@ -1,121 +1,44 @@
 # base
 
-## Guías de estilo
+Bienvenido a [Atomico](https://github.com/atomicojs/atomico) como [autor](https://twitter.com/uppercod) yo espero que su experiencia de uso sea memorable!
 
-En esta guía define un estándar para la generación de componentes con Atomico, con el objetivo facilitar el desarrollo colaborativo, escalabilidad y mantenimiento de sus componentes, lo entregado en esta guía no se define como regla, ya que lo aplicado puede variar entre desarrollador.
+Esta configuración dispuesta le provee una estructura para comenzar con Atomico de forma ágil gracias a [bundle-cli](https://github.com/atomicojs/bundle-cli), con esta configuración ud podrá:
 
-### scripts
+**1.-** Documentar y desarrollar desde un fichero markdown o html , **bundle-cli se encargara de extraer sus script, estilos y otros desde ficheros markdown o html**, eg:
 
-```bash
-# Crea los archivos necesarios para un componente
-npm run create-component
+```markdown
+# Atomico pesa menos de 4kb
 
-# Para el desarrollo de documentación.
-# Útil para generar sistema de diseño.
-npm run dev:doc # iniciar un servidor que sirve los archivos .md
-npm run build:doc # optimizar el código asociado
+y yo soy un fichero markdown...
 
-# Para el desarrollo de aplicaciones.
-npm run dev # iniciar un servidor que sirve los archivos .html
-npm run build # optimizar el código asociado
+<!--
+Ahora algo de magia de bundle-cli, bundle-cli extrae
+los [src] de los tag y exportara los script a Rollup.
+-->
 
-# Exportación individual de componentes.
-# Útil para compartir componentes usando NPM.
-npm run build:component  #  El componente exportado no incluye dependencias
+<my-component></my-component>
+
+<script src="./my-component.js" type="module"></script>
 ```
 
-### Estructura recomendada
+> En resumen un efecto similar a MDX pero con Markdown.
 
-La distribución directorio es un elemento importante al momento de construir componentes, lo ideal es que este sea declarativo en contenido, eg:
+**2.-** **LiveReload , servidor local y un observador de archivos incremental**, si ud crea un nuevo fichero markdown o html se añadirá a la cola de exportación para visualizar en el servidor local, de igual forma los cambios asociados a los ficheros exportados refrescaran el navegador automáticamente(LiveReload).
 
-```bash
-src
-├───components
-│   └───${my-component}
-│           ${my-component}.js
-│           ${my-component}.css
-│           ${my-component}.md # export with dev:doc
-└───custom-hooks
-    └───${my-hook}
-            ${my-hook}.js
-            ${my-hook}.md # export with dev:doc
-```
+**3.-** Exportar fácilmente todos sus componentes y hooks en archivos independientes.
 
-**Recuerde**
+### Scripts
 
-1. Sola incluya un componente por archivo.
-2. Solo incluya un componente por directorio
-3. Defina los custom-hooks de forma asilada a los componentes, en un archivo y directorio diferente, un archivo si puede contener mas de un hook
+`npm start`: Crea un Servidor + LiveReload para su proyecto, con este ud podrá visualizar todos sus componentes desde **el puerto que se mostrara por consola según disponibilidad**. Espero que le agrade la interfaz mostrada por el servidor
 
-### Nombre de componente
+`npm run create:component`: Crea una carpeta bajo las [guías de estilo](https://atomico.gitbook.io/doc/guides/code-style) de Atomico dentro del folder `src/components` con todo lo necesario para comenzar con su componente.
 
-Es ideal que como autor ud **defina un nombre o prefijo que agrupé uno o mas componente**, siempre defina a continuación del nombre principal el objetivo a representar en la UI, ej:
+`npm run build`: Exporta la documentación y minifica el código js y el css asociado.
 
-```bash
-# Naming
-${name}-${objective}-...
-# Single
-atomico-button
-atomico-input
-# Group
-atomico-header
-atomico-header-nav
-atomico-header-logo
-atomico-header-social
-```
+`npm run build:all`: Exporta todos los ficheros que cumplan con la expresión `src/**/**/*-*.js;`, bajo las [guías de estilo](https://atomico.gitbook.io/doc/guides/code-style) de Atomico se exportara automáticamente sus componentes y hooks
 
-> El uso del nombre `atomico` es solo un ejemplo, no es recomendable su uso para la declaración de nombre de su componente.
+##Otros recursos de interés
 
-### Declaración de componente
-
-Los webcomponents son ideales para la generación de apis transparentes, permitiendo a trabes de attributos/propiedades manipular o conocer el estado actual del componente.
-
-**Recuerde**
-
-1. Defina siempre como nodo principal el tag `<host>`.
-2. Prefiera el uso de `useProp` si ud busca manipular el estado de la prop y reflejar este en el webcomponent como atributo/propiedad, mantenga el uso de `useState` para estados privados.
-3. Prefiera el uso de `reflect` si se busca transparentar el estado de su componente para un selector de css, eg `my-component[type="email"]` o `my-component[active]`
-4. Prefiera el uso valores por default, si busca transparentar en todo momento el estado de su componente
-
-**Ejemplo de componente**
-
-```jsx
-import { h, customElement, useProp } from "atomico";
-import style from "./my-component.css";
-/**
- * @type {import("atomico").Component}
- * @param {Object} props
- * @param {string} props.type
- * @param {value} props.value
- */
-const MyComponent = ({ type }) => {
-  let [value, setValue] = useProp("value");
-  return (
-    <host shadowDom>
-      <style>{style}</style>
-      <input
-        type={type}
-        value={value}
-        oninput={({ target: { value } }) => setValue(value)}
-      ></input>
-    </host>
-  );
-};
-
-MyComponent.props = {
-  type: {
-    type: String,
-    reflect: true,
-    options: ["number", "date", "email", "phone"],
-    value: "text"
-  },
-  value: {
-    type: String,
-    value: "default message"
-  }
-};
-
-export default customElement("my-component", MyComponent);
-```
-
-El uso de este fragmento `@type {import("atomico").Component}` en el jsdoc, importa las reglas de autocompletado para Typescript, **considérelo opcional**
+1. [Documentación de Atomico](https://github.com/atomicojs/atomico).
+2. [Guías de estilo de Atomico](https://atomico.gitbook.io/doc/guides/code-style).
+3. Twitter de [Atomico](https://twitter.com/atomicojs) y [Autor](https://twitter.com/uppercod)

@@ -1,24 +1,24 @@
 import { c as customElement, a as createElement } from './chunks/fc508d69.js';
 
-var style = ":host {\r\n  font-size: 30px;\r\n}\r\n";
+var style = ":host {\n  font-size: 30px;\n}\n";
 
-const HelloWorld = ({
+const ASome = ({
   message
 }) => createElement("host", {
   shadowDom: true
 }, createElement("style", null, style), createElement("h1", null, "\uD83D\uDC4B ", message));
 
-HelloWorld.props = {
+ASome.props = {
   message: {
     type: String,
-    value: "hello-world",
+    value: "a-some",
     reflect: true,
     event: {
       type: "changeMessage"
     }
   }
 };
-var helloWorld = customElement("hello-world", HelloWorld);
+var aSome = customElement("a-some", ASome);
 
-export default helloWorld;
-//# sourceMappingURL=hello-world.js.map
+export default aSome;
+//# sourceMappingURL=a-some.js.map

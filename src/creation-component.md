@@ -16,7 +16,7 @@ tfolder template/tfolder/component src/components
 
 > Create a component inside the `src/components/` directory
 
-**Donde :**
+**Where :**
 
 1. `template/tfolder/component`: source of the template to clone for the component.
 2. `src/components`: Destination of the cloned template for the component.

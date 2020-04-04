@@ -1,117 +1,44 @@
 # base
 
-## Code style
+Welcome to [Atomico](https://github.com/atomicojs/atomico) as an [author](https://twitter.com/uppercod), I hope your experience of use is memorable!
 
-This guide defines a standard for the generation of components with Atomico, with the objective of facilitating the collaborative development, scalability and maintenance of its components.
+this configuration provides you with a structure to start with Atomico in an agile way thanks to [bundle-cli](https://github.com/atomicojs/bundle-cli), with this configuration you will be able to:
 
-### scripts
+**1.-** Documentar y desarrollar desde un fichero markdown o html , **bundle-cli se encargara de extraer sus script, estilos y otros desde ficheros markdown o html**, eg:
 
-```bash
-# Create the necessary files for a component
-npm run create-component
+```markdown
+# Atomico size is less than 4kb
 
-# For documentation Development.
-# Useful to generate design system.
-npm run start # start a server that serves the .md files
-npm run build # optimize the associated code
+and I'm a markdown file ...
 
-# Individual export of components.
-# Useful for sharing components using NPM.
-npm run build:component  #  Does not include dependencies.
+<!--
+Now some magic of bundle-cli, bundle-cli extract
+the [src] of the tags and export the scripts to Rollup and more.
+-->
+
+<my-component></my-component>
+
+<script src="./my-component.js" type="module"></script>
 ```
 
-### Recommended structure
+> In summary an effect similar to MDX but with Markdown.
 
-The directory distribution is an important element when building components, ideally, this is declarative in content, eg:
+**2.-** **LiveReload, local server and an incremental file watcher**, If you create a new markdown or html file, it will be added to the export queue to be viewed on the local server. Likewise, the changes associated with the exported files will refresh the browser automatically (LiveReload).
 
-```bash
-src
-├───components
-│   └───${my-component}
-│           ${my-component}.js
-│           ${my-component}.css
-│           ${my-component}.md
-└───custom-hooks
-    └───${my-hook}
-            ${my-hook}.js
-            ${my-hook}.md
-```
+**3.-** Easily export all your components and hooks in separate files.
 
-#### Remember
+### Scripts
 
-1. Only include one component per file.
-2. Only include one component per directory
-3. Define custom-hooks in an isolated way to the components, in a different file and directory, a file if it can contain more than one hook
+`npm start`: Create a Server + LiveReload for your project, with this you will be able to view all its components from **the port that will be shown by console according to availability**. I hope you like the interface shown by the server
 
-### Component name
+`npm run create:component`: Create a folder inside the `src/components` folder with everything you need to get started with your component, the folder to be created adheres to the Atomico [style guides](https://atomico.gitbook.io/doc/guides/code-style).
 
-It is ideal that as an author you define a name or prefix that grouped one or more components, always define after the main name the objective to be represented in the UI, eg:
+`npm run build`: Export the documentation and minify the js code and the associated css.
 
-```bash
-# Naming
-${name}-${objective}-...
-# Single
-atomico-button
-atomico-input
-# Group
-atomico-header
-atomico-header-nav
-atomico-header-logo
-atomico-header-social
-```
+`npm run build:all`: Export all files that comply with the expression `src/**/**/*-*.js;`, under Atomico [style guides](https://atomico.gitbook.io/doc/guides/code-style) their components and hooks will be automatically exported
 
-> The use of the atomic name is just an example, its use is not recommended for the declaration of the name of its component.
+##Otros recursos de interés
 
-### Component declaration
-
-Webcomponents are ideal for the generation of transparent apis, allowing trabs of attributes/properties to manipulate or know the current state of the component.
-
-#### Remember
-
-1. Always define the main tag `<host/>` as the return node
-2. Prefer the use of `useProp` if you are looking to manipulate the state of the prop and reflect this in the webcomponent as an attribute/property, keep using `useState` for private states.
-3. Prefer the use of reflect if you want to transparent the state of your component for a css selector, eg `my-component [type="email"]` or `my-component[active]`
-4. Prefer the use of default values, if you want to show the state of your component at all times
-
-### Component example
-
-```jsx
-import { h, customElement, useProp } from "atomico";
-import style from "./my-component.css";
-/**
- * @type {import("atomico").Component}
- * @param {Object} props
- * @param {string} props.type
- * @param {value} props.value
- */
-const MyComponent = ({ type }) => {
-  let [value, setValue] = useProp("value");
-  return (
-    <host shadowDom>
-      <style>{style}</style>
-      <input
-        type={type}
-        value={value}
-        oninput={({ target: { value } }) => setValue(value)}
-      ></input>
-    </host>
-  );
-};
-
-MyComponent.props = {
-  type: {
-    type: String,
-    reflect: true,
-    options: ["number", "date", "email", "phone"],
-    value: "text"
-  },
-  value: {
-    type: String,
-    value: "default message"
-  }
-};
-
-export default customElement("my-component", MyComponent);
-```
-
-using this `@type {import("atomico").Component}` fragment in the jsdoc, import the autocomplete rules for Typescript, **consider it optional.**
+1. [Atomico Documentation](https://github.com/atomicojs/atomico).
+2. [Atomico Style Guides](https://atomico.gitbook.io/doc/guides/code-style).
+3. Twitter of [Atomico](https://twitter.com/atomicojs) and [Autor](https://twitter.com/uppercod)
