@@ -9,10 +9,10 @@
     "create:component": "tfolder template/tfolder/component src/components"
   },
   "dependencies": {
-    "atomico": "*"
+    "atomico": "^0.21.1"
   },
   "devDependencies": {
     "bundle-cli": "^0.21.6",
-    "tfolder-cli": "*"
+    "tfolder-cli": "^0.1.1"
   }
 }

@@ -37,7 +37,7 @@ los [src] de los tag y exportara los script a Rollup.
 
 `npm run build:all`: Exporta todos los ficheros que cumplan con la expresión `src/**/**/*-*.js;`, bajo las [guías de estilo](https://atomico.gitbook.io/doc/guides/code-style) de Atomico se exportara automáticamente sus componentes y hooks
 
-##Otros recursos de interés
+## Otros recursos de interés
 
 1. [Documentación de Atomico](https://github.com/atomicojs/atomico).
 2. [Guías de estilo de Atomico](https://atomico.gitbook.io/doc/guides/code-style).
