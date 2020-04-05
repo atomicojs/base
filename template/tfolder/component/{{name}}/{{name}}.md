@@ -16,8 +16,8 @@ npm install "{{=<% %>=}}{{pkg.name}}<%={{ }}=%>"
 
 ## Usage
 
-```js
-import "{{=<% %>=}}{{pkg.name}}<%={{ }}=%>/{{name}}";
+```
+import {{=<% %>=}}"{{pkg.name}}<%={{ }}=%>/{{name}}"
 ```
 
 ## Demo
@@ -26,8 +26,8 @@ import "{{=<% %>=}}{{pkg.name}}<%={{ }}=%>/{{name}}";
 
 ## Properties
 
-| Prop/Attr | Description       | Type   | Reflect | Event         | Default  |
-| --------- | ----------------- | ------ | ------- | ------------- | -------- |
-| message   | little message... | String | true    | changeMessage | {{name}} |
+| Property | Attribute | Description       | Type   | Reflect | Event         | Default Value |
+| -------- | --------- | ----------------- | ------ | ------- | ------------- | ------------- |
+| message  | message   | little message... | String | true    | changeMessage | {{name}}      |
 
 <script type="module" src="{{name}}.js"><script>

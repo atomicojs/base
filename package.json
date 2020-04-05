@@ -6,13 +6,14 @@
     "start": "bundle src/**/*.{md,html} docs --watch --server --template template/theme/theme.html",
     "build": "bundle src/**/*.{md,html} docs --minify --template template/theme/theme.html",
     "build:all": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external",
-    "create:component": "tfolder template/tfolder/component src/components"
+    "create:component": "tfolder template/tfolder/component src/components",
+    "create:hook": "tfolder template/tfolder/hook src/hooks"
   },
   "dependencies": {
     "atomico": "^0.21.1"
   },
   "devDependencies": {
-    "bundle-cli": "^0.21.6",
+    "bundle-cli": "^0.21.7",
     "tfolder-cli": "^0.1.1"
   }
 }

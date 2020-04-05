@@ -266,6 +266,7 @@ h6 {
           .theme-layout.-content .markdown.-table-container table td {
             padding: 0.5rem;
             box-sizing: border-box;
+            vertical-align: baseline;
           }
 
 .theme-layout.-content .markdown.-table-container table td {
@@ -403,7 +404,7 @@ h6 {
   }
 
 .theme-aside.-list-child li {
-    padding-left: 1rem;
+    padding: 0.1rem 0px 0.1rem 1rem;
     box-sizing: border-box;
   }
 
@@ -434,6 +435,7 @@ h6 {
     }
 
 .theme-aside.-list-child-item:before {
+      top: 0px;
       left: 5px;
       width: 2px;
       height: 100%;
