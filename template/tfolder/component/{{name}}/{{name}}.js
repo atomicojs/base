@@ -1,12 +1,14 @@
 import { h, customElement } from "atomico";
 import style from "./{{name}}.css";
 
-const {{nameCamelCase}} = ({message}) => (
-  <host shadowDom>
-    <style>{style}</style>
-    <h1>👋 {message}</h1>
-  </host>
-);
+function {{nameCamelCase}}({ message }) {
+  return (
+    <host shadowDom>
+      <style>{style}</style>
+      <h1>👋 {message}</h1>
+    </host>
+  );
+}
 
 {{nameCamelCase}}.props = {
   message : {
@@ -19,4 +21,4 @@ const {{nameCamelCase}} = ({message}) => (
   }
 };
 
-export default customElement("{{name}}", {{nameCamelCase}});
+customElement("{{name}}", {{nameCamelCase}});

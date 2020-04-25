@@ -26,8 +26,8 @@ import {{=<% %>=}}"{{pkg.name}}<%={{ }}=%>/{{name}}"
 
 ## Properties
 
-| Property | Attribute | Description       | Type   | Reflect | Event         | Default Value |
-| -------- | --------- | ----------------- | ------ | ------- | ------------- | ------------- |
-| message  | message   | little message... | String | true    | changeMessage | {{name}}      |
+| Prop/Attr | Description | Type   | Reflect | Event                  | Default Value |
+| --------- | ----------- | ------ | ------- | ---------------------- | ------------- |
+| message   | message     | String | String  | `{type:"ChangeEvent"}` | `"{{name}}"`  |
 
 <script type="module" src="{{name}}.js"><script>
