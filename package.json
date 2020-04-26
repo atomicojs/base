@@ -1,11 +1,15 @@
 {
   "name": "atomico-base",
   "description": "a repo to start with atomico",
+  "meta": {
+    "title": "Create Design System with Atomico",
+    "description": "Configuration for the creation and distribution of Design Systems"
+  },
   "version": "0.0.0",
   "scripts": {
     "start": "bundle src/**/*.{md,html} docs --watch --server --template template/theme/theme.html",
-    "build": "bundle src/**/*.{md,html} docs --minify --template template/theme/theme.html",
-    "build:all": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external",
+    "build": "bundle src/**/*.{md,html} docs --minify --template template/theme/theme.html --sizes",
+    "build:all": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
     "create:component": "tfolder template/tfolder/component src/components",
     "create:hook": "tfolder template/tfolder/hook src/hooks"
   },
