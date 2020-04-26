@@ -1,44 +1,43 @@
-# base
+# Comenzando con Atomico
 
-Bienvenido a [Atomico](https://github.com/atomicojs/atomico) como [autor](https://twitter.com/uppercod) yo espero que su experiencia de uso sea memorable!
+[Español](./spanish.md) [English](../README.md)
 
-Esta configuración dispuesta le provee una estructura para comenzar con Atomico de forma ágil gracias a [bundle-cli](https://github.com/atomicojs/bundle-cli), con esta configuración ud podrá:
+Esta configuración permite un desarrollo dinámico basado en la exportación desde ficheros html(¡Si como [Parceljs](https://parceljs.org/)! 🤓), mediante el scripts `npm start` ud podrá desarrollar componentes que se visualicen el navegador gracias a un servidor con livereload local enseñado por consola, por defecto este puede estar alojado en el puerto `localhost:8000`.
 
-**1.-** Documentar y desarrollar desde un fichero markdown o html , **bundle-cli se encargara de extraer sus script, estilos y otros desde ficheros markdown o html**, eg:
+## Directorio
 
-```markdown
-# Atomico pesa menos de 4kb
-
-y yo soy un fichero markdown...
-
-<!--
-Ahora algo de magia de bundle-cli, bundle-cli extrae
-los [src] de los tag y exportara los script a Rollup.
--->
-
-<my-component></my-component>
-
-<script src="./my-component.js" type="module"></script>
+```bash
+/src
+    /components # directorio para webcomponentes
+        /atomico-counter # Ejemplo de componente con Atomico
+            atomico-counter.js
+            atomico-counter.css
+            atomico-counter.md  # documentación del componente
+    index.html # Archivo html a servirce en el servidor
 ```
 
-> En resumen un efecto similar a MDX pero con Markdown.
+> los archivos exportados desde el html se almacenan procesados en `/docs`(Amigable con github pages 😎), ud puede cambiar este efecto modificando los `scripts` del `package.json`
 
-**2.-** **LiveReload , servidor local y un observador de archivos incremental**, si ud crea un nuevo fichero markdown o html se añadirá a la cola de exportación para visualizar en el servidor local, de igual forma los cambios asociados a los ficheros exportados refrescaran el navegador automáticamente(LiveReload).
+## Scripts
 
-**3.-** Exportar fácilmente todos sus componentes y hooks en archivos independientes.
+### npm start
 
-### Scripts
+Arranca el servidor, este por defecto nos mostrara el fichero `src/index.html` y todo lo que este importe
 
-`npm start`: Crea un Servidor + LiveReload para su proyecto, con este ud podrá visualizar todos sus componentes desde **el puerto que se mostrara por consola según disponibilidad**. Espero que le agrade la interfaz mostrada por el servidor
+### npm run build
 
-`npm run create:component`: Crea una carpeta bajo las [guías de estilo](https://atomico.gitbook.io/doc/guides/code-style) de Atomico dentro del folder `src/components` con todo lo necesario para comenzar con su componente.
+Empaqueta para producción lo expotado desde los ficheros html
 
-`npm run build`: Exporta la documentación y minifica el código js y el css asociado.
+### npm run build:npm
 
-`npm run build:all`: Exporta todos los ficheros que cumplan con la expresión `src/**/**/*-*.js;`, bajo las [guías de estilo](https://atomico.gitbook.io/doc/guides/code-style) de Atomico se exportara automáticamente sus componentes y hooks
+Empaqueta para distribución mediante NPM todos los componentes asociados al directorio `src/components`, estos son exportados como archivos independientes.
 
-## Otros recursos de interés
+> Recuerda distribuir en npm debes modificar el **package.json**.
 
-1. [Documentación de Atomico](https://github.com/atomicojs/atomico).
-2. [Guías de estilo de Atomico](https://atomico.gitbook.io/doc/guides/code-style).
-3. Twitter de [Atomico](https://twitter.com/atomicojs) y [Autor](https://twitter.com/uppercod)
+### npm run create:component
+
+Crea un componente en el directorio `src/components` [con la estructura recomendada](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`
+
+### npm run create:hook
+
+Crea un hook en el directorio `src/hooks` con la [estructura recomendada](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`

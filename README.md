@@ -1,44 +1,43 @@
-# base
+# Getting started with Atomico
 
-Welcome to [Atomico](https://github.com/atomicojs/atomico) as an [author](https://twitter.com/uppercod), I hope your experience of use is memorable!
+[Español](./lang/spanish.md) [English](./README.md)
 
-this configuration provides you with a structure to start with Atomico in an agile way thanks to [bundle-cli](https://github.com/atomicojs/bundle-cli), with this configuration you will be able to:
+This configuration allows a dynamic development based on the export from html files (If like [Parceljs](https://parceljs.org/)! 🤓), using the `npm start` scripts you can develop components that are displayed by the browser Thanks to a server with console-taught local livereload, by default it can be hosted on the `localhost: 8000` port.
 
-**1.-** Documentar y desarrollar desde un fichero markdown o html , **bundle-cli se encargara de extraer sus script, estilos y otros desde ficheros markdown o html**, eg:
+## Directorio
 
-```markdown
-# Atomico size is less than 4kb
-
-and I'm a markdown file ...
-
-<!--
-Now some magic of bundle-cli, bundle-cli extract
-the [src] of the tags and export the scripts to Rollup and more.
--->
-
-<my-component></my-component>
-
-<script src="./my-component.js" type="module"></script>
+```bash
+/src
+    /components # Directory for webcomponents
+        /atomico-counter # Example of component with Atomico
+            atomico-counter.js
+            atomico-counter.css
+            atomico-counter.md  # component documentation
+    index.html # Html file to serve on the server
 ```
 
-> In summary an effect similar to MDX but with Markdown.
+> files exported from html are stored processed in `/docs`(Friendly with github pages 😎), you can change this effect by modifying the`scripts` of `package.json`.
 
-**2.-** **LiveReload, local server and an incremental file watcher**, If you create a new markdown or html file, it will be added to the export queue to be viewed on the local server. Likewise, the changes associated with the exported files will refresh the browser automatically (LiveReload).
+## Scripts
 
-**3.-** Easily export all your components and hooks in separate files.
+### npm start
 
-### Scripts
+Initialize a developing server for the files that are exported from the html files in the `src/*.html` directory.
 
-`npm start`: Create a Server + LiveReload for your project, with this you will be able to view all its components from **the port that will be shown by console according to availability**. I hope you like the interface shown by the server
+### npm run build
 
-`npm run create:component`: Create a folder inside the `src/components` folder with everything you need to get started with your component, the folder to be created adheres to the Atomico [style guides](https://atomico.gitbook.io/doc/guides/code-style).
+Create the export bundle from the html files.
 
-`npm run build`: Export the documentation and minify the js code and the associated css.
+### npm run build:npm
 
-`npm run build:all`: Export all files that comply with the expression `src/**/**/*-*.js;`, under Atomico [style guides](https://atomico.gitbook.io/doc/guides/code-style) their components and hooks will be automatically exported
+Package for distribution in NPM all the components of the `src/components` directory, these are exported as separate files.
 
-## Other resources of interest
+> remember to distribute in npm you must modify the **package.json**.
 
-1. [Atomico Documentation](https://github.com/atomicojs/atomico).
-2. [Atomico Style Guides](https://atomico.gitbook.io/doc/guides/code-style).
-3. Twitter of [Atomico](https://twitter.com/atomicojs) and [Autor](https://twitter.com/uppercod)
+### npm run create:component
+
+Create a component in the `src/components` directory [with the recommended structure](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`.
+
+### npm run create:hook
+
+Create a hook in the `src/hooks` directory with the [recommended structure](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`.
