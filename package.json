@@ -1,15 +1,14 @@
 {
   "name": "atomico-base",
-  "description": "a repo to start with atomico",
+  "description": "",
   "meta": {
-    "title": "Getting started with Atomico",
-    "description": "Blazing fast as Parceljs but for webcomponents, zero configuration"
+    "title": "Getting started with Atomico + Snowpack",
+    "description": "Light configuration, development experience based on modules managed by Snowpack"
   },
   "version": "0.0.0",
   "scripts": {
-    "start": "bundle src/**/*.html docs --watch --server",
-    "build": "bundle src/**/*.html docs --minify --sizes",
-    "build:npm": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
+    "start": "servor . index.html 8080 --reload --browse",
+    "prepare": "snowpack",
     "create:component": "tfolder template/tfolder/component src/components",
     "create:hook": "tfolder template/tfolder/hook src/hooks"
   },
@@ -17,7 +16,14 @@
     "atomico": "^0.22.1"
   },
   "devDependencies": {
-    "bundle-cli": "^0.23.2",
+    "servor": "^3.0.8",
+    "snowpack": "^1.0.5",
     "tfolder-cli": "^0.1.1"
+  },
+  "snowpack": {
+    "webDependencies": [
+      "atomico",
+      "atomico/html.js"
+    ]
   }
 }

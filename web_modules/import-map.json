@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "atomico": "./atomico.js",
+    "atomico/html.js": "./atomico/html.js"
+  }
+}

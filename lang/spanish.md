@@ -1,8 +1,8 @@
-# Comenzando con Atomico
+# Comenzando con Atomico + Snowpack
 
 [Español](./spanish.md) [English](../README.md)
 
-Esta configuración permite un desarrollo dinámico basado en la exportación desde ficheros html(¡Si como [Parceljs](https://parceljs.org/)! 🤓), mediante el scripts `npm start` ud podrá desarrollar componentes que se visualicen el navegador gracias a un servidor con livereload local enseñado por consola, por defecto este puede estar alojado en el puerto `localhost:8000`.
+Esta configuración permite un desarrollo dinámico basado en Snowpack, mediante el scripts `npm start` ud podrá desarrollar componentes que se visualicen el navegador gracias a un servidor con livereload local enseñado por consola, por defecto este puede estar alojado en el puerto `localhost:8080`.
 
 ## Directorio
 
@@ -13,26 +13,14 @@ Esta configuración permite un desarrollo dinámico basado en la exportación de
             atomico-counter.js
             atomico-counter.css
             atomico-counter.md  # documentación del componente
-    index.html # Archivo html a servirce en el servidor
+index.html # Archivo html a servirce en el servidor
 ```
-
-> los archivos exportados desde el html se almacenan procesados en `/docs`(Amigable con github pages 😎), ud puede cambiar este efecto modificando los `scripts` del `package.json`
 
 ## Scripts
 
 ### npm start
 
-Arranca el servidor, este por defecto nos mostrara el fichero `src/index.html` y todo lo que este importe
-
-### npm run build
-
-Empaqueta para producción lo expotado desde los ficheros html
-
-### npm run build:npm
-
-Empaqueta para distribución mediante NPM todos los componentes asociados al directorio `src/components`, estos son exportados como archivos independientes.
-
-> Recuerda distribuir en npm debes modificar el **package.json**.
+Arranca el servidor, este por defecto nos mostrara el fichero `index.html` y todo lo que este importe
 
 ### npm run create:component
 

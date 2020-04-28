@@ -1,8 +1,8 @@
-# Getting started with Atomico
+# Getting started with Atomico + Snowpack
 
 [Español](./lang/spanish.md) [English](./README.md)
 
-This configuration allows a dynamic development based on the export from html files (If like [Parceljs](https://parceljs.org/)! 🤓), using the `npm start` scripts you can develop components that are displayed by the browser Thanks to a server with console-taught local livereload, by default it can be hosted on the `localhost:8000` port.
+This configuration allows a dynamic development based on Snowpack, using the `npm start` scripts you can develop components that are displayed by the browser thanks to a server with local livereload taught by console, by default it can be hosted on the `localhost:8080` port.
 
 ## Directory
 
@@ -23,16 +23,6 @@ This configuration allows a dynamic development based on the export from html fi
 ### npm start
 
 Initialize a developing server for the files that are exported from the html files in the `src/*.html` directory.
-
-### npm run build
-
-Create the export bundle from the html files.
-
-### npm run build:npm
-
-Package for distribution in NPM all the components of the `src/components` directory, these are exported as separate files.
-
-> remember to distribute in npm you must modify the **package.json**.
 
 ### npm run create:component
 
