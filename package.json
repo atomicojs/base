@@ -17,7 +17,7 @@
     "atomico": "^0.22.1"
   },
   "devDependencies": {
-    "bundle-cli": "^0.23.2",
+    "bundle-cli": "^0.24.0",
     "tfolder-cli": "^0.1.1"
   }
 }
