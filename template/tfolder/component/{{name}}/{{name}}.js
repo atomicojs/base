@@ -1,12 +1,18 @@
-import { h, customElement } from "atomico";
-import style from "./{{name}}.css";
+import { customElement, useProp } from "../../../web_modules/atomico.js";
+import html from "../../../web_modules/atomico/html.js";
 
-const {{nameCamelCase}} = ({message}) => (
-  <host shadowDom>
-    <style>{style}</style>
-    <h1>👋 {message}</h1>
-  </host>
-);
+function {{nameCamelCase}}({ message }) {
+  return html`
+    <host shadowDom>
+      <style>
+        :host {
+          font-size: 30px;
+        }
+      </style>
+      <h1>👋 ${message}</h1>
+    </host>
+  `;
+}
 
 {{nameCamelCase}}.props = {
   message : {
@@ -19,4 +25,4 @@ const {{nameCamelCase}} = ({message}) => (
   }
 };
 
-export default customElement("{{name}}", {{nameCamelCase}});
+customElement("{{name}}", {{nameCamelCase}});
