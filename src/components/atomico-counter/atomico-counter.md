@@ -53,4 +53,4 @@ customElement("atomico-counter", AtomicoCounter);
 | --------- | ---------------------- | ------ | ------- | ----------- | ------------- |
 | count     | current value of count | Number | String  | ChangeCount | 0             |
 
-<script type="module" src="atomico-counter.js"><script>
+<script async type="module" src="atomico-counter.js"><script>

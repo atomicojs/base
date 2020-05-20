@@ -1,109 +1,66 @@
 <!DOCTYPE html><html lang="en"><head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>atomico-base - &lt;atomico-counter/&gt;</title>
-    <meta name="description" content="Counter created with Atomico, its interaction is complete, managing to reactively work the state of &quot;count&quot; as property and attribute of the component">
-    <link href="https://fonts.googleapis.com/css?family=Sen:700|Fira+Code:500,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
     <style>
-      :root {
-        --theme-font-title: "Sen", sans-serif;
-        --theme-font: "Fira Code", monospace;
-        --theme-font-color: #404049;
-        --theme-font-color-light: #f1f1f9;
-        --theme-font-color-dark: black;
-        --theme-font-color-selection: #7afee1;
-        --theme-font-color-code: deeppink;
-        --theme-box-radius: 7px;
-        --theme-box-padding: 2rem;
-        --theme-box-border-color: rgba(0, 0, 0, 0.15);
-        --theme-primary: black;
-        --theme-second: #0033ff;
-        --theme-contrast: #f1f1f9;
-        --theme-background: white;
-        --theme-background-dark: #232329;
+      body {
+        font-family: "Roboto Mono", monospace;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
       }
     </style>
-    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="./home.css">
+    <title><atomico-counter/></title>
   </head>
   <body>
-    <input type="checkbox" id="toggle-menu">
-    <main class="theme-layout -box">
-      <aside class="theme-layout -aside">
-        <div class="theme-layout -layer -aside-background"></div>
-        <div class="theme-layout -layer -aside-scroll">
-          <div class="theme-aside -logo">
-            <img src="https://unpkg.com/atomico@0.20.0/docs/brand/logo-black.svg" alt="Logo atomico-base">
-          </div>
-          <ul class="theme-aside -list-root">
-            <li>
-              <strong class="theme-aside -list-root-title">Welcome</strong>
-              <ul class="theme-aside -list-child">
-                <li class="theme-aside -list-child-item --active-false">
-                  <a href="component-documentation.html">Component documentation</a>
-                </li>
-                <li class="theme-aside -list-child-item --active-false">
-                  <a href="creation-component.html">Component creation</a>
-                </li>
-                <li class="theme-aside -list-child-item --active-false">
-                  <a href="index.html">Introduction</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <strong class="theme-aside -list-root-title">Components</strong>
-              <ul class="theme-aside -list-child">
-                <li class="theme-aside -list-child-item --active-true">
-                  <a href="atomico-counter.html">&lt;atomico-counter/&gt;</a>
-                </li>
-                <li class="theme-aside -list-child-item --active-false">
-                  <a href="hello-world.html">&lt;hello-world/&gt;</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div class="theme-layout -tags">
-            <a href="https://github.com/atomicojs/atomico" target="_blank">Github</a>
-            <a href="https://twitter.com/uppercod" target="_blank">Twitter</a>
-          </div>
-        </div>
-      </aside>
-      <section class="theme-layout -content">
-        <article>
-          <h1 id="pagetitle">&lt;atomico-counter/&gt;</h1>
-<blockquote>
-<p>Counter created with Atomico, its interaction is complete, managing to reactively work the state of &quot;count&quot; as property and attribute of the component</p>
-</blockquote>
+    <section>
+      <h1><atomico-counter/></h1>
+      <p>Counter created with Atomico, its interaction is complete, managing to reactively work the state of "count" as property and attribute of the component</p>
+    </section>
+    <section>
+      
+      <!---->
+      
+      <section class="subpage -box">
+        <div class="subpage -max-center">
+          <h1 id="pagetitle"><atomico-counter/></h1>
+<p>&gt; Counter created with Atomico, its interaction is complete, managing to reactively work the state of "count" as property and attribute of the component</p>
 <h2 id="component">Component</h2>
-<pre class="markdown -code-container" data-code="jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> h<span class="token punctuation">,</span> customElement<span class="token punctuation">,</span> useProp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"atomico"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> style <span class="token keyword">from</span> <span class="token string">"./atomico-counter.css"</span><span class="token punctuation">;</span>
+<pre class="markdown -code-container" data-code="jsx"><code class="language-jsx">import { h, customElement, useProp } from &#x22;atomico&#x22;;
+import style from &#x22;./atomico-counter.css&#x22;;
 
-<span class="token keyword">function</span> <span class="token function">AtomicoCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useProp</span><span class="token punctuation">(</span><span class="token string">"count"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// interacts with the property as a functional hook</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>host</span> <span class="token attr-name">shadowDom</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">{style}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>host</span><span class="token punctuation">&gt;</span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+function AtomicoCounter() {
+  let [count, setCount] = useProp(&#x22;count&#x22;); // interacts with the property as a functional hook
+  return (
+    &#x3C;host shadowdom=&#x22;&#x22;&#x3E;
+      &#x3C;style&#x3E;{style}&#x3C;/style&#x3E;
+      &#x3C;button onclick=&#x22;{()&#x22; ==&#x22;&#x22;&#x3E; setCount(count - 1)}&#x26;gt;-&#x3C;/button&#x3E;
+      &#x3C;span&#x3E;{count}&#x3C;/span&#x3E;
+      &#x3C;button onclick=&#x22;{()&#x22; ==&#x22;&#x22;&#x3E; setCount(count + 1)}&#x26;gt;+&#x3C;/button&#x3E;
+    &#x3C;/host&#x3E;
+  );
+}
 
-AtomicoCounter<span class="token punctuation">.</span>props <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token comment">// create property and register count attribute as observable</span>
-  count<span class="token operator">:</span> <span class="token punctuation">{</span>
-    type<span class="token operator">:</span> Number<span class="token punctuation">,</span> <span class="token comment">// normaliza todo valor para la propiedad como numerico</span>
-    reflect<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// reflects the count property as an attribute</span>
-    value<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">// initialize the value to 0</span>
-    event<span class="token operator">:</span> <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">"ChangeCount"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// dispatches ChangeCount event at every count change, for subscription of side effects</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+AtomicoCounter.props = {
+  // create property and register count attribute as observable
+  count: {
+    type: Number, // normaliza todo valor para la propiedad como numerico
+    reflect: true, // reflects the count property as an attribute
+    value: 0, // initialize the value to 0
+    event: { type: &#x22;ChangeCount&#x22; }, // dispatches ChangeCount event at every count change, for subscription of side effects
+  },
+};
 
-<span class="token function">customElement</span><span class="token punctuation">(</span><span class="token string">"atomico-counter"</span><span class="token punctuation">,</span> AtomicoCounter<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h2 id="demo">Demo</h2>
-<p></p><div class="markdown -html-container"><atomico-counter count="100"></atomico-counter></div><div class="markdown -html-container"></div><p></p>
-<pre class="markdown -code-container" data-code="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>atomico-counter</span> <span class="token attr-name">count</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>atomico-counter</span><span class="token punctuation">&gt;</span></span></code></pre><h2 id="properties">Properties</h2>
-<div class="markdown -table-container"><table><tbody><tr>
+customElement(&#x22;atomico-counter&#x22;, AtomicoCounter);</code></pre><h2 id="demo">Demo</h2>
+<p><div class="markdown -html-container"><atomico-counter count="100"></div><div class="markdown -html-container"></atomico-counter></div></p>
+<pre class="markdown -code-container" data-code="html"><code class="language-html">&#x3C;atomico-counter count=&#x22;100&#x22;&#x3E;&#x3C;/atomico-counter&#x3E;</code></pre><h2 id="properties">Properties</h2>
+<div class="markdown -table-container"><table><tr>
 <th>Prop/Attr</th>
 <th>Description</th>
 <th>Type</th>
@@ -119,31 +76,49 @@ AtomicoCounter<span class="token punctuation">.</span>props <span class="token o
 <td>ChangeCount</td>
 <td>0</td>
 </tr>
-</tbody></table></div><div class="markdown -html-container"><script type="module" src="atomico-counter.js"><script>
-</div></script></div> 
-          <br>
-          <br>
-          <hr>
-          <footer class="theme-layout -cards">
- 
-            <a class="theme-layout -card" href="hello-world.html">
-              <strong>
-                &lt;hello-world/&gt;
-              </strong>
-              <svg class="theme-layout -card-icon" width="16px" viewBox="0 0 492.004 492.004">
-                <path style="fill: var(--theme-second);" d="M484.14 226.886L306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"></path>
-              </svg>
-            </a>
-          </footer>
-        </article>
-      </section>
-
-      <label for="toggle-menu">
-        <div class="theme-layout -toggle-menu">
-          <div></div>
+</table></div><div class="markdown -html-container"><script async="" type="module" src="./atomico-counter.js"><script>
+</script></div>
         </div>
-      </label>
-    </main>
+      </section>
+      
+      <section class="subpage -box">
+        <div class="subpage -max-center">
+          <h1 id="introduccion">Introduccion</h1>
+
+        </div>
+      </section>
+      
+      <section class="subpage -box">
+        <div class="subpage -max-center">
+          <h1 id="pagetitle"><hello-world/></h1>
+<p>&gt; my description...</p>
+<h2 id="installation">Installation</h2>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash">npm install &#x22;atomico-base&#x22;</code></pre><h2 id="usage">Usage</h2>
+<pre class="markdown -code-container" data-code="js"><code class="language-js">import &#x22;atomico-base/hello-world&#x22;;</code></pre><h2 id="demo">Demo</h2>
+<p><div class="markdown -html-container"><hello-world></div><div class="markdown -html-container"></hello-world></div></p>
+<h2 id="properties">Properties</h2>
+<div class="markdown -table-container"><table><tr>
+<th>Prop/Attr</th>
+<th>Description</th>
+<th>Type</th>
+<th>Reflect</th>
+<th>Event</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>message</td>
+<td>little message...</td>
+<td>String</td>
+<td>true</td>
+<td>changeMessage</td>
+<td>hello-world</td>
+</tr>
+</table></div><div class="markdown -html-container"><script type="module" src="./hello-world.js"><script>
+</script></div>
+        </div>
+      </section>
+      
+    </section>
   
 
 </body></html>

@@ -9,15 +9,16 @@
   "scripts": {
     "start": "bundle src/**/*.{md,html} docs --watch --server --template template/theme/theme.html",
     "build": "bundle src/**/*.{md,html} docs --minify --template template/theme/theme.html --sizes",
-    "build:all": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
+    "build:npm": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
     "create:component": "tfolder template/tfolder/component src/components",
-    "create:hook": "tfolder template/tfolder/hook src/hooks"
+    "create:hook": "tfolder template/tfolder/hook src/hooks",
+    "prepare": "build:npm"
   },
   "dependencies": {
-    "atomico": "^0.22.1"
+    "atomico": "^0.23.2"
   },
   "devDependencies": {
-    "bundle-cli": "^0.24.0",
-    "tfolder-cli": "^0.1.1"
+    "bundle-cli": "^0.26.0",
+    "tfolder-cli": "^0.2.0"
   }
 }

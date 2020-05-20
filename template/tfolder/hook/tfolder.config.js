@@ -1,4 +1,4 @@
-import prompts from "prompts";
+let { prompts } = require("tfolder-cli/utils");
 
 const questions = [
   {
@@ -9,11 +9,11 @@ const questions = [
   },
 ];
 
-export default async function () {
+module.exports = async function () {
   let data = await prompts(questions);
   data.name = data.name.trim().replace(/ +/g, "-");
   data.nameCamelCase = data.name.replace(/-(\w)/g, (all, letter) =>
     letter.toUpperCase()
   );
   return data;
-}
+};
