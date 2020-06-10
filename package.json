@@ -6,24 +6,20 @@
     "description": "Light configuration, development experience based on modules managed by Snowpack"
   },
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "start": "servor . index.html 8080 --reload --browse",
-    "prepare": "snowpack",
+    "start": "snowpack dev",
+    "build": "snowpack build",
     "create:component": "tfolder template/tfolder/component src/components",
     "create:hook": "tfolder template/tfolder/hook src/hooks"
   },
   "dependencies": {
-    "atomico": "^0.22.1"
+    "atomico": "^0.23.2"
   },
   "devDependencies": {
-    "servor": "^3.0.8",
-    "snowpack": "^1.0.5",
-    "tfolder-cli": "^0.1.1"
-  },
-  "snowpack": {
-    "webDependencies": [
-      "atomico",
-      "atomico/html.js"
-    ]
+    "snowpack": "^2.4.0",
+    "tfolder-cli": "^0.2.0"
   }
 }

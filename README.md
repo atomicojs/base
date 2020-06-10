@@ -7,27 +7,27 @@ This configuration allows a dynamic development based on Snowpack, using the `np
 ## Directory
 
 ```bash
+/public
+    index.html # Html file to serve on the server
 /src
     /components # Directory for webcomponents
         /atomico-counter # Example of component with Atomico
             atomico-counter.js
             atomico-counter.css
             atomico-counter.md  # component documentation
-    index.html # Html file to serve on the server
-```
 
-> files exported from html are stored processed in `/docs`(Friendly with github pages 😎), you can change this effect by modifying the`scripts` of `package.json`.
+```
 
 ## Scripts
 
 ### npm start
 
-Initialize a developing server for the files that are exported from the html files in the `src/*.html` directory.
+Initialize snowpack development mode
 
 ### npm run create:component
 
-Create a component in the `src/components` directory [with the recommended structure](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`.
+Create a component in the `src/components` directory [with the recommended structure](https://atomico.gitbook.io/doc/guides/code-style) `Atomico`.
 
 ### npm run create:hook
 
-Create a hook in the `src/hooks` directory with the [recommended structure](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`.
+Create a hook in the `src/hooks` directory with the [recommended structure](https://atomico.gitbook.io/doc/guides/code-style) `Atomico`.

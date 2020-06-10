@@ -1,5 +1,5 @@
-import { customElement, useProp } from "../../../web_modules/atomico.js";
-import html from "../../../web_modules/atomico/html.js";
+import { customElement } from "atomico";
+import html from "atomico/html";
 
 function {{nameCamelCase}}({ message }) {
   return html`

@@ -1,5 +1,5 @@
-import { customElement, useProp } from "../../../web_modules/atomico.js";
-import html from "../../../web_modules/atomico/html.js";
+import { customElement, useProp } from "atomico";
+import html from "atomico/html";
 
 function AtomicoCounter() {
   let [count, setCount] = useProp("count"); // interacts with the property as a functional hook
