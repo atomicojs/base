@@ -57,6 +57,11 @@ singlePage: index
       type="module"
       src="./components/simple-doc-menu-burger-hash/simple-doc-menu-burger-hash.js"
     ></script>
+    <script
+      async
+      type="module"
+      src="./components/simple-doc-author/simple-doc-author.js"
+    ></script>
   </head>
   <body>
     <header class="simple-doc-header box">
@@ -118,7 +123,19 @@ singlePage: index
       {% endif %}
     </header>
     <main class="simple-doc-content box">
-      <nav style="margin-left: auto;" class="simple-doc-content part-nav"></nav>
+      <nav style="margin-left: auto;" class="simple-doc-content part-nav">
+        {% if page.fetch.author %}
+        <simple-doc-author
+          id="author-desktop"
+          label="{{page.fetch.author.type}}"
+          user="{{page.fetch.author.login|capitalize }}"
+          avatar="https://github.com/{{page.fetch.author.login}}.png?size=300"
+          link="{{page.fetch.author.html_url}}"
+        >
+          {{page.fetch.author.bio}}
+        </simple-doc-author>
+        {% endif %}
+      </nav>
       <div class="simple-doc-content part-center" id="content">
         {% assign sections = pages|order: "order" %}
         <!---->

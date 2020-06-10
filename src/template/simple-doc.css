@@ -62,17 +62,20 @@
     padding-bottom: 150px;
     background: rgba(255, 255, 255, 0.3);
     overflow: hidden;
-    border-radius: 3px 3px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
   }
   &.part-section {
     width: 100%;
     background: white;
     float: left;
-    padding: 30px 10% 0px;
+    padding: 0px 10%;
     box-sizing: border-box;
     &.part-columns-true p {
       columns: 2 280px;
       column-gap: 2rem;
+    }
+    &:first-child {
+      padding-top: 30px;
     }
     &:last-child {
       padding-bottom: 50px;
@@ -110,7 +113,7 @@
     & p {
       line-height: 1.8em;
     }
-    & blockq uote {
+    & blockquote {
       position: relative;
       margin: 0px;
       padding: 0.7rem 0px 0.7rem 2rem;
@@ -122,15 +125,15 @@
       &:before {
         content: "";
         width: 3px;
-        height: calc(100% - 2rem);
+        height: calc(100% - 50px);
         left: 6px;
         display: block;
-        top: 1.5rem;
+        top: 30px;
         background: var(--theme-primary);
       }
       &:after {
         content: "“";
-        top: 1rem;
+        top: 0px;
         font-family: sans-serif;
         font-size: 50px;
       }
@@ -153,7 +156,7 @@
   padding: 20px;
   box-sizing: border-box;
   overflow: auto;
-  border-radius: 3px;
+  border-radius: 8px;
   & *::selection {
     background: rgba(0, 0, 0, 0.5);
   }
@@ -162,6 +165,7 @@
 .markdown-table-container {
   overflow: auto;
   text-align: left;
+  font-size: 0.85rem;
   & table {
     width: 100%;
     margin: 0px -0.5rem;
@@ -170,4 +174,8 @@
   & td {
     padding: 0.1rem 0.5rem;
   }
+}
+
+#author-desktop {
+  margin-top: -50px;
 }

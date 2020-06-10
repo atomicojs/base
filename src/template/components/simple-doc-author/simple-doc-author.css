@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  padding: 5px;
+  border-radius: 10px;
+  background: white;
+}
+
+.img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.title-label {
+  font-size: 14px;
+  margin: 0px;
+  opacity: 0.75;
+}
+.title-user {
+  font-size: 16px;
+  margin: 0px 0px 10px;
+}
+
+.content {
+  padding: 0px 10px 10px;
+  box-sizing: border-box;
+}

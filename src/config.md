@@ -2,24 +2,26 @@
 order: 1
 ---
 
-## Configuracion
+## Configuration
 
-Por defecto el template tomara la configuracion declarada en el fichero `index.md`, ej:
+By default the template will take the configuration declared in the [index.md]({{pkg.meta.branch}}{{page.file}}) file, eg:
 
 ```yaml
 title: Welcome a simple doc
-description: Crea documentacion rapida de una pagina usando markdow y webcomponents
-hero: true # habilita el encabezado que meustra title y description
-order: 0 # Define el orden de la seccion
-columns: true # Activa el uso de columnas en la seccion
+description: Create quick singlePage documentation with markdown + webcomponents
+hero: false # enable the header showing title and description
+order: 0 # Define the order of the section
+columns: true # Activate the use of columns in the section
 socials:
   twitter: https://twitter.com/uppercod
   github: https://github.com/
 files:
   logo: ./logo-white.svg
+fetch:
+  author: https://api.github.com/users/atomicojs # export the author from github
 ```
 
-La metadata minima para crear una nueva seccion dentro de documentacion es :
+The minimum metadata to create a new section within documentation is:
 
 ```markdown
 ---
@@ -31,9 +33,9 @@ order: 1
 bla bla bla...
 ```
 
-## Usando webcomponents
+## Using webcomponents
 
-para usar webcomponents simplemente importe desde su documento html o markdow su script, eg:
+to use web components just import from your html document or markdow your script, eg:
 
 ```markdown
 ## Demo
@@ -43,10 +45,6 @@ para usar webcomponents simplemente importe desde su documento html o markdow su
 <script type="module" src="./my-element.js"></script>
 ```
 
-## Configuracion del templates
+## Template configuration
 
-El template esta dentro del `src/template`, este posee assets locales que pueden ser modificados para cambiar todo el comportamiento de este.
-
-### Ejemplo de webcomponents en markdown
-
-<script type="module" src="./components/input-password/input-password.js"></script>
+The template is inside the `src/template`, it has local assets that can be modified to change all its behavior.

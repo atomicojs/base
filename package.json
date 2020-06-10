@@ -3,13 +3,14 @@
   "description": "a repo to start with atomico",
   "meta": {
     "title": "Create Design System with Atomico",
-    "description": "Configuration for the creation and distribution of Design Systems"
+    "description": "Configuration for the creation and distribution of Design Systems",
+    "branch": "https://github.com/atomicojs/atomico/tree/master/"
   },
   "version": "0.0.0",
   "scripts": {
-    "start": "bundle src/**/*.{md,html};!src/template/components;!src/template/hooks docs --watch --server --template template/theme/theme.html",
-    "build": "bundle src/**/*.{md,html};!src/template/components;!src/template/hooks docs --minify --template template/theme/theme.html --sizes",
-    "build:npm": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
+    "start": "estack src/**/*.{md,html};!src/template/components;!src/template/hooks docs --watch --server --template template/theme/theme.html --sourcemap",
+    "build": "estack src/**/*.{md,html};!src/template/components;!src/template/hooks docs --minify --template template/theme/theme.html --sizes",
+    "build:npm": "estack src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
     "create:component": "tfolder tfolder/component src/components",
     "create:hook": "tfolder tfolder/hook src/hooks",
     "prepare": "build:npm"
@@ -18,7 +19,7 @@
     "atomico": "^0.23.2"
   },
   "devDependencies": {
-    "bundle-cli": "^0.32.0",
+    "estack": "^0.3.5",
     "tfolder-cli": "^0.2.0"
   }
 }

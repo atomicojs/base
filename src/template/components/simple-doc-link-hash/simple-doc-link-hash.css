@@ -10,12 +10,15 @@
   display: flex;
   text-decoration: none;
   color: unset;
-  padding: 2px 0px;
+  padding: 4px 0px;
   & path {
     transition: 1s ease all;
   }
   & div {
     padding-left: 10px;
     flex: 0%;
+  }
+  & svg {
+    margin-top: 5px;
   }
 }
