@@ -10,10 +10,10 @@
   "scripts": {
     "start": "estack src/**/*.{md,html};!src/template/components;!src/template/hooks docs --watch --server --template template/theme/theme.html --sourcemap",
     "build": "estack src/**/*.{md,html};!src/template/components;!src/template/hooks docs --minify --template template/theme/theme.html --sizes",
-    "build:npm": "estack src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
+    "build:npm": "estack src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes --sourcemap",
     "create:component": "tfolder tfolder/component src/components",
     "create:hook": "tfolder tfolder/hook src/hooks",
-    "prepare": "build:npm"
+    "prepare": "npm run build:npm"
   },
   "dependencies": {
     "atomico": "^0.23.2"
