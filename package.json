@@ -2,8 +2,8 @@
   "name": "atomico-base",
   "description": "a repo to start with atomico",
   "meta": {
-    "title": "Create Design System with Atomico",
-    "description": "Configuration for the creation and distribution of Design Systems",
+    "title": "Simple Doc",
+    "description": "Create singlePage documentations + web components",
     "branch": "https://github.com/atomicojs/atomico/tree/master/"
   },
   "version": "0.0.0",
