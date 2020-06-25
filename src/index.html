@@ -3,10 +3,12 @@ title: Atomico - started
 socials:
   twitter: https://twitter.com/atomicojs
   github: https://github.com/atomicojs/atomico
-data:
-  title: |
-    Culpa  eiusmod Lor
-    em laborum esse
+welcome: |
+  Welcome to Atomico just 3Kb to create amazing webcomponents 
+  based on virtual-dom, Hoosk and magic props
+tips:
+  - "> npm run create:component <span># Create a component skeleton</span>"
+  - "> npm run create:hooks <span># Create a skeleton hook</span>"
 ---
 
 <!DOCTYPE html>
@@ -21,32 +23,22 @@ data:
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
     <script async type="module" src="./index.js"></script>
   </head>
   <body>
-    <atomico-header fixed class="o-padd">
-      <atomico-brand width="160px" slot="brand" color="white"></atomico-brand>
-    </atomico-header>
-    <section class="o-fullpage o-mask o-padd c-welcome">
-      <div class="o-fullpage o-centered o-maxwidth">
-        <h1 class="c-welcome_title">{{page.data.title}}</h1>
-        <div class="c-welcome_frame">
-          <atomico-halo size="150vh"></atomico-halo>
-          <app-container width="320px">
-            <app-header
-              src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"
-            >
-              <app-avatar
-                src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=3&w=150&h=150&q=80"
-                slot="avatar"
-                first-title="welcome"
-                first-title-color="#FFF"
-                last-title="Atomico master"
-              ></app-avatar>
-            </app-header>
-          </app-container>
-        </div>
+    <main class="o-welcome">
+      <div class="o-welcome_message">
+        <atomico-brand width="220px" color="black"></atomico-brand><br />
+        <p class="o-welcome_text">{{page.welcome|newline_to_br }}</p>
+        {% for tip in page.tips %}
+        <pre class="o-welcome_code">{{tip}}</pre>
+        {% endfor %}
       </div>
-    </section>
+    </main>
   </body>
 </html>
