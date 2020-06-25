@@ -5,7 +5,7 @@ tag: doc
 order: 2
 ---
 
-## {{page.title }}
+## Input password
 
 > {{page.description}}
 

@@ -5,7 +5,7 @@
         "draft": true,
         "title": "Simple Doc",
         "description": "Create singlePage documentations + web components",
-        "branch": "https://github.com/atomicojs/atomico/tree/master/"
+        "branch": "https://github.com/atomicojs/base/blob/5-simple-doc/"
     },
     "version": "0.0.0",
     "scripts": {
