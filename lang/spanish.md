@@ -1,8 +1,16 @@
-# Sistemas de diseño con Atomico
+# Welcome
 
 [Español](./spanish.md) [English](../README.md)
 
-Esta configuración permite un desarrollo dinámico basado en la exportación desde ficheros html y markdown, mediante el scripts `npm start` ud podrá desarrollar componentes que se visualicen el navegador gracias a un servidor con livereload local mostrado por consola, por defecto este puede estar alojado en el puerto `localhost:8000`.
+## Pasos
+
+```bash
+# 1
+npm install
+# 2
+npm start
+# Diviértete!
+```
 
 ## Directorio
 

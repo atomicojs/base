@@ -1,8 +1,16 @@
-# Design systems with Atomico
+# Welcome
 
 [Español](./lang/spanish.md) [English](./README.md)
 
-This configuration allows a dynamic development based on the export from html and markdows files, using the `npm start` scripts you can develop components that are displayed by the browser Thanks to a server with console-taught local livereload, by default it can be hosted on the `localhost:8000` port.
+## Steps
+
+```bash
+# 1
+npm install
+# 2
+npm start
+# Enjoy!
+```
 
 ## Directory
 
@@ -36,8 +44,8 @@ Package for distribution in NPM all the components of the `src/components` direc
 
 ### npm run create:component
 
-Create a component in the `src/components` directory [with the recommended structure](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`.
+Create a component in the `src/components` directory [with the recommended structure](https://atomico.gitbook.io/doc/guides/code-style) `Atomico`.
 
 ### npm run create:hook
 
-Create a hook in the `src/hooks` directory with the [recommended structure](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`.
+Create a hook in the `src/hooks` directory with the [recommended structure](https://atomico.gitbook.io/doc/guides/code-style) `Atomico`.
