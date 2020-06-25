@@ -1,7 +1,7 @@
 ---
 title: <simple-doc-header/>
 description: my description...
-group: Components
+draft: true
 ---
 
 # {{page.title}}

@@ -1,5 +1,5 @@
 ---
-title: <{{name}}/>
+title: "{{name}}"
 description: my description...
 group: Components
 ---

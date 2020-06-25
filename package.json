@@ -1,25 +1,29 @@
 {
-  "name": "atomico-base",
-  "description": "a repo to start with atomico",
-  "meta": {
-    "draft": true,
-    "title": "Simple Doc",
-    "description": "Create singlePage documentations + web components",
-    "branch": "https://github.com/atomicojs/atomico/tree/master/"
-  },
-  "version": "0.0.0",
-  "scripts": {
-    "start": "estack src/**/*.{md,html};!src/template/components;!src/template/hooks docs --watch --server --template template/theme/theme.html --sourcemap",
-    "build": "estack src/**/*.{md,html};!src/template/components;!src/template/hooks docs --minify --template template/theme/theme.html --sizes",
-    "build:npm": "estack src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes --sourcemap",
-    "create:component": "tfolder tfolder/component src/components",
-    "create:hook": "tfolder tfolder/hook src/hooks"
-  },
-  "dependencies": {
-    "atomico": "^0.23.2"
-  },
-  "devDependencies": {
-    "estack": "^0.3.5",
-    "tfolder-cli": "^0.2.0"
-  }
+    "name": "atomico-base",
+    "description": "a repo to start with atomico",
+    "meta": {
+        "draft": true,
+        "title": "Simple Doc",
+        "description": "Create singlePage documentations + web components",
+        "branch": "https://github.com/atomicojs/atomico/tree/master/"
+    },
+    "version": "0.0.0",
+    "scripts": {
+        "start": "estack src/**/*.{md,html} docs --watch --server --sourcemap",
+        "build": "estack src/**/*.{md,html} docs --minify --sizes",
+        "build:npm": "estack src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes --sourcemap",
+        "create:component": "tfolder tfolder/component src/components",
+        "create:hook": "tfolder tfolder/hook src/hooks"
+    },
+    "dependencies": {
+        "atomico": "^0.23.3"
+    },
+    "devDependencies": {
+        "estack": "^0.7.3",
+        "tfolder-cli": "^0.2.0"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": false
+    }
 }

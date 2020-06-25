@@ -2,6 +2,7 @@
 title: <simple-doc-link-hash/>
 description: my description...
 group: Components
+draft: true
 ---
 
 # My Component

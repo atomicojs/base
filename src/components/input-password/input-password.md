@@ -1,6 +1,8 @@
 ---
 title: input-password
 description: input-password, input that allows to show or hide the password based on a state such as owner or click event
+tag: doc
+order: 2
 ---
 
 ## {{page.title }}

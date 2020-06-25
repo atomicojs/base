@@ -1,5 +1,6 @@
 ---
 order: 1
+tag: doc
 ---
 
 ## Configuration
@@ -13,12 +14,12 @@ hero: false # enable the header showing title and description
 order: 0 # Define the order of the section
 columns: true # Activate the use of columns in the section
 socials:
-  twitter: https://twitter.com/uppercod
-  github: https://github.com/
+    twitter: https://twitter.com/uppercod
+    github: https://github.com/
 files:
-  logo: ./logo-white.svg
+    logo: ./logo-white.svg
 fetch:
-  author: https://api.github.com/users/atomicojs # export the author from github
+    author: https://api.github.com/users/atomicojs # export the author from github
 ```
 
 The minimum metadata to create a new section within documentation is:
