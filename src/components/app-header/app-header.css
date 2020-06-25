@@ -1,0 +1,29 @@
+:host {
+  width: 100%;
+}
+
+.c-header {
+  width: 100%;
+  position: relative;
+  background: black;
+  &_avatar {
+    position: absolute;
+    bottom: 0px;
+    left: 1.25em;
+    transform: translateY(50%);
+  }
+  &_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+  }
+  &_layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    mix-blend-mode: overlay;
+  }
+}
