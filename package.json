@@ -8,9 +8,9 @@
   },
   "version": "0.0.0",
   "scripts": {
-    "start": "estack src/index.html docs --watch --server --sourcemap",
-    "build": "estack src/index.html docs --watch --server --sourcemap --minify",
-    "build:npm": "estack src/components/**/*-*.js dest --server --sourcemap",
+    "start": "estack dev src/**/*.{html,md}",
+    "build": "estack build src/**/*.{htm,md} docs",
+    "build:npm": "estack src/components/**/*-*.js dest --sourcemap",
     "create:component": "tfolder tfolder/component src/components",
     "create:hook": "tfolder tfolder/hook src/hooks"
   },
@@ -18,7 +18,7 @@
     "atomico": "^0.23.3"
   },
   "devDependencies": {
-    "estack": "^0.7.1",
+    "estack": "^0.14.0",
     "tfolder-cli": "^0.2.0"
   }
 }

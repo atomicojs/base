@@ -1,16 +1,12 @@
 ---
 title: Atomico - started
-socials:
-  twitter: https://twitter.com/atomicojs
-  github: https://github.com/atomicojs/atomico
-welcome: |
+description: |
   Welcome to Atomico just 3Kb to create amazing webcomponents 
   based on virtual-dom, Hoosk and magic props
 tips:
   - "> npm run create:component <span># Create a component skeleton</span>"
   - "> npm run create:hooks <span># Create a skeleton hook</span>"
 ---
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,25 +14,16 @@ tips:
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{{page.description}}" />
     <title>{{page.title}}</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./style.css" />
-    <style>
-      body {
-        font-family: "Poppins", sans-serif;
-      }
-    </style>
-    <script async type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="{{'./style.css'|asset}}" />
+    <script async type="module" src="{{'./index.js'|asset}}"></script>
   </head>
   <body>
     <main class="o-welcome">
       <div class="o-welcome_message">
         <atomico-brand width="220px" color="black"></atomico-brand><br />
-        <p class="o-welcome_text">{{page.welcome|newline_to_br }}</p>
-        {% for tip in page.tips %}
-        <pre class="o-welcome_code">{{tip}}</pre>
+        <p class="o-welcome_text">{{page.description|newline_to_br }}</p>
+        {% for item in page.tips %}
+        <pre class="o-welcome_code">{{item}}</pre>
         {% endfor %}
       </div>
     </main>

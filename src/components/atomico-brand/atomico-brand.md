@@ -11,13 +11,13 @@ draft: true
 
 ## Installation
 
-```bash
-npm install "{{pkg.name}}"
+```raw
+npm install {{pkg.name}}
 ```
 
 ## Usage
 
-```
+```raw
 import "{{pkg.name}}/atomico-brand"
 ```
 
@@ -31,4 +31,4 @@ import "{{pkg.name}}/atomico-brand"
 | --------- | ----------- | ------ | ------- | ---------------------- | ----------------- |
 | message   | message     | String | String  | `{type:"ChangeEvent"}` | `"atomico-brand"` |
 
-<script type="module" src="atomico-brand.js"><script>
+<script type="module" src="{{'atomico-brand.js'|asset}}"></script>
