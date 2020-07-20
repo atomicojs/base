@@ -7,6 +7,9 @@
     "branch": "https://github.com/atomicojs/atomico/tree/1-estack-blank/"
   },
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "estack dev src/**/*.{html,md}",
     "build": "estack build src/**/*.{htm,md} docs",
