@@ -31,4 +31,4 @@ import "{{pkg.name}}/atomico-brand"
 | --------- | ----------- | ------ | ------- | ---------------------- | ----------------- |
 | message   | message     | String | String  | `{type:"ChangeEvent"}` | `"atomico-brand"` |
 
-<script type="module" src="{{'atomico-brand.js'|asset}}"></script>
+<script type="module" src="{{'atomico-brand.jsx'|asset}}"></script>
