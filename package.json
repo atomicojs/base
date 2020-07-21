@@ -4,7 +4,7 @@
   "meta": {
     "title": "Started",
     "description": "Hassle-free starter template, perfect for starting with Atomico",
-    "branch": "https://github.com/atomicojs/atomico/tree/1-estack-blank/"
+    "branch": "https://github.com/atomicojs/atomico/tree/1-started/"
   },
   "version": "0.0.0",
   "publishConfig": {
