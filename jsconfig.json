@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+       "declaration" : false,
+        "target": "esnext",
+        "checkJs": true,
+        "jsx": "preserve",
+        "jsxFactory":"h"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "tfolder"
+    ]
+}

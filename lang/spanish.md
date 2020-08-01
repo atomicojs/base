@@ -44,8 +44,8 @@ Empaqueta para distribución mediante NPM todos los componentes asociados al dir
 
 ### npm run create:component
 
-Crea un componente en el directorio `src/components` [con la estructura recomendada](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`
+Crea un webcomponent con la estructura recomendada por Atomico
 
 ### npm run create:hook
 
-Crea un hook en el directorio `src/hooks` con la [estructura recomendada](https://atomico.gitbook.io/doc/v/es/guias/guias-de-estilo) `Atomico`
+Crea un hook con la estructura recomendada por Atomico

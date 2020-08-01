@@ -1,4 +1,4 @@
-import { h, customElement } from "atomico";
+import { h, c } from "atomico";
 
 function AtomicoBrand({ color, width }) {
   return (
@@ -48,4 +48,4 @@ AtomicoBrand.props = {
   },
 };
 
-customElement("atomico-brand", AtomicoBrand);
+customElements.define("atomico-brand", c(AtomicoBrand));

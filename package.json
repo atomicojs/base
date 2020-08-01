@@ -18,10 +18,13 @@
     "create:hook": "tfolder tfolder/hook src/hooks"
   },
   "dependencies": {
-    "atomico": "^0.23.3"
+    "atomico": "^1.0.0"
   },
   "devDependencies": {
-    "estack": "^0.14.0",
+    "estack": "^0.14.1",
     "tfolder-cli": "^0.2.0"
+  },
+  "exports": {
+    ".": "/dest"
   }
 }

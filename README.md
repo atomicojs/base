@@ -44,8 +44,8 @@ Package for distribution in NPM all the components of the `src/components` direc
 
 ### npm run create:component
 
-Create a component in the `src/components` directory [with the recommended structure](https://atomico.gitbook.io/doc/guides/code-style) `Atomico`.
+Create a webcomponent with the structure recommended by Atomico
 
 ### npm run create:hook
 
-Create a hook in the `src/hooks` directory with the [recommended structure](https://atomico.gitbook.io/doc/guides/code-style) `Atomico`.
+Create a hook with the structure recommended by Atomico
