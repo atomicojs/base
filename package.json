@@ -12,13 +12,13 @@
   },
   "scripts": {
     "start": "estack dev src/**/*.{html,md}",
-    "build": "estack build src/**/*.{htm,md} docs",
-    "build:npm": "estack build src/components/**/*-*.js dest --sourcemap",
+    "build": "estack build src/**/*.{html,md} docs",
+    "build:npm": "estack build src/components/**/*.{js,jsx,ts,tsx} dest --sourcemap",
     "create:component": "tfolder tfolder/component src/components",
     "create:hook": "tfolder tfolder/hook src/hooks"
   },
   "dependencies": {
-    "atomico": "^1.0.0"
+    "atomico": "^1.0.4"
   },
   "devDependencies": {
     "estack": "^0.14.1",
