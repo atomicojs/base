@@ -3,7 +3,8 @@
   "description": "",
   "meta": {
     "title": "Getting started with Atomico + Snowpack",
-    "description": "Light configuration, development experience based on modules managed by Snowpack"
+    "description": "Light configuration, development experience based on modules managed by Snowpack",
+    "draft": true
   },
   "version": "0.0.0",
   "publishConfig": {
