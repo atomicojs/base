@@ -1,7 +1,11 @@
 import { h, c, Component } from "atomico";
 import style from "./{{name}}.css";
 
-const {{nameCamelCase}}:Component<{message:string}> = ({ message })=> {
+interface Props{
+   message: string;
+}
+
+const {{nameCamelCase}}:Component<Props> = ({ message })=> {
   return (
     <host shadowDom>
       <style>{style}</style>

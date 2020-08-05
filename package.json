@@ -13,7 +13,7 @@
   "scripts": {
     "start": "estack dev src/**/*.{html,md}",
     "build": "estack build src/**/*.{htm,md} docs",
-    "build:npm": "estack src/components/**/*-*.js dest --sourcemap",
+    "build:npm": "estack build src/components/**/*-*.js dest --sourcemap",
     "create:component": "tfolder tfolder/component src/components",
     "create:hook": "tfolder tfolder/hook src/hooks"
   },
@@ -25,6 +25,6 @@
     "tfolder-cli": "^0.2.0"
   },
   "exports": {
-    ".": "/dest"
+    ".": "./dest"
   }
 }
