@@ -40,7 +40,7 @@ const questions = [
 module.exports = async function () {
   let data = await prompts(questions);
   data.name = data.name.trim().replace(/ +/g, "-");
-  data.nameCamelCase = ("-" + data.name).replace(/-(\w)/g, (all, letter) =>
+  data.nameCamelCase = data.name.replace(/-(\w)/g, (all, letter) =>
     letter.toUpperCase()
   );
   data.dir = data.type;

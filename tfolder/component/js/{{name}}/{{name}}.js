@@ -2,7 +2,7 @@ import {  c } from "atomico";
 import html from "atomico/html";
 import style from "./{{name}}.css";
 
-const {{nameCamelCase}} = ({ message }) => {
+function {{nameCamelCase}}({ message }){
   return html`
     <host shadowDom>
       <style>${style}</style>

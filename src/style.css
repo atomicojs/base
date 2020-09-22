@@ -23,27 +23,28 @@ body {
   overflow: hidden;
   padding: 2rem;
   box-sizing: border-box;
-  &_message {
-    position: relative;
+}
+
+.o-welcome_message {
+  position: relative;
+}
+.o-welcome_code {
+  background: black;
+  color: white;
+  margin: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  border-radius: 1rem;
+  margin: 10px 0px;
+  text-align: left;
+  display: flex;
+  flex-flow: row wrap;
+  span {
+    color: cyan;
   }
-  &_code {
-    background: black;
-    color: white;
-    margin: auto;
-    padding: 1rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-flow: column nowrap;
-    border-radius: 1rem;
-    margin: 10px 0px;
-    text-align: left;
-    display: flex;
-    flex-flow: row wrap;
-    span {
-      color: cyan;
-    }
-  }
-  &_text {
-    font-size: 1.28rem;
-  }
+}
+.o-welcome_text {
+  font-size: 1.28rem;
 }

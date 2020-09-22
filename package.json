@@ -11,20 +11,38 @@
     "access": "public"
   },
   "scripts": {
-    "start": "estack dev src/**/*.{html,md}",
-    "build": "estack build src/**/*.{html,md} docs",
+    "start": "estack dev src/**/*.{html,md} --js estack.js ",
+    "build": "estack build src/**/*.{html,md} docs --js estack.js",
     "build:npm": "estack build src/components/**/*.{js,jsx,ts,tsx} dest --sourcemap",
     "create:component": "tfolder tfolder/component src/components",
     "create:hook": "tfolder tfolder/hook src/hooks"
   },
   "dependencies": {
-    "atomico": "^1.0.4"
+    "atomico": "^1.2.1"
   },
   "devDependencies": {
-    "estack": "^0.14.1",
+    "@rollup/plugin-sucrase": "^3.1.0",
+    "estack": "^0.17.16",
     "tfolder-cli": "^0.2.0"
   },
   "exports": {
     ".": "./dest"
+  },
+  "estack": {
+    "js": {
+      "plugins": {
+        "@rollup/plugin-sucrase": {
+          "jsxPragma": "h",
+          "production": true,
+          "exclude": [
+            "node_modules/**"
+          ],
+          "transforms": [
+            "jsx",
+            "typescript"
+          ]
+        }
+      }
+    }
   }
 }

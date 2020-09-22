@@ -1,12 +1,9 @@
-import { c, Component } from "atomico";
+import { c, Props } from "atomico";
 import html from "atomico/html";
 import style from "./{{name}}.css";
 
-interface Props{
-  message: string;
-}
 
-const {{nameCamelCase}}:Component<Props> = ({ message }) => {
+function {{nameCamelCase}}({ message }:Props<typeof {{nameCamelCase}}.props>){
   return html`
     <host shadowDom>
       <style>${style}</style>
