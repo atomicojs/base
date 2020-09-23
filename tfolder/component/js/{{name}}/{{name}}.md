@@ -31,4 +31,4 @@ import {{=<% %>=}}"{{pkg.name}}<%={{ }}=%>/{{name}}"
 | --------- | ----------- | ------ | ------- | ---------------------- | ------------- |
 | message   | message     | String | String  | `{type:"ChangeEvent"}` | `"{{name}}"`  |
 
-<script type="module" src="{{=<% %>=}}{{<%={{ }}=%>'{{name}}.js'{{=<% %>=}}|asset}}<%={{ }}=%>"><script>
+<script type="module" src="{{=<% %>=}}{{<%={{ }}=%>'{{name}}.js'{{=<% %>=}}|asset}}<%={{ }}=%>"></script>
