@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "devserver dev src --jsxImportSource atomico",
-    "build": "devserver build src/**/*.html public"
+    "build": "devserver build src/**/*.html docs --jsxImportSource atomico"
   },
   "dependencies": {
     "atomico": "^1.12.3"

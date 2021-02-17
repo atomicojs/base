@@ -1,7 +1,5 @@
 # Welcome
 
-[Español](./lang/spanish.md) [English](./README.md)
-
 ## Steps
 
 ```bash
@@ -30,22 +28,14 @@ npm start
 
 ### npm start
 
-Initialize a developing server for the files that are exported from the html files in the `src/**/*.{md,html}` directory.
+Create a development server on the `src` directory.
 
 ### npm run build
 
-Create the export bundle from the html files.
+```bash
+npm install -D @devserver/build
+```
 
-### npm run build:npm
+**This command only works if the package `@devserver/build` is previously installed**. Export all content associated with the expression `src/**/*.html`.
 
-Package for distribution in NPM all the components of the `src/components` directory, these are exported as separate files.
-
-> remember to distribute in npm you must modify the **package.json**.
-
-### npm run create:component
-
-Create a webcomponent with the structure recommended by Atomico
-
-### npm run create:hook
-
-Create a hook with the structure recommended by Atomico
+> If you export your project to a subfolder, be sure to use the `--href [path]` flag to declare that directory.

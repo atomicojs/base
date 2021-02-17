@@ -10,16 +10,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
-    <script async type="module" src="./index.js"></script>
+    <script async type="module" src="./script.js"></script>
   </head>
   <body>
-    <main class="o-welcome">
-      <div class="o-welcome_message">
-        <atomico-brand width="220px" color="black"></atomico-brand><br />
-        <atomico-animation></atomico-animation>
-        <p class="o-welcome_text">{{page.description|newline_to_br }}</p>
-        <pre class="o-welcome_code">{{item}}</pre>
+    <atomico-hello>
+      <div class="message">
+        <atomico-brand color="var(--theme_color)"></atomico-brand>
+        <p class="message_text">
+          A micro library inspired by React Hooks, designed and optimized for
+          the creation of webcomponents.
+        </p>
       </div>
-    </main>
+    </atomico-hello>
   </body>
 </html>

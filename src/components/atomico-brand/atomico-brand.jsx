@@ -1,6 +1,6 @@
 import { c } from "atomico";
 
-function atomicoBrand({ color, width }) {
+function brand({ color, width }) {
   return (
     <host>
       <svg
@@ -37,15 +37,15 @@ function atomicoBrand({ color, width }) {
   );
 }
 
-atomicoBrand.props = {
+brand.props = {
   color: {
     type: String,
-    value: "#fff",
+    value: "#232323",
   },
   width: {
     type: String,
-    value: "280px",
+    value: "20rem",
   },
 };
 
-customElements.define("atomico-brand", c(atomicoBrand));
+customElements.define("atomico-brand", c(brand));
