@@ -18,6 +18,6 @@
     "atomico": "^1.12.3"
   },
   "devDependencies": {
-    "@devserver/cli": "^0.12.3"
+    "@devserver/cli": "^0.15.2"
   }
 }
