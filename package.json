@@ -15,9 +15,9 @@
     "build": "devserver build src/**/*.html docs --jsxImportSource atomico"
   },
   "dependencies": {
-    "atomico": "^1.12.3"
+    "atomico": "latest"
   },
   "devDependencies": {
-    "@devserver/cli": "^0.15.2"
+    "@devserver/cli": "latest"
   }
 }
