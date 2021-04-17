@@ -11,8 +11,8 @@
     "access": "public"
   },
   "scripts": {
-    "start": "vite src",
-    "build": "vite src build"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "atomico": "latest"
