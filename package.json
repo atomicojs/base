@@ -3,22 +3,21 @@
   "description": "a repo to start with atomico",
   "meta": {
     "title": "Started",
-    "draft": true,
     "description": "Hassle-free starter template, perfect for starting with Atomico",
-    "branch": "https://github.com/atomicojs/atomico/tree/1-started/"
+    "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
   },
   "version": "0.0.0",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "start": "devserver dev src --jsxImportSource atomico",
-    "build": "devserver build src/**/*.html docs --jsxImportSource atomico"
+    "start": "vite src",
+    "build": "vite src build"
   },
   "dependencies": {
     "atomico": "latest"
   },
   "devDependencies": {
-    "@devserver/cli": "latest"
+    "vite": "latest"
   }
 }

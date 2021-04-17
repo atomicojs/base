@@ -48,4 +48,4 @@ brand.props = {
   },
 };
 
-customElements.define("atomico-brand", c(brand));
+export const Brand = c(brand);

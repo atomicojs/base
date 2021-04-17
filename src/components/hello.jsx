@@ -46,4 +46,4 @@ hello.props = {
   },
 };
 
-customElements.define("atomico-hello", c(hello));
+export const Hello = c(hello);
