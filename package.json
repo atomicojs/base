@@ -3,6 +3,7 @@
   "description": "a repo to start with atomico",
   "meta": {
     "title": "Started",
+    "draft": true,
     "description": "Hassle-free starter template, perfect for starting with Atomico",
     "branch": "https://github.com/atomicojs/atomico/tree/1-started/"
   },
