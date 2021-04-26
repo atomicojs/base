@@ -2,7 +2,7 @@
   "name": "atomico-base",
   "description": "a repo to start with atomico",
   "meta": {
-    "title": "Started",
+    "title": "Started - Atomico + Vite",
     "description": "Hassle-free starter template, perfect for starting with Atomico",
     "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
   },
