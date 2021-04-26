@@ -1,10 +1,14 @@
 {
-  "name": "bugs",
+  "name": "atomico-storybook",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "meta": {
+    "title": "Atomico + StoryBook",
+    "description": "It is a pre-configured workspace to run storybook with jsx-runtime for Atomico",
+    "branch": "https://github.com/atomicojs/atomico/tree/storybook/"
+  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -30,7 +34,6 @@
     "babel-loader": "^8.2.2"
   },
   "dependencies": {
-    "@atomico/hooks": "^3.6.0",
     "atomico": "^1.18.0"
   }
 }

@@ -1,13 +1,11 @@
 import { c, useRef } from "atomico";
-import { useSlot } from "@atomico/hooks/use-slot";
 
 function button({ bg }) {
   const ref = useRef();
-  const childNodes = useSlot(ref);
 
   return (
     <host shadowDom style={`background:${bg}`}>
-      content...
+      content...ee
       <slot ref={ref}></slot>
     </host>
   );
