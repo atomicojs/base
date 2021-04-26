@@ -1,4 +1,5 @@
 import { c } from "atomico";
+import html from "atomico/html";
 
 const style = /*css*/ `
   :host,
@@ -28,15 +29,15 @@ const style = /*css*/ `
 `;
 
 function hello({ message }) {
-  return (
-    <host shadowDom>
-      <style>{style}</style>
-      <div class="layer">{message}</div>
-      <div class="box">
-        <slot></slot>
-      </div>
-    </host>
-  );
+  return html`<host shadowDom>
+    <style>
+      ${style}
+    </style>
+    <div class="layer">${message}</div>
+    <div class="box">
+      <slot></slot>
+    </div>
+  </host>`;
 }
 
 hello.props = {

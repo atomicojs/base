@@ -10,12 +10,13 @@
   "private": true,
   "scripts": {
     "start": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "s": "web-dev-server --open"
   },
   "dependencies": {
     "atomico": "latest"
   },
   "devDependencies": {
-    "vite": "latest"
+    "@web/dev-server": "^0.1.16"
   }
 }
