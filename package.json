@@ -1,22 +1,36 @@
 {
-  "name": "atomico-base",
-  "description": "a repo to start with atomico",
-  "meta": {
-    "title": "Started",
-    "description": "Hassle-free starter template, perfect for starting with Atomico",
-    "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
-  },
-  "version": "0.0.0",
-  "private": true,
+  "name": "bugs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "s": "web-dev-server --open"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atomicojs/bugs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atomicojs/bugs/issues"
+  },
+  "homepage": "https://github.com/atomicojs/bugs#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/builder-webpack5": "^6.2.9",
+    "@storybook/web-components": "^6.2.9",
+    "babel-loader": "^8.2.2"
   },
   "dependencies": {
-    "atomico": "latest"
-  },
-  "devDependencies": {
-    "@web/dev-server": "^0.1.16"
+    "@atomico/hooks": "^3.6.0",
+    "atomico": "^1.18.0"
   }
 }
