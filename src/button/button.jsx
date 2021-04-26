@@ -1,20 +1,37 @@
 import { c, useRef } from "atomico";
 
-function button({ bg }) {
-  const ref = useRef();
+const style = /*css */ `
+  :host{
+    padding: .25rem 2rem;
+    border-radius : 100vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  :host([type="normal"]){
+    background: var(--ds-button-normal-bg, #f1f1f9);
+    color: var(--ds--button-normal-cl,#000);
+  }
+  :host([type="success"]){
+    background: var(--ds-button-success-bg, #blue);
+    color: var(--ds--button-success-cl,#fff);
+  }
+`;
 
+function button() {
   return (
-    <host shadowDom style={`background:${bg}`}>
-      content...ee
-      <slot ref={ref}></slot>
+    <host shadowDom>
+      <style>{style}</style>
+      <slot></slot>
     </host>
   );
 }
 
 button.props = {
-  bg: {
+  type: {
     type: String,
-    value: "#fff",
+    reflect: true,
+    value: "normal",
   },
 };
 
