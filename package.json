@@ -16,6 +16,7 @@
     "atomico": "latest"
   },
   "devDependencies": {
+    "@uppercod/vite-meta-url": "^1.0.1",
     "vite": "latest"
   }
 }
