@@ -36,10 +36,8 @@ src
 1. `npm install -D @web/test-runner @esm-bundle/chai`
 2. Add the following script in [package.json#scripts](package.json)
 
-```json
-"scripts": {
+```
   "test": "wtr test/**/*.test.js --node-resolve"
-}
 ```
 
 #### Test example
@@ -61,9 +59,7 @@ describe("my test", () => {
 1. `npm install -D @atomico/exports typescript`: The typescript installation is optional, but necessary if you use the `--types` flag.
 2. Add the following script in [package.json#scripts](package.json)
 
-```json
-"scripts": {
+```
   "npm": "exports src/components/*.{js,ts,jsx,tsx} --exports --types",
   "prepublishOnly": "npm run test && npm run npm"
-}
 ```
