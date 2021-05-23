@@ -6,6 +6,12 @@
 | -------- | ------ | ------------------ |
 | message  | String | Message to display |
 
+## Events
+
+| Type | Detail | Description |
+| ---- | ------ | ----------- |
+| -    | -      | -           |
+
 ## Slots
 
 | Slot | Types | Description    |
