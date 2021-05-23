@@ -1,10 +1,9 @@
 import { c } from "atomico";
-import style from "./hello/hello.css";
+import style from "./hello.css";
 
 function hello({ message }) {
   return (
     <host shadowDom>
-      <style>{style}</style>
       <div class="layer">{message}</div>
       <div class="box">
         <slot></slot>
@@ -19,5 +18,7 @@ hello.props = {
     value: "Hello.",
   },
 };
+
+hello.styles = style;
 
 export const Hello = c(hello);

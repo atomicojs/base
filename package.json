@@ -6,6 +6,10 @@
     "description": "Hassle-free starter template, perfect for starting with Atomico",
     "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
   },
+  "workspaces": [
+    "src/**/*",
+    "site"
+  ],
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,7 +20,8 @@
     "atomico": "latest"
   },
   "devDependencies": {
-    "@uppercod/vite-meta-url": "^1.0.1",
+    "@uppercod/vite-meta-url": "latest",
+    "csso": "latest",
     "vite": "latest"
   }
 }
