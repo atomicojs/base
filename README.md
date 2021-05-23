@@ -37,7 +37,7 @@ src
 2. Add the following script in [package.json#scripts](package.json)
 
 ```
-  "test": "wtr test/**/*.test.js --node-resolve"
+"test": "wtr test/**/*.test.js --node-resolve"
 ```
 
 #### Test example
@@ -60,6 +60,6 @@ describe("my test", () => {
 2. Add the following script in [package.json#scripts](package.json)
 
 ```
-  "npm": "exports src/components/*.{js,ts,jsx,tsx} --exports --types",
-  "prepublishOnly": "npm run test && npm run npm"
+"npm": "exports src/components/*.{js,ts,jsx,tsx} --exports --types",
+"prepublishOnly": "npm run test && npm run npm"
 ```
