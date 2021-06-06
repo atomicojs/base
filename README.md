@@ -56,6 +56,8 @@ describe("my test", () => {
 
 ### NPM export
 
+Atomico owns the [@atomico/exports](https://atomico.gitbook.io/doc/atomico/atomico-exports) tool that simplifies the generation of builds, types and exports by distributing webcomponents in NPM.
+
 1. `npm install -D @atomico/exports typescript`: The typescript installation is optional, but necessary if you use the `--types` flag.
 2. Add the following script in [package.json#scripts](package.json)
 
