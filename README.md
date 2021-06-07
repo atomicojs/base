@@ -33,11 +33,10 @@ src
 
 ### Add testing
 
-1. `npm install -D @web/test-runner @esm-bundle/chai`
-2. Add the following script in [package.json#scripts](package.json)
+The test environment is preconfigured for [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/), you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run test`:
 
-```
-"test": "wtr test/**/*.test.js --node-resolve"
+```bash
+npm install -D @web/test-runner @esm-bundle/chai vite-web-test-runner-plugin
 ```
 
 #### Test example
@@ -56,12 +55,8 @@ describe("my test", () => {
 
 ### NPM export
 
-Atomico owns the [@atomico/exports](https://atomico.gitbook.io/doc/atomico/atomico-exports) tool that simplifies the generation of builds, types and exports by distributing webcomponents in NPM.
+Atomico owns the [@atomico/exports](https://atomico.gitbook.io/doc/atomico/atomico-exports) tool that simplifies the generation of builds, types and exports by distributing webcomponents in NPM, you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run exports`:
 
-1. `npm install -D @atomico/exports typescript`: The typescript installation is optional, but necessary if you use the `--types` flag.
-2. Add the following script in [package.json#scripts](package.json)
-
-```
-"npm": "exports src/components/*.{js,ts,jsx,tsx} --exports --types",
-"prepublishOnly": "npm run test && npm run npm"
+```bash
+npm install -D @atomico/exports
 ```
