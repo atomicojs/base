@@ -1,7 +1,5 @@
 import pluginMetaUrl from "@uppercod/vite-meta-url";
-import csso from "csso";
-import { readFile } from "fs/promises";
-
+import loadCss from "@uppercod/vite-meta-url-load-css";
 /**@type {import("vite").UserConfig} */
 
 const config = {
@@ -14,12 +12,7 @@ const config = {
   },
   plugins: [
     pluginMetaUrl({
-      css: async (path, server) => {
-        const code = await readFile(path, "utf-8");
-        return {
-          inline: `_css\`${server ? code : csso.minify(code).css}\``,
-        };
-      },
+      css: loadCss(),
       md: true,
     }),
   ],
