@@ -21,8 +21,8 @@ Now what you have installed is a quick start kit based on Vite, which you can sc
 ### Recommended structure
 
 ```bash
-site
-src
+app # Exclusive logic of the application
+src # Logic that can be shared between projects
   |- my-component
   |  |- my-component.{js,jsx,ts,tsx}
   |  |- my-component.test.js
@@ -59,4 +59,27 @@ Atomico owns the [@atomico/exports](https://atomico.gitbook.io/doc/atomico/atomi
 
 ```bash
 npm install -D @atomico/exports
+```
+
+### Postcss
+
+This configuration already depends on Postcss, you can more plugins through `package.json#postcss`, example:
+
+```json
+"postcss": {
+  "plugins": {
+    "postcss-import": {}
+  }
+}
+```
+
+> In case of build, Atomico will minify the CSS code.
+
+### Github page
+
+Add to `package.json#scripts.build`:
+
+```bash
+--outDir docs # modify the destination directory
+--base my-repo # github page folder
 ```
