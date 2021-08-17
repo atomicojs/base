@@ -5,7 +5,8 @@
   "meta": {
     "title": "Beta - Atomico + StoryBook",
     "description": "It is a pre-configured workspace to run storybook with jsx-runtime for Atomico",
-    "branch": "https://github.com/atomicojs/atomico/tree/storybook/"
+    "branch": "https://github.com/atomicojs/atomico/tree/storybook/",
+    "draft": true
   },
   "private": true,
   "scripts": {
