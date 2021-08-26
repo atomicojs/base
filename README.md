@@ -21,8 +21,7 @@ Now what you have installed is a quick start kit based on Vite, which you can sc
 ### Recommended structure
 
 ```bash
-app # Exclusive logic of the application
-src # Logic that can be shared between projects
+src
   |- my-component
   |  |- my-component.{js,jsx,ts,tsx}
   |  |- my-component.test.js
