@@ -25,7 +25,6 @@
   "devDependencies": {
     "@uppercod/vite-meta-url": "latest",
     "@uppercod/vite-meta-url-load-css": "latest",
-    "csso": "latest",
     "vite": "latest"
   }
 }
