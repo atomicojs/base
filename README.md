@@ -38,6 +38,8 @@ The test environment is preconfigured for [@web/test-runner](https://modern-web.
 npm install -D @web/test-runner @esm-bundle/chai vite-web-test-runner-plugin
 ```
 
+You can learn more about the Atomico test api in the [test documentation](https://atomico.gitbook.io/doc/api/testing).
+
 #### Test example
 
 ```js
