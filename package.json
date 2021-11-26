@@ -19,10 +19,10 @@
     "test": "wtr src/**/*.test.js --node-resolve",
     "exports": "exports src/components.js --exports --types --main components",
     "prepublishOnly": "npm run test && npm run exports",
-    "create-component": "scaffold template/component-jsx src"
+    "create-component": "scaff template/component-jsx src"
   },
   "dependencies": {
-    "@atomico/scaffold": "^0.0.0",
+    "@atomico/scaffold": "^0.1.0",
     "atomico": "latest"
   },
   "devDependencies": {

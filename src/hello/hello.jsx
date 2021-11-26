@@ -49,3 +49,5 @@ hello.styles = css`
 `;
 
 export const Hello = c(hello);
+
+customElements.define("atomico-hello", Hello);
