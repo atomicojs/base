@@ -22,10 +22,10 @@
     "create-component": "scaff template/component-jsx src"
   },
   "dependencies": {
-    "@atomico/scaffold": "^0.1.0",
     "atomico": "latest"
   },
   "devDependencies": {
+    "@atomico/scaffold": "^0.2.0",
     "@uppercod/vite-meta-url": "latest",
     "@uppercod/vite-meta-url-load-css": "latest",
     "vite": "latest"
