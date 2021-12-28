@@ -1,40 +1,43 @@
 {
-  "name": "atomico-storybook",
-  "version": "1.0.0",
-  "description": "",
+  "name": "atomico-base",
+  "description": "a repo to start with atomico",
   "meta": {
-    "title": "Beta - Atomico + StoryBook",
-    "description": "It is a pre-configured workspace to run storybook with jsx-runtime for Atomico",
-    "branch": "https://github.com/atomicojs/atomico/tree/storybook/",
-    "draft": true
+    "title": "Started - Atomico + Vite(JS,JSX,TS,TSX)",
+    "description": "Hassle-free starter template, perfect for starting with Atomico",
+    "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
   },
+  "workspaces": [
+    "src/**/*",
+    "site"
+  ],
+  "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "wtr src/**/*.test.js --node-resolve",
+    "exports": "exports src/components.js --exports --types --main components",
+    "prepublishOnly": "npm run test && npm run exports",
+    "create-component": "scaff template/component-jsx src",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/atomicojs/bugs.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/atomicojs/bugs/issues"
-  },
-  "homepage": "https://github.com/atomicojs/bugs#readme",
-  "devDependencies": {
-    "@babel/core": "^7.13.16",
-    "@babel/plugin-transform-react-jsx": "^7.13.12",
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/builder-webpack5": "^6.2.9",
-    "@storybook/web-components": "^6.2.9",
-    "babel-loader": "^8.2.2"
-  },
   "dependencies": {
-    "atomico": "^1.18.0"
+    "atomico": "latest"
+  },
+  "devDependencies": {
+    "@atomico/scaffold": "^0.2.0",
+    "@babel/core": "^7.16.5",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/web-components": "^6.4.9",
+    "@uppercod/vite-meta-url": "latest",
+    "@uppercod/vite-meta-url-load-css": "latest",
+    "babel-loader": "^8.2.3",
+    "lit-html": "^2.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "vite": "latest"
   }
 }
