@@ -15,7 +15,7 @@ Now what you have installed is a quick start kit based on Vite, which you can sc
 1. `npm install`
 2. `npm run start` : Initialize the development server
 3. `npm run build` : Optional, Generate a build of your project from the html file [index.html](index.html).
-4. `npm run storybook` : Arranca Storybook.
+4. `npm run storybook` : Start Storybook.
 
 ## Workspace
 
@@ -25,6 +25,7 @@ Now what you have installed is a quick start kit based on Vite, which you can sc
 src
   |- my-component
   |  |- my-component.{js,jsx,ts,tsx}
+  |  |- my-component.stories.{js,jsx,ts,tsx}
   |  |- my-component.test.js
   |  |- my-component.css
   |  |- README.md
