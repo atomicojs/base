@@ -1,7 +1,7 @@
 import { Brand } from "../brand/brand";
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-  title: "Example/Button",
+  title: "components/brand",
   // More on argTypes: https://storybook.js.org/docs/web-components/api/argtypes
   argTypes: {
     color: { control: "color" },

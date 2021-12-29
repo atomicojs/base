@@ -10,12 +10,11 @@ If you need help you can find it at:
 [![documentation](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/doc-1.svg)](https://atomico.gitbook.io/doc/)
 [![discord](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/doc.svg)](https://webcomponents.dev/edit/collection/F7dm6YnMEDRtAl57RTXU/d6E4w07fsQbb0CelYQac)
 
-Now what you have installed is a quick start kit based on Vite, which you can scale for your project, now to continue you must execute the following commands:
+Now what you have installed is a quick start kit based on Storybook, which you can scale for your project, now to continue you must execute the following commands:
 
 1. `npm install`
-2. `npm run start` : Initialize the development server
-3. `npm run build` : Optional, Generate a build of your project from the html file [index.html](index.html).
-4. `npm run storybook` : Start Storybook.
+2. `npm run start` : Initialize the storybook server
+3. `npm run build` : Optional, Build a build of your project using Storybook.
 
 ## Workspace
 
@@ -29,60 +28,4 @@ src
   |  |- my-component.test.js
   |  |- my-component.css
   |  |- README.md
-  |- components.js # import all components
-```
-
-### Add testing
-
-The test environment is preconfigured for [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/), you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run test`:
-
-```bash
-npm install -D @web/test-runner @esm-bundle/chai vite-web-test-runner-plugin
-```
-
-You can learn more about the Atomico test api in the [test documentation](https://atomico.gitbook.io/doc/api/testing).
-
-#### Test example
-
-```js
-import { expect } from "@esm-bundle/chai";
-
-describe("my test", () => {
-  it("foo is bar", () => {
-    expect("foo").to.equal("bar");
-  });
-});
-```
-
-> `@web/test-runner` supports asynchrony, coverage, [viewport and more](https://modern-web.dev/docs/test-runner/commands/).
-
-### NPM export
-
-Atomico owns the [@atomico/exports](https://atomico.gitbook.io/doc/atomico/atomico-exports) tool that simplifies the generation of builds, types and exports by distributing webcomponents in NPM, you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run exports`:
-
-```bash
-npm install -D @atomico/exports
-```
-
-### Postcss
-
-This configuration already depends on Postcss, you can more plugins through `package.json#postcss`, example:
-
-```json
-"postcss": {
-  "plugins": {
-    "postcss-import": {}
-  }
-}
-```
-
-> In case of build, Atomico will minify the CSS code.
-
-### Github page
-
-Add to `package.json#scripts.build`:
-
-```bash
---outDir docs # modify the destination directory
---base my-repo # github page folder
 ```
