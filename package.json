@@ -17,18 +17,23 @@
     "prepublishOnly": "npm run test && npm run exports",
     "create-component": "scaff template/component-jsx src",
     "start": "start-storybook -p 6006",
-    "build": "build-storybook"
+    "build": "build-storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "atomico": "latest"
   },
   "devDependencies": {
     "@atomico/scaffold": "^0.2.0",
-    "@babel/core": "^7.16.5",
-    "@storybook/addon-actions": "^6.4.9",
-    "@storybook/addon-essentials": "^6.4.9",
-    "@storybook/addon-links": "^6.4.9",
-    "@storybook/html": "^6.4.9",
+    "@babel/core": "^7.16.7",
+    "@babel/plugin-transform-react-jsx": "^7.16.7",
+    "@storybook/addon-actions": "^6.5.0-alpha.14",
+    "@storybook/addon-essentials": "^6.5.0-alpha.14",
+    "@storybook/addon-links": "^6.5.0-alpha.14",
+    "@storybook/builder-webpack5": "^6.5.0-alpha.14",
+    "@storybook/html": "^6.5.0-alpha.14",
+    "@storybook/manager-webpack5": "^6.5.0-alpha.14",
     "babel-loader": "^8.2.3"
   }
 }
