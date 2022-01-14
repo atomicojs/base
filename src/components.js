@@ -1,2 +1,2 @@
-export { Hello } from "./hello/hello.jsx";
-export { Brand } from "./brand/brand.jsx";
+export { Hello } from "./hello/hello";
+export { Brand } from "./brand/brand";
