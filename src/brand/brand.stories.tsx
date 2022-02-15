@@ -11,17 +11,18 @@ export default {
   },
 };
 
-export const Example1 = (props: any) => template(<Brand {...props}></Brand>);
+export const ExampleWithJSX = (props: any) =>
+  template(<Brand {...props}></Brand>);
 
-Example1.args = {
+ExampleWithJSX.args = {
   color: "black",
   width: "280px",
 };
 
-export const Example2 = (props) =>
+export const ExampleWithHTML = (props) =>
   template(html`<${Brand} ...${props}></${Brand}>`);
 
-Example2.args = {
+ExampleWithHTML.args = {
   color: "teal",
   width: "280px",
 };
