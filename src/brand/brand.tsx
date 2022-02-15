@@ -41,10 +41,12 @@ brand.props = {
   color: {
     type: String,
     value: "#232323",
+    reflect: true,
   },
   width: {
     type: String,
     value: "20rem",
+    reflect: true,
   },
 };
 

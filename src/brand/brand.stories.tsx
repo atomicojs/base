@@ -11,18 +11,32 @@ export default {
   },
 };
 
-export const ExampleWithJSX = (props: any) =>
-  template(<Brand {...props}></Brand>);
+export const ExampleJSX = (props: any) => template(<Brand {...props}></Brand>);
 
-ExampleWithJSX.args = {
+ExampleJSX.args = {
   color: "black",
   width: "280px",
 };
 
-export const ExampleWithHTML = (props) =>
+export const ExampleHTML = (props) =>
   template(html`<${Brand} ...${props}></${Brand}>`);
 
-ExampleWithHTML.args = {
+ExampleHTML.args = {
+  color: "blueviolet",
+  width: "280px",
+};
+
+export const ExampleRaw = (props) =>
+  `<atomico-brand color="${props.color}" width="${props.width}"></atomico-brand>`;
+
+ExampleRaw.args = {
+  color: "gold",
+  width: "280px",
+};
+
+export const ExampleDOM = (props) => Object.assign(new Brand(), props);
+
+ExampleDOM.args = {
   color: "teal",
   width: "280px",
 };
