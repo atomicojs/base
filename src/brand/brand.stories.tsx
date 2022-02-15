@@ -1,3 +1,4 @@
+import { template } from "atomico";
 import { Brand } from "./brand";
 
 export default {
@@ -10,16 +11,14 @@ export default {
   },
 };
 
-export const Primary = ({ color, width }) =>
-  Object.assign(new Brand(), { color, width });
+export const Primary = (props: any) => template(<Brand {...props}></Brand>);
 
 Primary.args = {
   color: "black",
   width: "280px",
 };
 
-export const Secondary = ({ color, width }) =>
-  Object.assign(new Brand(), { color, width });
+export const Secondary = (props: any) => template(<Brand {...props}></Brand>);
 
 Secondary.args = {
   color: "tomato",
