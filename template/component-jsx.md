@@ -60,6 +60,7 @@ customElements.define("{%name|kebabCase%}", {%name|pascalCase%});
 ## Component story
 
 ```jsx {%name|kebabCase%}/{%name|kebabCase%}.stories.jsx
+import { template, html } from "atomico";
 import { {%name|pascalCase%} } from "./{%name|kebabCase%}";
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -73,9 +74,8 @@ export default {
   },
 };
 
-export const Story = ({ color, width }) =>
-  Object.assign(new {%name|pascalCase%}(), { color, width });
-// More on args: https://storybook.js.org/docs/web-components/writing-stories/args
+export const Story = (props) =>template(html`<${{%name|pascalCase%}} ...${props}></>`);
+
 Story.args = {
   color: "black",
   width: "280px",

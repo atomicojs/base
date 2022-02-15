@@ -1,4 +1,4 @@
-import { template } from "atomico";
+import { template, html } from "atomico";
 import { Brand } from "./brand";
 
 export default {
@@ -11,16 +11,17 @@ export default {
   },
 };
 
-export const Primary = (props: any) => template(<Brand {...props}></Brand>);
+export const Example1 = (props: any) => template(<Brand {...props}></Brand>);
 
-Primary.args = {
+Example1.args = {
   color: "black",
   width: "280px",
 };
 
-export const Secondary = (props: any) => template(<Brand {...props}></Brand>);
+export const Example2 = (props) =>
+  template(html`<${Brand} ...${props}></${Brand}>`);
 
-Secondary.args = {
-  color: "tomato",
+Example2.args = {
+  color: "teal",
   width: "280px",
 };

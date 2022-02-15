@@ -1,6 +1,6 @@
-import { c, Props } from "atomico";
+import { c, Props, css } from "atomico";
 
-function brand({ color, width }: Props<typeof brand.props>) {
+function brand({ color, width }: Props<typeof brand>) {
   return (
     <host>
       <svg
@@ -47,6 +47,12 @@ brand.props = {
     value: "20rem",
   },
 };
+
+brand.styles = css`
+  :host {
+    width: 200px;
+  }
+`;
 
 export const Brand = c(brand);
 
