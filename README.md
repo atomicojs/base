@@ -1,5 +1,4 @@
-![Atomico](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/h4.svg)
-![Atomico](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/h3.svg)
+![Atomico](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/h4.svg)![Atomico](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/h3.svg)
 
 ### Hi, I'm [@uppercod](https://twitter.com/uppercod), creator of Atomico and I want to thank you for starting with Atomico.
 
@@ -32,22 +31,38 @@ src
 
 ### Add testing
 
-The test environment is preconfigured for [@web/test-runner](https://modern-web.dev/docs/test-runner/overview/), you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run test`:
+The test environment is preconfigured for [vitest](https://vitest.dev/), you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run test`:
 
 ```bash
-npm install -D @web/test-runner @esm-bundle/chai vite-web-test-runner-plugin
+npm i -D vitest happy-dom
 ```
 
 You can learn more about the Atomico test api in the [test documentation](https://atomico.gitbook.io/doc/api/testing).
 
 #### Test example
 
-```js
-import { expect } from "@esm-bundle/chai";
+```tsx
+import { describe, it, expect } from "vitest";
+import { fixture } from "atomico/test-dom";
+import { MyComponent } from "./my-component";
 
-describe("my test", () => {
-  it("foo is bar", () => {
-    expect("foo").to.equal("bar");
+describe("MyComponent", () => {
+  it("default properties", () => {
+    const node = fixture(<MyComponent />);
+
+    expect(node.myProp).toEqual("value");
+  });
+
+  it("Check DOM", async () => {
+    const node = fixture(<MyComponent />);
+
+    node.showInput = true;
+
+    await node.updated; // or updated
+
+    expect(node.shadowRoot.querySelector("input")).toBeInstanceOf(
+      HTMLInputElement
+    );
   });
 });
 ```

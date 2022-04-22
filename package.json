@@ -16,18 +16,18 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "wtr src/**/*.test.js --node-resolve",
+    "test": "vitest ",
+    "coverage": "vitest run --coverage",
     "exports": "exports src/components.js --exports --types --main components",
-    "prepublishOnly": "npm run test && npm run exports",
+    "prepublishOnly": "npm run coverage && npm run exports",
     "create-component": "scaff template/component-jsx src"
   },
   "dependencies": {
-    "atomico": "latest"
+    "atomico": "^1.52.0"
   },
   "devDependencies": {
+    "@atomico/plugin-vite": "^1.1.1",
     "@atomico/scaffold": "^0.2.0",
-    "@uppercod/vite-meta-url": "latest",
-    "@uppercod/vite-meta-url-load-css": "latest",
     "vite": "latest"
   }
 }
