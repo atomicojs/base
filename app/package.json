@@ -1,5 +1,5 @@
 {
-    "name": "@app/app",
+    "name": "app",
     "private": true,
     "type": "module",
     "scripts": {
