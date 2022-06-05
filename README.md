@@ -24,7 +24,6 @@ src
   |- my-component
   |  |- my-component.{js,jsx,ts,tsx}
   |  |- my-component.test.js
-  |  |- my-component.css
   |  |- README.md
   |- components.js # import all components
 ```
