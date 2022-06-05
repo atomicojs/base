@@ -25,12 +25,12 @@
     "atomico": "latest"
   },
   "devDependencies": {
-    "@atomico/tsconfig": "1.0.0",
-    "@atomico/vite": "latest",
     "@atomico/exports": "latest",
     "@atomico/scaffold": "latest",
+    "@atomico/tsconfig": "1.0.0",
+    "@atomico/vite": "latest",
     "happy-dom": "latest",
-    "vitest": "latest",
-    "vite": "latest"
+    "vite": "latest",
+    "vitest": "latest"
   }
 }

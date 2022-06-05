@@ -62,17 +62,17 @@ customElements.define("{%name|kebabCase%}", {%name|pascalCase%});
 ```jsx {%name|kebabCase%}/{%name|kebabCase%}.test.tsx
 import { describe, it, expect } from "vitest";
 import { fixture } from "atomico/test-dom";
-import { MyComponent } from "./my-component";
+import { {%name|pascalCase%} } from "./{%name|kebabCase%}";
 
-describe("{%name|camelCase%}", () => {
+describe("{%name|pascalCase%}", () => {
   it("default properties", () => {
-    const node = fixture(<{%name|camelCase%} />);
+    const node = fixture<typeof {%name|pascalCase%}>(<{%name|pascalCase%} />);
 
     expect(node.myProp).toEqual("value");
   });
 
   it("Check DOM", async () => {
-    const node = fixture(<{%name|camelCase%} />);
+    const node = fixture<typeof {%name|pascalCase%}>(<{%name|pascalCase%} />);
 
     node.showInput = true;
 
