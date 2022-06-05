@@ -22,6 +22,16 @@ npm run dev
 npm run start
 ```
 
+## Structure
+
+```bash
+src
+  |- app          # The application that groups the components
+  |- packages     # All components as package
+  |- templates    # Component templates
+  lage.config.mjs # Monorepo task manager
+```
+
 ## Scripts
 
 If you want to work in development mode, you first need to run `npm run dev`, in order to prepare the package.json of each subpackage.
