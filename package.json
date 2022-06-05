@@ -7,8 +7,7 @@
     "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
   },
   "workspaces": [
-    "src/**/*",
-    "site"
+    "src/*"
   ],
   "version": "0.0.0",
   "private": true,
@@ -18,16 +17,20 @@
     "build": "vite build",
     "test": "vitest ",
     "coverage": "vitest run --coverage",
-    "exports": "exports src/components.js --exports --types --main components",
-    "prepublishOnly": "npm run coverage && npm run exports",
-    "create-component": "scaff template/component-jsx src"
+    "exports": "exports src/components.js --exports --types --main components --publish",
+    "prepublishOnly": "npm run coverage",
+    "create": "scaff template/component src"
   },
   "dependencies": {
-    "atomico": "^1.52.0"
+    "atomico": "latest"
   },
   "devDependencies": {
-    "@atomico/plugin-vite": "^1.1.1",
-    "@atomico/scaffold": "^0.2.0",
+    "@atomico/tsconfig": "1.0.0",
+    "@atomico/vite": "latest",
+    "@atomico/exports": "latest",
+    "@atomico/scaffold": "latest",
+    "happy-dom": "latest",
+    "vitest": "latest",
     "vite": "latest"
   }
 }

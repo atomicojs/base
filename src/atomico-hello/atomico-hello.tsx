@@ -1,6 +1,6 @@
-import { c, css } from "atomico";
+import { Props, c, css } from "atomico";
 
-function hello({ message }) {
+function hello({ message }: Props<typeof hello>) {
   return (
     <host shadowDom>
       <div class="layer">{message}</div>

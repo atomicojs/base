@@ -1,2 +1,2 @@
-export { Hello } from "./hello/hello";
-export { Brand } from "./brand/brand";
+export { Hello } from "./atomico-hello/atomico-hello";
+export { Brand } from "./atomico-brand/atomico-brand";

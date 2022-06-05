@@ -7,7 +7,7 @@
 
 ## component
 
-```jsx {%name|kebabCase%}/{%name|kebabCase%}.jsx
+```jsx {%name|kebabCase%}/{%name|kebabCase%}.tsx
 import { c, css } from "atomico";
 
 function {%name|camelCase%}() {
