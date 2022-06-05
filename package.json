@@ -1,36 +1,26 @@
 {
-  "name": "atomico-base",
-  "description": "a repo to start with atomico",
-  "meta": {
-    "title": "Started - Atomico + Vite(JS,JSX,TS,TSX)",
-    "description": "Hassle-free starter template, perfect for starting with Atomico",
-    "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
-  },
-  "workspaces": [
-    "src/*"
-  ],
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "exports": "exports src/components.js --exports --types --main components --publish",
-    "prepublishOnly": "npm run coverage",
-    "create": "scaff templates/component src"
-  },
-  "dependencies": {
-    "atomico": "latest"
-  },
-  "devDependencies": {
-    "@atomico/exports": "latest",
-    "@atomico/scaffold": "latest",
-    "@atomico/tsconfig": "1.0.0",
-    "@atomico/vite": "latest",
-    "happy-dom": "latest",
-    "vite": "latest",
-    "vitest": "latest"
-  }
+    "name": "@atomico/monorepo",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "workspaces": [
+        "app",
+        "packages/*"
+    ],
+    "scripts": {
+        "start": "lage start --verbose",
+        "dev": "lage dev --verbose",
+        "build": "lage build --no-cache",
+        "create": "scaff templates/component packages"
+    },
+    "devDependencies": {
+        "@atomico/exports": "^0.33.4",
+        "@atomico/scaffold": "latest",
+        "lage": "^1.5.2",
+        "typescript": "latest"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": false
+    }
 }

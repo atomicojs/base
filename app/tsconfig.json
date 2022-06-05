@@ -1,0 +1,4 @@
+{
+    "extends": "tsconfig/atomico.json",
+    "include": ["src/**/*"],
+}

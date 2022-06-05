@@ -1,0 +1,16 @@
+{
+    "name": "@component/atomico-brand",
+    "type": "module",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "exports src/*.{tsx,jsx} --exports --analyzer --types --watch",
+        "build": "exports src/*.{tsx,jsx} --exports --analyzer --types"
+    },
+    "dependencies": {
+        "atomico": "latest"
+    },
+    "devDependencies": {
+        "@atomico/tsconfig": "1.0.0"
+    }
+}
