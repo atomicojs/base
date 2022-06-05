@@ -8,5 +8,9 @@ export default defineConfig({
   test: {
     environment: "happy-dom",
   },
-  plugins: [atomico()],
+  plugins: [
+    atomico({
+      cssLiterals: { postcss: true },
+    }),
+  ],
 });

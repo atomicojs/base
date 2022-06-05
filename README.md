@@ -29,57 +29,61 @@ src
   |- components.js # import all components
 ```
 
-### Add testing
+> The `npm run create` command, will create a webcomponent with the recommended structure, the template of this webcomponent can be edited in `templates/component.md`.
 
-The test environment is preconfigured for [vitest](https://vitest.dev/), you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run test`:
+## Scripts
 
-```bash
-npm i -D vitest happy-dom
-```
+### npm run create
 
-You can learn more about the Atomico test api in the [test documentation](https://atomico.gitbook.io/doc/api/testing).
+Create a new webcomponent inside src, according to the recommended structure, the template of this webcomponent can be edited in `templates/component.md`.
 
-#### Test example
+### npm run start
 
-```tsx
-import { describe, it, expect } from "vitest";
-import { fixture } from "atomico/test-dom";
-import { MyComponent } from "./my-component";
+initialize Vite server
 
-describe("MyComponent", () => {
-  it("default properties", () => {
-    const node = fixture(<MyComponent />);
+### npm run build
 
-    expect(node.myProp).toEqual("value");
-  });
+package the app using de Vite
 
-  it("Check DOM", async () => {
-    const node = fixture(<MyComponent />);
+### npm run test
 
-    node.showInput = true;
+Run a test environment in watch mode, as configured in `vite.config.js`.
 
-    await node.updated; // or updated
+### npm run coverage
 
-    expect(node.shadowRoot.querySelector("input")).toBeInstanceOf(
-      HTMLInputElement
-    );
-  });
+Run a test environment with coverage, as configured in `vite.config.js`.
+
+### npm run exports
+
+Allows you to export your project to npm, this command executes changes in package.json before exporting and the changes will be reverted once exported.
+
+temporary changes are:
+
+1. generation of the packages.json#exports
+2. generation of the pages.json#typesVersions
+3. Compilation of the files and generation of the types if the --types flag is used.
+
+## frequent questions
+
+### How to add postcss?
+
+`@atomico/vite`, allows to preprocess the css template string through postcss, to use this feature add in vite.config.js the following options:
+
+```js
+import atomico from "@atomico/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  ...
+  plugins: [
+    atomico({
+      cssLiterals: { postcss: true }, // 👈 CONFIGURATION TO ADD
+    }),
+  ],
 });
 ```
 
-> `@web/test-runner` supports asynchrony, coverage, [viewport and more](https://modern-web.dev/docs/test-runner/commands/).
-
-### NPM export
-
-Atomico owns the [@atomico/exports](https://atomico.gitbook.io/doc/atomico/atomico-exports) tool that simplifies the generation of builds, types and exports by distributing webcomponents in NPM, you must complete the installation of the following devDependencies, installed the devDependencies you can execute the command `npm run exports`:
-
-```bash
-npm install -D @atomico/exports
-```
-
-### Postcss
-
-This configuration already depends on Postcss, you can more plugins through `package.json#postcss`, example:
+To use postcss at least 1 plugin is required.
 
 ```json
 "postcss": {
@@ -89,9 +93,7 @@ This configuration already depends on Postcss, you can more plugins through `pac
 }
 ```
 
-> In case of build, Atomico will minify the CSS code.
-
-### Github page
+### How to publish on github page?
 
 Add to `package.json#scripts.build`:
 

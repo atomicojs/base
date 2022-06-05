@@ -15,11 +15,11 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "vitest ",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
     "exports": "exports src/components.js --exports --types --main components --publish",
     "prepublishOnly": "npm run coverage",
-    "create": "scaff template/component src"
+    "create": "scaff templates/component src"
   },
   "dependencies": {
     "atomico": "latest"

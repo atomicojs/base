@@ -59,15 +59,28 @@ customElements.define("{%name|kebabCase%}", {%name|pascalCase%});
 
 ## Component test
 
-```jsx {%name|kebabCase%}/{%name|kebabCase%}.test.jsx
-import { expect } from "@esm-bundle/chai";
+```jsx {%name|kebabCase%}/{%name|kebabCase%}.test.tsx
+import { describe, it, expect } from "vitest";
 import { fixture } from "atomico/test-dom";
-import { {%name|pascalCase%} } from "./{%name|kebabCase%}";
+import { MyComponent } from "./my-component";
 
-describe("{%name|pascalCase%}", () => {
-  it("render", async () => {
-    const component = fixture(<{%name|pascalCase%}/>);
-    expect(component).to.be.an.instanceof({%name|pascalCase%});
+describe("{%name|camelCase%}", () => {
+  it("default properties", () => {
+    const node = fixture(<{%name|camelCase%} />);
+
+    expect(node.myProp).toEqual("value");
+  });
+
+  it("Check DOM", async () => {
+    const node = fixture(<{%name|camelCase%} />);
+
+    node.showInput = true;
+
+    await node.updated; // or updated
+
+    expect(node.shadowRoot.querySelector("input")).toBeInstanceOf(
+      HTMLInputElement
+    );
   });
 });
 ```
