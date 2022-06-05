@@ -49,7 +49,7 @@ customElements.define("{%name|kebabCase%}", {%name|pascalCase%});
         "atomico": "latest"
     },
     "devDependencies": {
-        "tsconfig": "*"
+        "@atomico/tsconfig": "1.0.0"
     }
 }
 ```
