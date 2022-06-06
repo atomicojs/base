@@ -15,11 +15,9 @@ Now what you have installed is a quick start kit based on Vite, which you can sc
 ## Install dependencies
 npm i
 
-## Initialize development mode for packages
-npm run dev
-
-## Initialize vite server
+## Initialize development mode for app and packages
 npm run start
+
 ```
 
 ## Structure
@@ -34,15 +32,9 @@ src
 
 ## Scripts
 
-If you want to work in development mode, you first need to run `npm run dev`, in order to prepare the package.json of each subpackage.
-
 ### npm run dev
 
-Initialize development mode for all web components inside the `/packages` folder, the package exports and types are temporary while running this script.
-
-### npm run start
-
-Initialize the development server (Vite), remember this script must be run after `npm run dev`.
+initialize development mode for packages like vite's dev server, the default host is [https://localhost:3000](https://localhost:3000).
 
 ### npm run build
 
