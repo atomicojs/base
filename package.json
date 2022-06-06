@@ -13,7 +13,7 @@
         "packages/*"
     ],
     "scripts": {
-        "dev": "turbo run dev --verbose",
+        "dev": "turbo run dev --parallel",
         "build": "turbo run build --no-cache",
         "create": "scaff templates/component packages"
     },
