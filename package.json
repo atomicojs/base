@@ -13,15 +13,14 @@
         "packages/*"
     ],
     "scripts": {
-        "start": "lage start --verbose",
-        "dev": "lage dev --verbose",
-        "build": "lage build --no-cache",
+        "dev": "turbo run dev --verbose",
+        "build": "turbo run build --no-cache",
         "create": "scaff templates/component packages"
     },
     "devDependencies": {
         "@atomico/exports": "^0.33.4",
         "@atomico/scaffold": "latest",
-        "lage": "^1.5.2",
+        "turbo": "^1.2.16",
         "typescript": "latest"
     },
     "prettier": {
