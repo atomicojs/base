@@ -3,8 +3,7 @@
     "pipeline": {
         "dev": {
             "dependsOn": ["^dev"],
-            "outputs": ["dist/**", "types/**"],
-            "inputs": ["src/**/*.tsx", "src/**/*.ts"]
+            "outputs": []
         },
         "build": {
             "dependsOn": ["^build"],
