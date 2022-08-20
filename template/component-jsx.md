@@ -74,7 +74,7 @@ export default {
   },
 };
 
-export const Story = (props) =>template(html`<${{%name|pascalCase%}} ...${props}></>`);
+export const Story = (props) =><{%name|pascalCase%} {...props}/>;
 
 Story.args = {
   color: "black",
