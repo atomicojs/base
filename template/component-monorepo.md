@@ -41,7 +41,6 @@ customElements.define("atomico-{%name|kebabCase%}", {%name|pascalCase%});
 ## Component story
 
 ```jsx {%name|kebabCase%}/src/define.stories.tsx
-import { template, html } from "atomico";
 import { {%name|pascalCase%} } from "./define";
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
@@ -107,3 +106,27 @@ tsconfig.json
   "include": ["src/**/*"]
 }
 ```
+
+## Component documentation
+
+````markdown {%name|kebabCase%}/README.md
+## {%name|kebabCase%}
+
+### Properties
+
+| Property | Type   | Description                        |
+| -------- | ------ | ---------------------------------- |
+| myProp   | string | defines the title of the component |
+
+### Slots
+
+| Property   | Type      | Description     |
+| ---------- | --------- | --------------- |
+| Unassigned | ChildNode | General content |
+
+### Example
+
+```html
+<{%name|kebabCase%} my-prop="my value"></{%name|kebabCase%}>
+```
+````

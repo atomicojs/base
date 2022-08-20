@@ -60,8 +60,8 @@ customElements.define("{%name|kebabCase%}", {%name|pascalCase%});
 ## Component story
 
 ```jsx {%name|kebabCase%}/{%name|kebabCase%}.stories.jsx
-import { template, html } from "atomico";
 import { {%name|pascalCase%} } from "./{%name|kebabCase%}";
+
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
   title: "components/{%name|kebabCase%}",
