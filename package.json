@@ -20,10 +20,12 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "atomico": "^1.45.1"
+    "atomico": "^1.61.1"
   },
   "devDependencies": {
     "@atomico/scaffold": "^0.2.0",
+    "@atomico/storybook": "^1.0.2",
+    "@atomico/tsconfig": "^1.0.0",
     "@babel/core": "^7.16.7",
     "@babel/plugin-transform-react-jsx": "^7.16.7",
     "@storybook/addon-essentials": "^6.5.0-alpha.14",

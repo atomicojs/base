@@ -1,4 +1,4 @@
-import { template, html } from "atomico";
+import { html } from "atomico";
 import { Brand } from "./brand";
 
 export default {
@@ -11,15 +11,14 @@ export default {
   },
 };
 
-export const ExampleJSX = (props: any) => template(<Brand {...props}></Brand>);
+export const ExampleJSX = (props: any) => <Brand {...props}></Brand>;
 
 ExampleJSX.args = {
   color: "black",
   width: "280px",
 };
 
-export const ExampleHTML = (props) =>
-  template(html`<${Brand} ...${props}></${Brand}>`);
+export const ExampleHTML = (props) => html`<${Brand} ...${props}></${Brand}>`;
 
 ExampleHTML.args = {
   color: "blueviolet",
