@@ -14,7 +14,7 @@
   "private": true,
   "scripts": {
     "test": "wtr src/**/*.test.js --node-resolve",
-    "create-component": "scaff template/component-jsx src",
+    "component:create": "scaff template/component src",
     "prepublishOnly": "npm run test && npm run exports",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
