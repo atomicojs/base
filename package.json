@@ -13,11 +13,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "wtr src/**/*.test.js --node-resolve",
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook",
     "create:component": "scaff component-storybook src",
-    "prepublishOnly": "npm run test && npm run exports",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "publish:components": "exports src/**/* --exports --minify --publish"
+    
   },
   "dependencies": {
     "atomico": "^1.61.1"
