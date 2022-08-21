@@ -14,7 +14,7 @@
   "private": true,
   "scripts": {
     "test": "wtr src/**/*.test.js --node-resolve",
-    "component:create": "scaff template/component src",
+    "create:component": "scaff component-storybook src",
     "prepublishOnly": "npm run test && npm run exports",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -23,7 +23,7 @@
     "atomico": "^1.61.1"
   },
   "devDependencies": {
-    "@atomico/scaffold": "^0.2.0",
+    "@atomico/scaffold": "^0.3.0",
     "@atomico/storybook": "^1.0.2",
     "@atomico/tsconfig": "^1.0.0",
     "@babel/core": "^7.16.7",
