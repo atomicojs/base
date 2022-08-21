@@ -19,15 +19,15 @@
     "coverage": "vitest run --coverage",
     "exports": "exports src/components.js --exports --types --main components --publish",
     "prepublishOnly": "npm run coverage",
-    "create": "scaff templates/component src"
+    "create:component": "scaff component src"
   },
   "dependencies": {
     "atomico": "latest"
   },
   "devDependencies": {
     "@atomico/exports": "latest",
-    "@atomico/scaffold": "latest",
-    "@atomico/tsconfig": "1.0.0",
+    "@atomico/scaffold": "^0.3.0",
+    "@atomico/tsconfig": "^1.0.0",
     "@atomico/vite": "latest",
     "happy-dom": "latest",
     "vite": "latest",
