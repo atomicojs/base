@@ -1,13 +1,10 @@
-![Atomico](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/h4.svg)![Atomico](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/h3.svg)
+## Atomico Starter Skit
 
-### Hi, I'm [@uppercod](https://twitter.com/uppercod), creator of Atomico and I want to thank you for starting with Atomico.
-
-If you need help you can find it at:
+**Message from the author of Atomico:** Hi, thanks for starting with Atomico js web components in this starter-kit you will find what you need to start with Atomico and if you have questions about Atomico I will gladly solve them through an [Issue](https://github.com/atomicojs/atomico/issues/new/choose), [Discord](https://discord.gg/7z3rNhmkNE) or [Twitter](https://twitter.com/atomicojs).
 
 [![twitter](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/twitter.svg)](https://twitter.com/atomicojs)
 [![discord](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/discord.svg)](https://discord.gg/7z3rNhmkNE)
 [![documentation](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/doc-1.svg)](https://atomico.gitbook.io/doc/)
-[![discord](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/doc.svg)](https://webcomponents.dev/edit/collection/F7dm6YnMEDRtAl57RTXU/d6E4w07fsQbb0CelYQac)
 
 Now what you have installed is a quick start kit based on Vite, which you can scale for your project, now to continue you must execute the following commands:
 
@@ -28,13 +25,13 @@ src
   |- components.js # import all components
 ```
 
-> The `npm run create` command, will create a webcomponent with the recommended structure, the template of this webcomponent can be edited in `templates/component.md`.
+> The `npm run create:component` command, will create a webcomponent with the recommended structure.
 
 ## Scripts
 
-### npm run create
+### npm run create:component
 
-Create a new webcomponent inside src, according to the recommended structure, the template of this webcomponent can be edited in `templates/component.md`.
+Create a new webcomponent inside src, according to the recommended structure.
 
 ### npm run start
 
