@@ -5,7 +5,7 @@
   "meta": {
     "title": "Started - Atomico + Astro(JS,JSX,TS,TSX)",
     "description": "Hassle-free starter template, perfect to start creating sites",
-    "branch": "https://github.com/atomicojs/base/tree/2-started/"
+    "branch": "https://github.com/atomicojs/base/tree/5-astro/"
   },
   "scripts": {
     "dev": "astro dev --experimental-integrations",
