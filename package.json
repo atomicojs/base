@@ -4,7 +4,8 @@
     "meta": {
         "title": "Monorepo - Atomico + Vite(JS,JSX,TS,TSX)",
         "description": "Hassle-free starter template, perfect for getting started with Monorepo + Atomico + Vite",
-        "branch": "https://github.com/atomicojs/atomico/tree/3-monorepo/"
+        "branch": "https://github.com/atomicojs/atomico/tree/3-monorepo/",
+        "draft": true
     },
     "private": true,
     "type": "module",
