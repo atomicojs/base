@@ -6,7 +6,7 @@ Hi, thanks for starting with Atomico js web components in this starter-kit you w
 [![discord](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/discord.svg)](https://discord.gg/7z3rNhmkNE)
 [![documentation](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/doc-1.svg)](https://atomico.gitbook.io/doc/)
 
-Now what you have installed is a quick start kit based on Vite, which you can scale for your project, now to continue you must execute the following commands:
+Now what you have installed is a quick start kit based on Astro build, which you can scale for your project, now to continue you must execute the following commands:
 
 1. `npm install`
 2. `npm start` : Initialize the development server
