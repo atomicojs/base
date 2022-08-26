@@ -1,6 +1,6 @@
 import { Props, c, css } from "atomico";
 
-function hello({ message }: Props<typeof hello>) {
+function atomicoHello({ message }: Props<typeof atomicoHello>) {
   return (
     <host shadowDom>
       <div class="layer">{message}</div>
@@ -11,14 +11,14 @@ function hello({ message }: Props<typeof hello>) {
   );
 }
 
-hello.props = {
+atomicoHello.props = {
   message: {
     type: String,
     value: "Hello.",
   },
 };
 
-hello.styles = css`
+atomicoHello.styles = css`
   :host,
   .layer {
     width: 100%;
@@ -28,7 +28,6 @@ hello.styles = css`
     justify-content: center;
     position: relative;
   }
-
   .layer {
     position: absolute;
     top: 0px;
@@ -42,12 +41,11 @@ hello.styles = css`
     opacity: 0.15;
     align-items: flex-end;
   }
-
   .box {
     position: relative;
   }
 `;
 
-export const Hello = c(hello);
+export const AtomicoHello = c(atomicoHello);
 
-customElements.define("atomico-hello", Hello);
+customElements.define("atomico-hello", AtomicoHello);

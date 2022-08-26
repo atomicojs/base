@@ -1,36 +1,25 @@
 {
-  "name": "atomico-base",
-  "description": "a repo to start with atomico",
-  "meta": {
-    "title": "Started - Atomico + Vite(JS,JSX,TS,TSX)",
-    "description": "Hassle-free starter template, perfect for starting with Atomico",
-    "branch": "https://github.com/atomicojs/atomico/tree/2-started/"
-  },
-  "workspaces": [
-    "src/*"
-  ],
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "meta": {
+    "title": "Started - Atomico + Astro(JS,JSX,TS,TSX)",
+    "description": "Hassle-free starter template, perfect to start creating sites",
+    "branch": "https://github.com/atomicojs/base/tree/2-started/"
+  },
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "exports": "exports src/components.js --exports --types --main components --publish",
-    "prepublishOnly": "npm run coverage",
-    "create:component": "scaff component src"
+    "dev": "astro dev --experimental-integrations",
+    "start": "astro dev --experimental-integrations",
+    "build": "astro build --experimental-integrations",
+    "preview": "astro preview --experimental-integrations"
   },
   "dependencies": {
     "atomico": "latest"
   },
   "devDependencies": {
-    "@atomico/exports": "latest",
     "@atomico/scaffold": "^0.3.0",
+    "@atomico/astro": "^0.5.1",
     "@atomico/tsconfig": "^1.0.0",
-    "@atomico/vite": "latest",
-    "happy-dom": "latest",
-    "vite": "latest",
-    "vitest": "latest"
+    "astro": "^1.1.0"
   }
 }
