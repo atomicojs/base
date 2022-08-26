@@ -1,4 +1,4 @@
-## Atomico Starter Skit
+# Atomico + Astro Build Starter Skit
 
 Hi, thanks for starting with Atomico js web components in this starter-kit you will find what you need to start with Atomico and if you have questions about Atomico I will gladly solve them through an [Issue](https://github.com/atomicojs/atomico/issues/new/choose), [Discord](https://discord.gg/7z3rNhmkNE) or [Twitter](https://twitter.com/atomicojs).
 
