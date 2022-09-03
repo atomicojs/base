@@ -5,4 +5,3 @@ import Atomico from "@atomico/astro";
 export default defineConfig({
   integrations: [Atomico({ cssLiterals: { minify: true, postcss: true } })],
 });
-.
