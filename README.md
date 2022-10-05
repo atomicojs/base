@@ -6,7 +6,7 @@ Hi, thanks for starting with Atomico js web components in this starter-kit you w
 [![discord](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/discord.svg)](https://discord.gg/7z3rNhmkNE)
 [![documentation](https://raw.githubusercontent.com/atomicojs/docs/master/.gitbook/assets/doc-1.svg)](https://atomico.gitbook.io/doc/)
 
-Now what you have installed is a quick start kit based on Vite, which you can scale for your project, now to continue you must execute the following commands:
+Now what you have installed is a quick start kit based on Vite, now to continue you must execute the following commands:
 
 1. `npm install`
 2. `npm start` : Initialize the development server
@@ -41,59 +41,6 @@ initialize Vite server
 
 package the app using de Vite
 
-### npm run test
+### npm run create:component
 
-Run a test environment in watch mode, as configured in `vite.config.js`.
-
-### npm run coverage
-
-Run a test environment with coverage, as configured in `vite.config.js`.
-
-### npm run exports
-
-Allows you to export your project to npm, this command executes changes in package.json before exporting and the changes will be reverted once exported.
-
-temporary changes are:
-
-1. generation of the packages.json#exports
-2. generation of the pages.json#typesVersions
-3. Compilation of the files and generation of the types if the --types flag is used.
-
-## frequent questions
-
-### How to add postcss?
-
-`@atomico/vite`, allows to preprocess the css template string through postcss, to use this feature add in vite.config.js the following options:
-
-```js
-import atomico from "@atomico/vite";
-import { defineConfig } from "vite";
-
-export default defineConfig({
-  ...
-  plugins: [
-    atomico({
-      cssLiterals: { postcss: true }, // 👈 CONFIGURATION TO ADD
-    }),
-  ],
-});
-```
-
-To use postcss at least 1 plugin is required.
-
-```json
-"postcss": {
-  "plugins": {
-    "postcss-import": {}
-  }
-}
-```
-
-### How to publish on github page?
-
-Add to `package.json#scripts.build`:
-
-```bash
---outDir docs # modify the destination directory
---base my-repo # github page folder
-```
+Create a base component

@@ -16,22 +16,15 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "exports": "exports src/components.js --exports --types --main components --publish",
-    "prepublishOnly": "npm run coverage",
-    "create:component": "scaff component src"
+    "create:component": "scaff component-tsx src"
   },
   "dependencies": {
     "atomico": "latest"
   },
   "devDependencies": {
-    "@atomico/exports": "latest",
-    "@atomico/scaffold": "^0.3.0",
+    "@atomico/scaffold": "^0.4.0",
     "@atomico/tsconfig": "^1.0.0",
-    "@atomico/vite": "latest",
-    "happy-dom": "latest",
-    "vite": "latest",
-    "vitest": "latest"
+    "@atomico/vite": "^2.0.0",
+    "vite": "latest"
   }
 }

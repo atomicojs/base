@@ -5,11 +5,8 @@ export default defineConfig({
   build: {
     target: "esnext",
   },
-  test: {
-    environment: "happy-dom",
-  },
   plugins: [
-    atomico({
+    ...atomico({
       cssLiterals: { postcss: true },
     }),
   ],
