@@ -2,7 +2,7 @@
   "name": "atomico-base",
   "description": "a repo to start with atomico",
   "meta": {
-    "id":"storybook",
+    "id": "storybook",
     "title": "Started - Atomico + Storybook(JS,JSX,TS,TSX)",
     "description": "(Beta) Workspace for working with Storybook + Atomico web components",
     "branch": "https://github.com/atomicojs/atomico/tree/storybook/"
@@ -16,24 +16,20 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "build-storybook",
-    "create:component": "scaff component-storybook src",
-    "publish:components": "exports src/**/* --exports --minify --publish"
-    
+    "create:component": "scaff component-storybook src"
   },
   "dependencies": {
     "atomico": "^1.61.1"
   },
   "devDependencies": {
     "@atomico/scaffold": "^0.3.0",
-    "@atomico/storybook": "^1.0.2",
+    "@atomico/storybook": "^1.0.7",
     "@atomico/tsconfig": "^1.0.0",
-    "@babel/core": "^7.16.7",
-    "@babel/plugin-transform-react-jsx": "^7.16.7",
+    "@atomico/vite": "^2.1.2",
     "@storybook/addon-essentials": "^6.5.0-alpha.14",
     "@storybook/addon-links": "^6.5.0-alpha.14",
-    "@storybook/builder-webpack5": "^6.5.0-alpha.14",
+    "@storybook/builder-vite": "^0.2.3",
     "@storybook/html": "^6.5.0-alpha.14",
-    "@storybook/manager-webpack5": "^6.5.0-alpha.14",
-    "babel-loader": "^8.2.3"
+    "vite": "^3.1.4"
   }
 }

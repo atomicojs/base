@@ -1,3 +1,5 @@
+const { mergeConfig } = require("vite");
+
 module.exports = {
   stories: [
     "../src/**/*.stories.mdx",
@@ -7,7 +9,15 @@ module.exports = {
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: "@storybook/html",
-  core: {
-    builder: "webpack5",
+  core: { builder: "@storybook/builder-vite" },
+  async viteFinal(config, { configType }) {
+    // return the customized config
+    return mergeConfig(config, {
+      plugins: [
+        ...(await import("@atomico/vite")).default({
+          storybook: ["*.{jsx,tsx}"],
+        }),
+      ],
+    });
   },
 };
