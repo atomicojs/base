@@ -1,5 +1,7 @@
+import { MyComponent } from "./define";
+
 export default {
-    title: "my-component",
+    title: "MyComponent",
 };
 
-export const Default = () => <h1>welcome!</h1>;
+export const Default = () => <MyComponent></MyComponent>;

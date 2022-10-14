@@ -4,6 +4,7 @@ function myComponent() {
     return (
         <host shadowDom>
             <slot></slot>
+            <h1>welcome!</h1>
         </host>
     );
 }
