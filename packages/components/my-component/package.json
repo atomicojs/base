@@ -1,0 +1,26 @@
+{
+    "name": "@atomico/my-component",
+    "version": "1.0.0",
+    "type": "module",
+    "publishConfig": {
+        "access": "public"
+    },
+    "peerDependencies": {
+        "atomico": "*"
+    },
+    "devDependencies": {
+        "@atomico/tsconfig": "^1.0.0"
+    },
+    "peerDependenciesMeta": {
+        "@atomico/react": {
+            "optional": true
+        }
+    },
+    "scripts": {
+        "step:types": "tsc",
+        "step:build": "atomico-vite src/**/*.{js,ts,jsx,tsx}",
+        "step:export": "exports lib/**/*.{js,ts} types/**/*.{js,ts} --wrappers",
+        "build": "npm run step:types && step:build && step:exports",
+        "prepublishOnly": "npm run build"
+    }
+}

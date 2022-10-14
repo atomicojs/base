@@ -1,35 +1,23 @@
 {
-  "name": "atomico-base",
-  "description": "a repo to start with atomico",
-  "meta": {
-    "id": "storybook",
-    "title": "Started - Atomico + Storybook(JS,JSX,TS,TSX)",
-    "description": "(Beta) Workspace for working with Storybook + Atomico web components",
-    "branch": "https://github.com/atomicojs/atomico/tree/storybook/"
-  },
-  "workspaces": [
-    "src/**/*",
-    "site"
-  ],
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "start-storybook -p 6006",
-    "build": "build-storybook",
-    "create:component": "scaff component-storybook src"
-  },
-  "dependencies": {
-    "atomico": "^1.61.1"
-  },
-  "devDependencies": {
-    "@atomico/scaffold": "^0.3.0",
-    "@atomico/tsconfig": "^1.0.0",
-    "@atomico/vite": "^2.1.4",
-    "@atomico/storybook": "^1.2.0",
-    "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/builder-vite": "^0.2.4",
-    "@storybook/html": "^6.5.12",
-    "vite": "^3.1.4"
-  }
+    "workspaces": [
+        "packages/storybook",
+        "packages/components/*"
+    ],
+    "scripts": {
+        "storybook": "npm run start -w=storybook",
+        "create:component": "scaff component-monorepo packages/components"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": false
+    },
+    "dependencies": {
+        "@atomico/scaffold": "^0.5.1",
+        "@atomico/vite": "^2.1.4",
+        "typescript": "^4.8.4",
+        "vite": "^3.1.4"
+    }
 }
