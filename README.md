@@ -12,4 +12,3 @@ Hi, thanks for starting with Atomico js web components in this starter kit you w
 2. `npm run start` : Initialize the storybook server
 3. `npm run build` : Optional, Build a build of your project using Storybook.
 4. `npm run create:component` : Create a component with the recommended structure
-5. `npm run publish:components`: This command requires the installation of `@atomico/exports`, publish all code inside src folder.

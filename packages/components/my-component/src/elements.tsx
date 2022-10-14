@@ -9,7 +9,7 @@ function myComponent() {
 }
 
 myComponent.props = {
-    myProp: String
+    myProp: String,
 };
 
 myComponent.styles = css`
