@@ -23,13 +23,13 @@
   },
   "devDependencies": {
     "@atomico/scaffold": "^0.3.0",
-    "@atomico/storybook": "^1.0.7",
     "@atomico/tsconfig": "^1.0.0",
-    "@atomico/vite": "^2.1.2",
-    "@storybook/addon-essentials": "^6.5.0-alpha.14",
-    "@storybook/addon-links": "^6.5.0-alpha.14",
-    "@storybook/builder-vite": "^0.2.3",
-    "@storybook/html": "^6.5.0-alpha.14",
+    "@atomico/vite": "^2.1.4",
+    "@atomico/storybook": "^1.2.0",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-vite": "^0.2.4",
+    "@storybook/html": "^6.5.12",
     "vite": "^3.1.4"
   }
 }

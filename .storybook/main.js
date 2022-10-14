@@ -15,7 +15,7 @@ module.exports = {
     return mergeConfig(config, {
       plugins: [
         ...(await import("@atomico/vite")).default({
-          storybook: ["*.{jsx,tsx}"],
+          storybook: ["src/**/*"],
         }),
       ],
     });
