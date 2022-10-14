@@ -1,7 +1,7 @@
 {
     "meta": {
         "id": "storybook monorepo",
-        "title": "Started - Atomico + Storybook(JS,JSX,TS,TSX)",
+        "title": "Started - Atomico + Storybook monorepo(JS,JSX,TS,TSX)",
         "description": "(Beta) Workspace for working with Storybook + Atomico web components",
         "branch": "https://github.com/atomicojs/atomico/tree/storybook-monorepo/"
     },
