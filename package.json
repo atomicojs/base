@@ -22,9 +22,9 @@
         "singleQuote": false
     },
     "dependencies": {
-        "@atomico/exports": "^1.2.1",
+        "@atomico/exports": "^1.2.7",
         "@atomico/scaffold": "^0.6.2",
-        "@atomico/vite": "^2.2.1",
+        "@atomico/vite": "^2.3.0",
         "typescript": "^4.8.4",
         "vite": "^3.1.4"
     }
