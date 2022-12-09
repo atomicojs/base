@@ -1,14 +1,13 @@
 import { html } from "atomico";
 import { Brand } from "./brand";
+import { define } from "@atomico/storybook";
+
+const { args, argTypes } = define(Brand);
 
 export default {
   title: "components/brand",
-  argTypes: {
-    color: { control: "color" },
-    width: {
-      control: { type: "text" },
-    },
-  },
+  argTypes,
+  args,
 };
 
 export const ExampleJSX = (props: any) => <Brand {...props}></Brand>;

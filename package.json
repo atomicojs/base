@@ -19,17 +19,21 @@
     "create:component": "scaff component-storybook src"
   },
   "dependencies": {
-    "atomico": "^1.61.1"
+    "atomico": "^1.68.0"
   },
   "devDependencies": {
-    "@atomico/scaffold": "^0.3.0",
-    "@atomico/tsconfig": "^1.0.0",
-    "@atomico/vite": "^2.1.4",
-    "@atomico/storybook": "^1.2.0",
-    "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/builder-vite": "^0.2.4",
-    "@storybook/html": "^6.5.12",
-    "vite": "^3.1.4"
+    "@atomico/storybook": "^1.5.5",
+    "@atomico/tsconfig": "^1.1.2",
+    "@atomico/vite": "^2.5.1",
+    "@babel/core": "^7.20.5",
+    "@storybook/addon-actions": "^6.5.14",
+    "@storybook/addon-essentials": "^6.5.14",
+    "@storybook/addon-interactions": "^6.5.14",
+    "@storybook/addon-links": "^6.5.14",
+    "@storybook/builder-vite": "^0.2.5",
+    "@storybook/html": "^6.5.14",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.3.0",
+    "vite": "^3.2.5"
   }
 }
