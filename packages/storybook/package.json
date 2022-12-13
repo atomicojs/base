@@ -7,28 +7,27 @@
         "description": "(Beta) Workspace for working with Storybook + Atomico web components",
         "branch": "https://github.com/atomicojs/atomico/tree/storybook/"
     },
+    "workspaces": [
+        "src/**/*",
+        "site"
+    ],
     "version": "0.0.0",
     "private": true,
     "scripts": {
         "start": "start-storybook -p 6006",
-        "build": "build-storybook"
-    },
-    "devDependencies": {
-        "@atomico/postcss-tokens": "^1.8.0",
-        "@atomico/storybook": "^1.2.0",
-        "@storybook/addon-essentials": "^6.5.12",
-        "@storybook/addon-links": "^6.5.12",
-        "@storybook/builder-vite": "^0.2.4",
-        "@storybook/html": "^6.5.12"
-    },
-    "postcss": {
-        "plugins": {
-            "@atomico/postcss-tokens": {
-                "prefix": "a"
-            }
-        }
+        "build": "build-storybook",
+        "create:component": "scaff component-storybook src"
     },
     "dependencies": {
-        "@atomico/tsconfig": "^1.0.0"
+        "atomico": "^1.68.0"
+    },
+    "devDependencies": {
+        "@atomico/storybook": "^1.6.0",
+        "@storybook/addon-actions": "^6.5.14",
+        "@storybook/addon-essentials": "^6.5.14",
+        "@storybook/addon-links": "^6.5.14",
+        "@storybook/builder-vite": "^0.2.5",
+        "@storybook/web-components": "^6.5.14",
+        "lit-html": "^2.5.0"
     }
 }

@@ -23,9 +23,10 @@
     },
     "dependencies": {
         "@atomico/exports": "^1.2.7",
-        "@atomico/scaffold": "^0.6.2",
-        "@atomico/vite": "^2.3.0",
+        "@atomico/scaffold": "^0.7.0",
+        "@atomico/vite": "^2.5.1",
+        "@atomico/tsconfig": "^1.1.2",
         "typescript": "^4.8.4",
-        "vite": "^3.1.4"
+        "vite": "^3.2.5"
     }
 }
