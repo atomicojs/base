@@ -22,6 +22,7 @@
     "atomico": "^1.68.0"
   },
   "devDependencies": {
+    "@atomico/scaffold": "^0.7.0",
     "@atomico/storybook": "^1.6.0",
     "@atomico/tsconfig": "^1.1.2",
     "@atomico/vite": "^2.5.1",
