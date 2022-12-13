@@ -8,7 +8,7 @@ module.exports = {
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
-  framework: "@storybook/html",
+  framework: "@storybook/web-components",
   core: { builder: "@storybook/builder-vite" },
   async viteFinal(config, { configType }) {
     // return the customized config
