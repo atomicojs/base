@@ -48,10 +48,6 @@ brand.props = {
     value: "20rem",
     reflect: true,
   },
-  message: {
-    type: String,
-    value: "Message...",
-  },
 };
 
 brand.styles = css`

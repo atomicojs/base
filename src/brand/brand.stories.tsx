@@ -2,7 +2,16 @@ import { html } from "atomico";
 import { Brand } from "./brand";
 import { define } from "@atomico/storybook";
 
-const { args, argTypes } = define(Brand);
+const { args, argTypes } = define(Brand, {
+  argTypes: {
+    color: {
+      description: "Property description example",
+    },
+    width: {
+      description: "Property description example",
+    },
+  },
+});
 
 export default {
   title: "components/brand",
