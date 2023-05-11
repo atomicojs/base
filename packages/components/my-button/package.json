@@ -1,21 +1,27 @@
 {
-        "name": "@atomico/my-button",
-        "version": "1.0.0",
-        "type": "module",
-        "publishConfig": {
-                "access": "public"
-        },
-        "peerDependencies": {
-                "atomico": "*"
-        },
-        "scripts": {
-                "step:types": "tsc",
-                "step:build": "library src/**/*",
-                "step:exports": "exports lib/**/* types/**/* --wrappers",
-                "step:watch:types": "tsc --watch",
-                "step:watch:build": "library src/**/*  --watch",
-                "step:watch:exports": "exports lib/**/* types/**/* --wrappers --watch",
-                "build": "npm run step:types && npm run step:build && npm run step:exports",
-                "prepublishOnly": "npm run build"
-        }
+    "name": "@atomico/my-button",
+    "version": "1.0.0",
+    "type": "module",
+    "publishConfig": {
+        "access": "public"
+    },
+    "peerDependencies": {
+        "atomico": "*",
+        "@atomico/react": "*",
+        "@atomico/vue": "*"
+    },
+    "scripts": {
+        "step:types": "tsc",
+        "step:build": "library src/**/*",
+        "step:exports": "exports lib/**/* types/**/* --wrappers",
+        "step:watch:types": "tsc --watch",
+        "step:watch:build": "library src/**/*  --watch",
+        "step:watch:exports": "exports lib/**/* types/**/* --wrappers --watch",
+        "build": "npm run step:types && npm run step:build && npm run step:exports",
+        "prepublishOnly": "npm run build"
+    },
+    "exports": {},
+    "typesVersions": {
+        "*": {}
+    }
 }
