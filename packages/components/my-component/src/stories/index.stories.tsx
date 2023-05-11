@@ -1,4 +1,4 @@
-import { MyComponent } from "./define";
+import { MyComponent } from "@atomico/my-component";
 import { define } from "@atomico/storybook";
 
 const { args, argTypes } = define(MyComponent);
@@ -9,4 +9,9 @@ export default {
     args,
 };
 
-export const Default = () => <MyComponent></MyComponent>;
+export const Default = () => (
+    <div>
+        <h1>?</h1>
+        <MyComponent></MyComponent>
+    </div>
+);

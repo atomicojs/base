@@ -10,8 +10,8 @@
         "packages/components/*"
     ],
     "scripts": {
-        "start": "npm run start -w=storybook",
-        "build": "npm run start -w=storybook",
+        "start": "run start -w=storybook",
+        "build": "run start -w=storybook",
         "create:component": "scaff component-monorepo packages/components"
     },
     "keywords": [],
@@ -23,9 +23,10 @@
     },
     "dependencies": {
         "@atomico/exports": "^1.2.7",
+        "@atomico/run": "^0.2.0",
         "@atomico/scaffold": "^0.7.0",
-        "@atomico/vite": "^2.5.1",
         "@atomico/tsconfig": "^1.1.2",
+        "@atomico/vite": "^2.5.1",
         "typescript": "^4.8.4",
         "vite": "^3.2.5"
     }
