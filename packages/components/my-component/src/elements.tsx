@@ -3,14 +3,13 @@ import { c, css } from "atomico";
 function myComponent() {
     return (
         <host shadowDom>
-            <slot></slot>
-            <h1>...ok...jojojo?</h1>
+            <h1>Hi <slot/></h1>
         </host>
     );
 }
 
 myComponent.props = {
-    myProp: String,
+    myProp: String
 };
 
 myComponent.styles = css`
