@@ -1,17 +1,13 @@
-import { MyComponent } from "@atomico/my-component";
 import { define } from "@atomico/storybook";
-
-const { args, argTypes } = define(MyComponent);
+import { MyComponent } from "@atomico/my-component";
 
 export default {
     title: "MyComponent",
-    argTypes,
-    args,
+    ...define(MyComponent, {
+        argTypes: {
+            myProp: { description: "My prop!" },
+        },
+    }),
 };
 
-export const Default = () => (
-    <div>
-        <h1>?</h1>
-        <MyComponent></MyComponent>
-    </div>
-);
+export const Default = () => <MyComponent></MyComponent>;

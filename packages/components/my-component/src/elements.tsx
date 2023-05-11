@@ -4,7 +4,7 @@ function myComponent() {
     return (
         <host shadowDom>
             <slot></slot>
-            <h1>...random?</h1>
+            <h1>...ok...jojojo?</h1>
         </host>
     );
 }

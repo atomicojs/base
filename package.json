@@ -10,8 +10,10 @@
         "packages/components/*"
     ],
     "scripts": {
-        "start": "run start -w=storybook",
+        "start": "run step:watch:* -p",
         "build": "run start -w=storybook",
+        "start:storybook": "run start -w=storybook",
+        "build:storybook": "run build --ends-with=storybook",
         "create:component": "scaff component-monorepo packages/components"
     },
     "keywords": [],
