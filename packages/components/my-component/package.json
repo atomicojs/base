@@ -16,7 +16,7 @@
         "step:exports": "exports lib/**/* types/**/* --wrappers",
         "step:watch:types": "tsc --watch",
         "step:watch:build": "library src/**/*  --watch",
-        "step:watch:exports": "exports lib/**/* types/**/* --wrappers --watch",
+        "step:watch:exports": "exports lib/**/* types/**/* --wrappers --watch --tmp",
         "build": "npm run step:types && npm run step:build && npm run step:exports",
         "prepublishOnly": "npm run build"
     }
