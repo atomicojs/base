@@ -17,5 +17,17 @@
         "step:watch:exports": "exports lib/**/* types/**/* --wrappers --main define --watch",
         "build": "npm run step:types && npm run step:build && npm run step:exports",
         "prepublishOnly": "npm run build"
+    },
+    "types": "types/define.d.ts",
+    "exports": {},
+    "typesVersions": {
+        "*": {
+            "define": [
+                "types/define.d.ts"
+            ],
+            "elements": [
+                "types/elements.d.ts"
+            ]
+        }
     }
 }
