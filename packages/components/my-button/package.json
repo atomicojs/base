@@ -19,9 +19,5 @@
         "step:watch:exports": "exports lib/**/* types/**/* --wrappers --watch",
         "build": "npm run step:types && npm run step:build && npm run step:exports",
         "prepublishOnly": "npm run build"
-    },
-    "exports": {},
-    "typesVersions": {
-        "*": {}
     }
 }
