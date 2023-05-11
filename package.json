@@ -22,12 +22,12 @@
         "singleQuote": false
     },
     "dependencies": {
-        "@atomico/exports": "^1.2.7",
-        "@atomico/run": "^0.2.0",
-        "@atomico/scaffold": "^0.7.0",
-        "@atomico/tsconfig": "^1.1.2",
-        "@atomico/vite": "^2.5.1",
-        "typescript": "^4.8.4",
-        "vite": "^3.2.5"
+        "@atomico/exports": "latest",
+        "@atomico/run": "latest",
+        "@atomico/scaffold": "latest",
+        "@atomico/tsconfig": "latest",
+        "@atomico/vite": "latest",
+        "typescript": "latest",
+        "vite": "latest"
     }
 }

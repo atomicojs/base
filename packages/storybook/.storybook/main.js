@@ -1,6 +1,5 @@
-const { mergeConfig } = require("vite");
-
-module.exports = {
+/** @type { import('@storybook/web-components-vite').StorybookConfig } */
+const config = {
     stories: [
         "../../components/**/*.stories.mdx",
         "../../components/**/*.stories.@(js|jsx|ts|tsx)",
@@ -8,8 +7,13 @@ module.exports = {
         // "../stories/**/*.stories.@(js|jsx|ts|tsx)",
     ],
     addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
-    framework: "@storybook/web-components",
-    core: { builder: "@storybook/builder-vite" },
+    framework: {
+        name: "@storybook/web-components-vite",
+        options: {},
+    },
+    docs: {
+        autodocs: "tag",
+    },
     async viteFinal(config, { configType }) {
         // return the customized config
         return mergeConfig(config, {
@@ -21,3 +25,5 @@ module.exports = {
         });
     },
 };
+
+export default config;
