@@ -3,13 +3,16 @@ import { c, css } from "atomico";
 function myButton() {
     return (
         <host shadowDom>
-            <h1>Hi <slot/></h1>
+            <h1>
+                Hi <slot />
+            </h1>
+            <button>Add users ...Magic!</button>
         </host>
     );
 }
 
 myButton.props = {
-    myProp: String
+    myProp: String,
 };
 
 myButton.styles = css`
