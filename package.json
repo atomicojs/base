@@ -28,7 +28,7 @@
         "@atomico/run": "^0.3.0",
         "@atomico/scaffold": "^0.8.1",
         "@atomico/tsconfig": "^1.1.2",
-        "@atomico/vite": "^2.7.2",
+        "@atomico/vite": "^2.7.3",
         "typescript": "latest",
         "vite": "latest"
     }
