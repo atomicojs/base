@@ -12,7 +12,7 @@
     "scripts": {
         "start": "run step:watch:* -p",
         "build": "run start -w=storybook",
-        "start:storybook": "run start -w=storybook",
+        "start:storybook": "npm run start -w=storybook",
         "build:storybook": "npm run build -w=storybook",
         "create:component": "scaff component-monorepo packages/components && npm i"
     },
