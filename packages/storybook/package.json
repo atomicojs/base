@@ -13,15 +13,15 @@
         "atomico": "^1.68.0"
     },
     "devDependencies": {
-        "@atomico/storybook": "latest",
-        "storybook": "^7.0.8",
-        "@storybook/addon-essentials": "^7.0.8",
-        "@storybook/addon-links": "^7.0.8",
-        "@storybook/blocks": "^7.0.8",
-        "@storybook/web-components": "^7.0.8",
-        "@storybook/web-components-vite": "^7.0.8",
+        "@atomico/storybook": "^2.2.4",
+        "@storybook/addon-essentials": "^7.0.13",
+        "@storybook/addon-links": "^7.0.13",
+        "@storybook/blocks": "^7.0.13",
+        "@storybook/web-components": "^7.0.13",
+        "@storybook/web-components-vite": "^7.0.13",
         "lit": "^2.7.4",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "storybook": "^7.0.13"
     }
 }

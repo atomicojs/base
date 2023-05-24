@@ -3,16 +3,15 @@ import { define } from "@atomico/storybook";
 
 export default {
     title: "components/component-1",
-    ...define(
-        Component1,
-        { // Optional
-            argTypes: {
-                color: {
-                    description: "Description..."
-                }
-            }
-        }
-)
+    tags: ["autodocs"],
+    ...define(Component1, {
+        // Optional
+        argTypes: {
+            color: {
+                description: "Description...",
+            },
+        },
+    }),
 };
 
-export const Story = (props) =><Component1 {...props}>Atomico!</Component1>;
+export const Story = (props) => <Component1 {...props}>Atomico!</Component1>;

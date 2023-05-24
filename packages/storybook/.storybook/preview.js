@@ -1,10 +1,12 @@
 import { decorator } from "@atomico/storybook";
 
 export const parameters = {
-    controls: {
-        expanded: true,
-    },
     actions: { argTypesRegex: "^on.*" },
+    docs: {
+        source: {
+            // language: "jsx",
+        },
+    },
 };
 
 export const decorators = [decorator];
