@@ -9,6 +9,12 @@ Hi, thanks for starting with Atomico js web components in this starter kit you w
 ## Scripts
 
 1. `npm install`
-2. `npm run start` : Initialize the storybook server
-3. `npm run build` : Optional, Build a build of your project using Storybook.
-4. `npm run create:component` : Create a component with the recommended structure
+2. `npm run start` : start development mode for your components
+3. `npm run start:storybook` : Start the storybook development server
+4. `npm run build` : Optional, Build a build of your project using Storybook.
+5. `npm run create:component` : Create a component with the recommended structure
+
+## Possible problems with this template
+
+1. @atomico/run uses npm to map the monorepo dependencies, if your component doesn't get compiled, run the `npm i` command and then run npm start.
+2. When using create:component, Storybook fails to reference imports, to correct this restart storybook.
