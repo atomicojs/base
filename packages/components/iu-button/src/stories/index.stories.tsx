@@ -1,9 +1,9 @@
-import { Component1 } from "@atomico/component-1";
+import { IuButton } from "@atomico/iu-button";
 import { define } from "@atomico/storybook";
 
 export default {
-    title: "components/component-1",
-    ...define(Component1, {
+    title: "components/iu-button",
+    ...define(IuButton, {
         // Optional
         argTypes: {
             color: {
@@ -13,4 +13,4 @@ export default {
     }),
 };
 
-export const Story = (props) => <Component1 {...props}>Atomico!</Component1>;
+export const Story = (props) => <IuButton {...props}>button</IuButton>;

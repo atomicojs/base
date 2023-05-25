@@ -9,8 +9,8 @@ Hi, thanks for starting with Atomico js web components in this starter kit you w
 ## Scripts
 
 1. `npm install`
-2. `npm run start` : start development mode for your components
-3. `npm run start:storybook` : Start the storybook development server
+2. `npm run dev` : Development mode for all components
+3. `npm run dev:storybook` : Development mode for storybook
 4. `npm run build` : Optional, Build a build of your project using Storybook.
 5. `npm run create:component` : Create a component with the recommended structure
 

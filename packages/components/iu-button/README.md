@@ -1,4 +1,4 @@
-## component-1
+## iu-button
 
 ### Properties
 
@@ -15,5 +15,5 @@
 ### Example
 
 ```html
-<component-1 my-prop="my value"></component-1>
+<iu-button my-prop="my value"></iu-button>
 ```

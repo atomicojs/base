@@ -27,9 +27,10 @@
     "dependencies": {
         "@atomico/exports": "^1.5.0",
         "@atomico/run": "^0.4.1",
-        "@atomico/scaffold": "^2.9.2",
+        "@atomico/scaffold": "^2.9.3",
         "@atomico/tsconfig": "^1.1.2",
         "@atomico/vite": "^2.9.0",
+        "atomico": "^1.70.0",
         "typescript": "latest",
         "vite": "latest"
     }
