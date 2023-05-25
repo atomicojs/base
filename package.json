@@ -11,9 +11,9 @@
     ],
     "type": "module",
     "scripts": {
-        "dev": "run dev -p",
+        "dev": "run dev:* -p",
         "build": "run start -w=storybook",
-        "start:storybook": "npm run start -w=storybook",
+        "dev:storybook": "npm run dev -w=storybook",
         "build:storybook": "npm run build -w=storybook",
         "create:component": "scaff component-monorepo packages/components && npm i"
     },
