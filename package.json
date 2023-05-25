@@ -11,7 +11,7 @@
     ],
     "type": "module",
     "scripts": {
-        "start": "run step:watch:* -p",
+        "dev": "run dev -p",
         "build": "run start -w=storybook",
         "start:storybook": "npm run start -w=storybook",
         "build:storybook": "npm run build -w=storybook",
@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@atomico/exports": "^1.5.0",
-        "@atomico/run": "^0.3.0",
+        "@atomico/run": "^0.4.1",
         "@atomico/scaffold": "^2.9.2",
         "@atomico/tsconfig": "^1.1.2",
         "@atomico/vite": "^2.9.0",

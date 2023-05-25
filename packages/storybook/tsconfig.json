@@ -1,4 +1,9 @@
 {
   "extends": "@atomico/tsconfig/base.json",
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "paths":{
+      "atomico":["./src/local.js"]
+    }
+  }
 }
