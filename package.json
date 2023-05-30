@@ -25,13 +25,13 @@
         "singleQuote": false
     },
     "dependencies": {
-        "@atomico/exports": "^1.5.0",
-        "@atomico/run": "^0.7.0",
+        "@atomico/exports": "^1.6.0",
+        "@atomico/run": "^0.8.4",
         "@atomico/scaffold": "^2.9.3",
         "@atomico/tsconfig": "^1.1.2",
-        "@atomico/vite": "^2.9.0",
-        "atomico": "^1.70.0",
-        "typescript": "latest",
-        "vite": "latest"
+        "@atomico/vite": "^2.9.2",
+        "atomico": "^1.71.1",
+        "typescript": "^5.0.4",
+        "vite": "^4.3.9"
     }
 }
