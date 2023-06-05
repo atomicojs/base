@@ -5,7 +5,8 @@
     "id": "storybook",
     "title": "Started - Atomico + Storybook(JS,JSX,TS,TSX)",
     "description": "(Beta) Workspace for working with Storybook + Atomico web components",
-    "branch": "https://github.com/atomicojs/atomico/tree/storybook/"
+    "branch": "https://github.com/atomicojs/atomico/tree/storybook/",
+    "draft": true
   },
   "workspaces": [
     "src/**/*",
